@@ -1,0 +1,41 @@
+.footer {
+  font-size: 14px;
+  line-height: 1.5;
+  color: #545454;
+  background-color: #f7f7f7;
+}
+
+.footer-content {
+  padding: 29px 16px 29px 28px;
+  text-align: center;
+}
+
+.footer__link {
+  color: #545454;
+}
+
+.footer-icon {
+  width: 14px;
+  height: 13px;
+  margin: 0 10px;
+}
+
+.team-link {
+  text-decoration: underline;
+}
+
+@media screen and (min-width: 768px) {
+  .footer {
+    font-size: 16px;
+    line-height: 1.2;
+  }
+  .footer-content {
+    padding: 30px 67px 30px 67px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .footer-content {
+    padding: 30px 200px 28px 200px;
+  }
+}
