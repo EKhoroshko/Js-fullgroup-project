@@ -5,9 +5,11 @@
 
 // Стили для файла с примером HTML-фрагмента
 //Base
+@import './base/base';
 @import './base/container';
 @import './layout/header';
 @import './base/font+color';
+@import './components/main';
 @import './layout/footer';
 @import './layout/main';
 @import './layout/my-library';
