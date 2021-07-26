@@ -1,8 +1,15 @@
-.is-hidden {
-  visibility: hidden;
-  opacity: 0;
-  pointer-events: none;
+// Перенести потом в папку с переменными
+.visually-hidden {
+  position: absolute !important;
+  clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
+  clip: rect(1px, 1px, 1px, 1px);
+  padding: 0 !important;
+  border: 0 !important;
+  height: 1px !important;
+  width: 1px !important;
+  overflow: hidden;
 }
+// Выше
 
 .main {
   background: white;
@@ -15,13 +22,14 @@
 .gallery-item {
   margin: 20px;
   background: white;
-  border-radius: 5px;
 }
 .gallery-img {
   width: 280px;
   height: 398px;
   background-color: grey;
   margin-bottom: 10px;
+
+  border-radius: 5px;
 }
 .title-item {
   margin-bottom: 5px;
@@ -29,6 +37,12 @@
 .wrapper-description,
 .description-list {
   display: flex;
+  justify-content: start;
+  align-items: baseline;
+
+  // line-height: 0px;
+  // word-spacing: 0px;
+  // letter-spacing: 0px;
 }
 
 .description-genres:last-child {
@@ -38,10 +52,27 @@
   }
 }
 .genres-separator {
+  display: inline-block;
+  justify-content: start;
   margin-right: 3px;
+  margin-left: -4px; //сделать правку после подключения шрифтов
 }
 .description-separator {
   margin: 0 5px;
+}
+
+.rating-library {
+  display: flex;
+  width: 36px;
+  height: 16px;
+
+  margin-left: 10px;
+
+  background: #ff6b01;
+  color: #ffffff;
+  border-radius: 5px;
+  align-items: center;
+  justify-content: center;
 }
 
 @media screen and (min-width: 768px) {
