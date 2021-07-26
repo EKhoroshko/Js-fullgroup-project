@@ -1,0 +1,96 @@
+.overlay{
+    width: auto;
+    height:auto;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-image: linear-gradient( to right,
+   rgba(47, 48, 58, 0.4),
+   rgba(47, 48, 58, 0.4)),
+   url(../images/header_mobile_black.jpg),
+  };
+  .navigation{
+      display: flex;
+  }
+   .filmoteka{
+     display: flex; 
+     margin-right: 100px;
+   }
+   .logoName{
+       display: none;
+   }
+   .headerList{
+       display:flex;
+       
+   }
+   .navgationLink{
+    font-family: Roboto;
+font-style: normal;
+font-weight: 500;
+font-size: 12px;
+line-height: 14px;
+
+/* identical to box height */
+display: flex;
+align-items: center;
+text-align: center;
+text-transform: uppercase;
+   }
+   .modal-form-input{
+       width:90%;
+       height: 20px;
+       border: none;
+       outline: none;
+       background: transparent;
+       margin-top: 41px;
+    
+       
+   }
+   .input-label{
+     
+       border-style: none;
+      
+   }
+   .navigationLink {
+       margin-right: 39px;
+   }
+   .header .container{
+    background-color: initial;
+   }
+   .input-form{
+       position: relative;
+   }
+   .formBtn{
+       bottom: 0px;
+       right: 0px;
+    display:inline-block;
+    position: absolute;
+    border: none;
+    outline: none;
+    background: transparent;
+    }
+   
+  .magnifier{
+      display: inline-flex;
+     margin-left: auto;
+  }
+  .search{
+    border-bottom: 0.5px solid white;
+  }
+  .navigationLink{
+      position: relative;
+  }
+  .navigationLink.current::after{
+    
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        display: block;
+        width: 100%;
+        height: 4px;
+        border-radius: 2px;
+        background-color:#FF6B08;
+        color:#FF6B08 ;
+    }
+  
