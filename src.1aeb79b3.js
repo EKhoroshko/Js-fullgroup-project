@@ -11,4 +11,4 @@ var e,t=arguments[3];!function(t,r){"object"==typeof exports&&"object"==typeof m
 },{"handlebars/dist/handlebars.runtime":"pAws"}],"Focm":[function(require,module,exports) {
 "use strict";require("./sass/main.scss");var e=require("./js/ApiServer"),r=require("./templation/card.hbs");const s=document.querySelector(".gallery-list");function i(){s.insertAdjacentHTML("beforeend",(0,r.cardMain)())}
 },{"./sass/main.scss":"clu1","./js/ApiServer":"Yylg","./templation/card.hbs":"b6m6"}]},{},["Focm"], null)
-//# sourceMappingURL=/Js-fullgroup-project/src.7c367c05.js.map
+//# sourceMappingURL=/Js-fullgroup-project/src.1aeb79b3.js.map
