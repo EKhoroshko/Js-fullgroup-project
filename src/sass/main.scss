@@ -8,7 +8,8 @@
 @import './base/base';
 @import './base/container';
 @import './layout/header';
-@import './base/font+color';
+@import './base/variables';
+@import './base/mixins';
 @import './components/main';
 @import './layout/footer';
 // @import './layout/main';
