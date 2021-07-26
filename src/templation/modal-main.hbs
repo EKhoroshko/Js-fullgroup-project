@@ -1,0 +1,44 @@
+<div class="modal-backdrop is-hidden" id="modal" about-modal>
+    <div class="modal">
+        <button class="about-close" type="button" about-modal-close>
+            <svg class="close-icon" width="11" height="11">
+                <use href="./images/sprite.svg#icon-cross"></use>
+            </svg>
+        </button>
+        <form action="#" class="about-form" id="yt-player">
+            <div class="film-picture">
+                <img class="picture" src="" alt="{{}}" title="{{}}"/>
+            </div>
+
+            <div class="movie">
+                <h2 class="movie-info-title">{{}}</h2>
+                <ul>
+                    <li class="movie-info">
+                        <p class="movie-info-current">Vote / Votes</p>
+                        <p class="movie-info-api">{{}}</p>
+                    </li>
+                    <li class="movie-info">
+                        <p class="movie-info-current">Popularity</p>
+                        <p class="movie-info-api">{{}}</p>
+                    </li>
+                    <li class="movie-info">
+                        <p class="movie-info-current">Original Title</p>
+                        <p class="movie-info-api">{{}}</p>
+                    </li>
+                    <li class="movie-info">
+                        <p class="movie-info-current">Genre</p>
+                        <p class="movie-info-api">{{}}</p>
+                    </li>
+                </ul>
+                <h3 class="movie-about">About</h3>
+                <p class="movie-text">{{}}</p>
+
+            </div>
+            <div class="movie-buttons">
+                <button type="button" class="movie-add-watched" data-id="{{}}">add to Watched</button>
+                <button type="button" class="movie-add-queue" data-id="{{}}">add to queue</button>
+            </div>
+            
+        </form>
+    </div>
+</div>
