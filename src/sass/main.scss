@@ -6,10 +6,10 @@
 // Стили для файла с примером HTML-фрагмента
 //Base
 @import './base/base';
+@import './base/mixins';
+@import './base/variables';
 @import './base/container';
 @import './layout/header';
-@import './base/variables';
-@import './base/mixins';
 @import './components/main';
 @import './layout/footer';
 // @import './layout/main';
