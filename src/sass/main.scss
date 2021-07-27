@@ -4,13 +4,21 @@
  */
 
 // Стили для файла с примером HTML-фрагмента
+
 //Base
 @import './base/base';
 @import './base/container';
-@import './layout/header';
-@import './base/variables';
 @import './base/mixins';
+@import './base/placeholder';
+@import './base/variables';
+
+// components
 @import './components/main';
+
+// layout
+@import './layout/backdrop';
 @import './layout/footer';
-// @import './layout/main';
+@import './layout/header';
+@import './layout/main';
+@import './layout/modal';
 @import './layout/my-library';
