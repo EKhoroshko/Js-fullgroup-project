@@ -31,32 +31,26 @@ export default class FilmsApiServise {
       })
       .then(data => {
         console.log(data.results);
-        this.giveGenre(data.results[0].genre_ids) //[35, 18]
+        this.giveGenre(data.results[3].genre_ids) //[35, 18]
         
       });
   }
 // //console.log(data.results[0].genre_ids); получили массив ID жанров
   
-//   giveGenre(arrayGenre) {
-//     console.log(arrayGenre);
-//     // for (i = 0; i < arrayGenre.length; )
+  giveGenre(arrayGenre) {
+    console.log(arrayGenre);
+    const commonElements = [];
+    for (let i = 0; i < arrayGenre.length; i++) {
+      genreMovis.forEach((genreMov) => {
+        if (genreMov.id === arrayGenre[i]) {
+        commonElements.push(genreMov.name)
+        }
+      })
+    }
 
-// // function getCommonElements(firstArray, secondArray) {
-// //     const commonElements = [];
-// //     // Пиши код ниже этой строки
-// //   firstArray.forEach((el)=>{
-// //   if (secondArray.includes(el)) {
-// //         commonElements.push(el);
-// //       }
-// //   })
-//     const commonElements = [];
-//     genreMovis.forEach(genreMov)=> {
-//       if (arrayGenre.includes())
-//     }
-
-//     // const genre = genreMovis.reduce((acc, genreMov) => { acc.push(genreMov.name); return acc }, []);
-//     console.log(genre);
-//   }
+    // const genre = genreMovis.reduce((acc, genreMov) => { acc.push(genreMov.name); return acc }, []);
+    console.log(commonElements);
+  }
   
   fetchFilmsDescription() {
     const url = `${BASE_URL}movie/${this.filmID}?api_key=${KEY}&language=en-US`;
