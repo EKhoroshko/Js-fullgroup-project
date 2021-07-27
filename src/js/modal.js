@@ -5,6 +5,6 @@ function toggleModal() {
   refs.modal.classList.toggle('visually-hidden');
 }
 
-refs.closeModalBtn.addEventListener('click', toggleModal);
+// refs.closeModalBtn.addEventListener('click', toggleModal);
 
 export { toggleModal };
