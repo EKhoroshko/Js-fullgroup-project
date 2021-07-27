@@ -1,7 +1,7 @@
 import './sass/main.scss';
 
-
-import { toggleModal } from './js/modal';
+// в консоли были ошибки я закомментировал
+// import { toggleModal } from './js/modal';
 
 
 import { cardMain } from './templation/card.hbs';
