@@ -7,12 +7,17 @@
 
 //Base
 @import './base/base';
+@import './base/mixins';
+@import './base/variables';
 @import './base/container';
+
+
 @import './base/mixins';
 @import './base/placeholder';
 @import './base/variables';
 
-// components
+// components 
+
 @import './components/main';
 
 // layout
