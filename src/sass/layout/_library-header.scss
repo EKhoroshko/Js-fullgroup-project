@@ -1,0 +1,74 @@
+.library {
+  width: 100%;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-image: linear-gradient(to right, rgba(47, 48, 58, 0.4), rgba(47, 48, 58, 0.4)),
+    url(../images/header_mobile_red.jpg);
+}
+.logo {
+  padding-top: 50px;
+  display: flex;
+}
+.logo-icon {
+  margin-right: 114px;
+}
+.library_buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  padding-bottom: 65px;
+  padding-left: 20px;
+  padding-right: 20px;
+  margin-top: 49px;
+}
+.navHeadList {
+  display: flex;
+}
+.headerBtnLeft {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+  padding: 14px 36px;
+  margin-right: 20px;
+  box-shadow: 0px 8px 43px rgba(255, 107, 1, 0.6);
+  border-radius: 5px;
+  border: 1px solid #ffffff;
+  background: transparent;
+  color: #ffffff;
+}
+.headerBtnRight {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+  padding: 14px 36px;
+  border-radius: 5px;
+  box-shadow: 0px 8px 43px rgba(255, 107, 1, 0.6);
+  border: 1px solid #ffffff;
+  background: transparent;
+  color: #ffffff;
+}
+.home-link {
+  margin-right: 32px;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 14px;
+  color: #ffffff;
+}
+.libraryLink {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 14px;
+  color: #ffffff;
+}
+.library .container {
+  background-color: initial;
+}
