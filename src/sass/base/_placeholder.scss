@@ -1,0 +1,5 @@
+%transition {
+  transition: all var(--time) var(--delay);
+}
+
+//@extend %transition;

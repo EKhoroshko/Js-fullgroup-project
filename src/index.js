@@ -1,4 +1,9 @@
 import './sass/main.scss';
+
+
+import { toggleModal } from './js/modal';
+
+
 import { cardMain } from './templation/card.hbs';
 import FilmsApiServise from './js/ApiServer';
 
