@@ -1,4 +1,6 @@
 import './sass/main.scss';
+import getRefs from './js/get-refs.js';
+const refs = getRefs();
 
 // в консоли были ошибки я закомментировал
 //import { toggleModal } from './js/modal';
@@ -7,21 +9,38 @@ import cardMain from './templation/card.hbs';
 import FilmsApiServise from './js/ApiServer';
 
 var debounce = require('debounce');
-
-const $render = document.querySelector('.gallery-list');
-const inputRef = document.querySelector('.modal-form-input');
 const filmsApiServise = new FilmsApiServise();
 
-inputRef.addEventListener('input', debounce(onInputSearch, 400));
+refs.inputRef.addEventListener('input', debounce(onInputSearch, 500));
 
-function renderCardMain(results) {
-  $render.insertAdjacentHTML('beforeend', cardMain(results));
+function renderStartFilms() {
+  filmsApiServise.getFilm().then(hits => {
+    renderCardMain(hits);
+  });
 }
-
+renderStartFilms();
 function onInputSearch(e) {
   e.preventDefault();
   filmsApiServise.searchQuery = e.target.value;
-  filmsApiServise.fetchFilmsByKeyWord()
-  //  .then(data => renderCardMain(data)); 
-  // console.log(filmsApiServise.fetchFilmsByKeyWord())
+  if (filmsApiServise.searchQuery === '') {
+    clearfilms();
+    renderStartFilms();
+  } else {
+    clearfilms();
+    createFilmsList();
+  }
+}
+
+function createFilmsList() {
+  filmsApiServise.fetchFilms().then(hits => {
+    renderCardMain(hits);
+  });
+}
+
+function renderCardMain(results) {
+  refs.$render.innerHTML = cardMain(results);
+}
+
+function clearfilms() {
+  refs.$render.innerHTML = '';
 }
