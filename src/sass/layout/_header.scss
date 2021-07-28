@@ -1,96 +1,193 @@
-.overlay{
-    width: auto;
-    height:auto;
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-image: linear-gradient( to right,
-   rgba(47, 48, 58, 0.4),
-   rgba(47, 48, 58, 0.4)),
-   url(../images/header_mobile_black.jpg),
-  };
-  .navigation{
-      display: flex;
-  }
-   .filmoteka{
-     display: flex; 
-     margin-right: 100px;
-   }
-   .logoName{
-       display: none;
-   }
-   .headerList{
-       display:flex;
-       
-   }
-   .navgationLink{
-    font-family: Roboto;
-font-style: normal;
-font-weight: 500;
-font-size: 12px;
-line-height: 14px;
+.overlay {
+  width: auto;
+  height: auto;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-image: linear-gradient(to right, rgba(47, 48, 58, 0.4), rgba(47, 48, 58, 0.4)),
+    url(../images/header_desktop_black.jpg);
+}
 
-/* identical to box height */
-display: flex;
-align-items: center;
-text-align: center;
-text-transform: uppercase;
-   }
-   .modal-form-input{
-       width:90%;
-       height: 20px;
-       border: none;
-       outline: none;
-       background: transparent;
-       margin-top: 41px;
-    
-       
-   }
-   .input-label{
-     
-       border-style: none;
-      
-   }
-   .navigationLink {
-       margin-right: 39px;
-   }
-   .header .container{
-    background-color: initial;
-   }
-   .input-form{
-       position: relative;
-   }
-   .formBtn{
-       bottom: 0px;
-       right: 0px;
-    display:inline-block;
-    position: absolute;
-    border: none;
-    outline: none;
-    background: transparent;
-    }
-   
-  .magnifier{
-      display: inline-flex;
-     margin-left: auto;
+@media screen and (min-device-pixel-ratio: 2) and (min-width: 320px),
+  screen and (min-resolution: 192dpi) and (min-width: 320px),
+  screen and (min-resolution: 2dppx) and (min-width: 320px) {
+  .overlay {
+    background-image: linear-gradient(to right, rgba(47, 48, 58, 0.4), rgba(47, 48, 58, 0.4)),
+      url(../images/header_mobile_black@2x.jpg);
   }
-  .search{
-    border-bottom: 0.5px solid white;
+}
+
+@media screen and(min-width:768px) {
+  .overlay {
+    background-image: linear-gradient(to right, rgba(47, 48, 58, 0.4), rgba(47, 48, 58, 0.4)),
+      url(../images/header_tablet_black.jpg);
   }
-  .navigationLink{
-      position: relative;
+}
+
+@media screen and (min-device-pixel-ratio: 2) and (min-width: 768px),
+  screen and (min-resolution: 192dpi) and (min-width: 768px),
+  screen and (min-resolution: 2dppx) and (min-width: 768px) {
+  .overlay {
+    background-image: linear-gradient(to right, rgba(47, 48, 58, 0.4), rgba(47, 48, 58, 0.4)),
+      url(../images/header_tablet_black@2x.jpg);
   }
-  .navigationLink.current::after{
-    
-        content: "";
-        position: absolute;
-        left: 0;
-        bottom: 0;
-        display: block;
-        width: 100%;
-        height: 4px;
-        border-radius: 2px;
-        background-color:#FF6B08;
-        color:#FF6B08 ;
-    }
-  
+}
+@media screen and(min-width:1024px) {
+  .overlay {
+    background-image: linear-gradient(to right, rgba(47, 48, 58, 0.4), rgba(47, 48, 58, 0.4)),
+      url(../images/header_desktop_black.jpg);
+  }
+}
+@media screen and (min-device-pixel-ratio: 2) and (min-width: 768px),
+  screen and (min-resolution: 192dpi) and (min-width: 768px),
+  screen and (min-resolution: 2dppx) and (min-width: 768px) {
+  .overlay {
+    background-image: linear-gradient(to right, rgba(47, 48, 58, 0.4), rgba(47, 48, 58, 0.4)),
+      url(../images/header_desktop_black@2x.jpg);
+  }
+}
+.navigation {
+  display: flex;
+}
+.filmoteka {
+  display: flex;
+  margin-right: 100px;
+}
+.logoName {
+  display: none;
+}
+.headerList {
+  display: flex;
+  margin-right: -40px;
+}
+.headerItem {
+  margin-right: 40px;
+  margin-top: 9px;
+}
+.navgationLink {
+  display: flex;
+  text-align: center;
+}
+.navTitle {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 14px;
+  color: white;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  text-transform: uppercase;
+}
+.modal-form-input {
+  width: 90%;
+  height: 20px;
+  border: none;
+  outline: none;
+  background: transparent;
+  margin-top: 41px;
+}
+.input-label {
+  border-style: none;
+}
+.input-form {
+  width: 100%;
+}
+.navigationLink {
+  margin-right: 39px;
+}
+.header .container {
+  background-color: initial;
+  display: flex;
+  flex-wrap: wrap;
+}
+.input-form {
+  position: relative;
+}
+.formBtn {
+  bottom: 0px;
+  right: 0px;
+  display: inline-block;
+  position: absolute;
+  border: none;
+  outline: none;
+  background: transparent;
+}
+
+.magnifier {
+  display: inline-flex;
+  margin-left: auto;
+}
+.search {
+  border-bottom: 0.5px solid white;
+}
+.headerItem {
+  position: relative;
+}
+.navigationLink.current::after {
+  content: '';
+  position: absolute;
+  top: 13px;
+  left: -1px;
+  bottom: 0;
+  display: block;
+  width: 100%;
+  height: 4px;
+  border-radius: 2px;
+  background: #ff6b08;
+  border: 1px solid #000000;
+  box-sizing: border-box;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+@media screen and(min-width:768px) {
+  .header .container {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .logoName {
+    display: flex;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 30px;
+    line-height: 35px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: var(--white-color);
+  }
+  .logotype {
+    display: flex;
+    align-items: baseline;
+    margin-right: 300px;
+  }
+  .navTitle {
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 14px;
+
+    display: flex;
+    align-items: center;
+    text-align: center;
+    text-transform: uppercase;
+  }
+  .filmoteka {
+    display: flex;
+    margin-right: 10px;
+  }
+  .navigation {
+    display: flex;
+  }
+  .input-form {
+    width: 336px;
+    margin: auto;
+  }
+}
+@media screen and(min-width:1024px) {
+  .logotype {
+    margin-right: 565px;
+  }
+}
