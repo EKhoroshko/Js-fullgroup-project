@@ -3,7 +3,7 @@ import getRefs from './js/get-refs.js';
 const refs = getRefs();
 
 // в консоли были ошибки я закомментировал
-//import { toggleModal } from './js/modal';
+import { toggleModal } from './js/modal';
 
 import cardMain from './templation/card.hbs';
 import FilmsApiServise from './js/ApiServer';
