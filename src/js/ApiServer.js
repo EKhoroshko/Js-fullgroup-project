@@ -34,12 +34,14 @@ export default class FilmsApiServise {
   // получаем объекты с фильмами по ключевому слову
   fetchFilmsByKeyWord() {
     this.fetchFilms().then(data => {
-      const films = data.results;
-      films.map(film => {
-        console.log(film);
-        return film;
+        const newRes = data.results.map(result => {
+          const genreName = this.giveGenres(result.genre_ids);
+          return { ...result, genreName };
+        })
+
+        console.log(newRes);
+        // this.giveGenre(data.results[3].genre_ids) //[35, 18]
       });
-    });
   }
 
   // получаем массивы жанров фильмов, найденных по ключевому слову
@@ -74,15 +76,15 @@ export default class FilmsApiServise {
       .then(response => {
         return response.json();
       })
-      .then(data => {
-        const newRes = data.results.map(result => {
-          const genreName = this.giveGenre(result.genre_ids);
-          return { ...result, genreName };
-        })
+      // .then(data => {
+      //   const newRes = data.results.map(result => {
+      //     const genreName = this.giveGenre(result.genre_ids);
+      //     return { ...result, genreName };
+      //   })
 
-        console.log(newRes);
-        // this.giveGenre(data.results[3].genre_ids) //[35, 18]
-      });
+      //   console.log(newRes);
+      //   // this.giveGenre(data.results[3].genre_ids) //[35, 18]
+      // });
   }
 }
 

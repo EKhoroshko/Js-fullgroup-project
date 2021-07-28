@@ -22,6 +22,6 @@ function onInputSearch(e) {
   e.preventDefault();
   filmsApiServise.searchQuery = e.target.value;
   filmsApiServise.fetchFilmsByKeyWord()
-   .then(data => renderCardMain(data)); 
-  console.log(filmsApiServise.fetchFilmsByKeyWord())
+  //  .then(data => renderCardMain(data)); 
+  // console.log(filmsApiServise.fetchFilmsByKeyWord())
 }
