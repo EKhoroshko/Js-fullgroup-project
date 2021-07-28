@@ -1,6 +1,6 @@
 //экспорт массива с объектами жанров и их ID
 import genreMovis from './genre';
-console.log(genreMovis);
+// console.log(genreMovis);
 
 const KEY = '494b2b5ea2ae23dbb3e89fabdc88e3f6';
 const BASE_URL = 'https://api.themoviedb.org/3/';
@@ -30,15 +30,20 @@ export default class FilmsApiServise {
         return response.json();
       })
       .then(data => {
-        console.log(data.results);
-        this.giveGenre(data.results[3].genre_ids) //[35, 18]
+        const newRes = data.results.map(result => {
+          const genreName = this.giveGenre(result.genre_ids);
+          return { ...result, genreName };
+        })
+
+        console.log(newRes);
+        // this.giveGenre(data.results[3].genre_ids) //[35, 18]
         
       });
   }
 // //console.log(data.results[0].genre_ids); получили массив ID жанров
   
   giveGenre(arrayGenre) {
-    console.log(arrayGenre);
+    // console.log(arrayGenre);
     const commonElements = [];
     for (let i = 0; i < arrayGenre.length; i++) {
       genreMovis.forEach((genreMov) => {
@@ -47,9 +52,9 @@ export default class FilmsApiServise {
         }
       })
     }
-
+return commonElements;
     // const genre = genreMovis.reduce((acc, genreMov) => { acc.push(genreMov.name); return acc }, []);
-    console.log(commonElements);
+    // console.log(commonElements);
   }
   
   fetchFilmsDescription() {

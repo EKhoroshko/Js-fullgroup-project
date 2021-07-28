@@ -1,4 +1,4 @@
-{{#each results}}
+{{#each this}}
 <li class='gallery-item'>
   <a href='#' class='gallery-link'>
     <img src='https://image.tmdb.org/t/p/w300{{poster_path}}' alt='{{original_title}}' class='gallery-img' />
@@ -8,7 +8,7 @@
     <div class='wrapper-description'>
 
       <ul class='description-list'>
-        {{#each genre_ids}}
+        {{#each genreName}}
         <li class='description-genres'>
           <span>{{this}}</span>
           <span class='genres-separator'>,</span>

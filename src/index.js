@@ -4,7 +4,7 @@ import './sass/main.scss';
 // import { toggleModal } from './js/modal';
 
 
-import { cardMain } from './templation/card.hbs';
+import cardMain from './templation/card.hbs';
 import FilmsApiServise from './js/ApiServer';
 
 const $render = document.querySelector('.gallery-list');
@@ -13,12 +13,17 @@ const filmsApiServise = new FilmsApiServise();
 
 inputRef.addEventListener('input', onInputSearch);
 
-function renderCardMain() {
-  $render.insertAdjacentHTML('beforeend', cardMain());
+function renderCardMain(results) {
+  $render.insertAdjacentHTML('beforeend', cardMain(results));
 }
 
 function onInputSearch(e) {
   e.preventDefault();
   filmsApiServise.searchQuery = e.target.value;
-  filmsApiServise.fetchFilmsByKeyWord();
+  filmsApiServise.fetchFilmsByKeyWord()
+    
+  //   .then(data => renderCardMain(data));
+  
+  // console.log(filmsApiServise.fetchFilmsByKeyWord())
+
 }
