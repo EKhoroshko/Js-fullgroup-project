@@ -1,27 +1,30 @@
-{{#each results}}
-  <li class='gallery-item'>
-    <a href='#' class='gallery-link'>
-      <img src='{{poster_path}}' alt='{{original_title}}' class='gallery-img' />
-      <h2 class='title-item'>
-        {{title}}
-      </h2>
-      <div class='wrapper-description'>
-        <ul class='description-list'>
-          <li class='description-genres'>
-            <span>Drama</span>
-            <span class='genres-separator'>,</span>
-          </li>
-          <li class='description-genres'>
-            <span> Action</span>
-            <span class='genres-separator'>,</span>
-          </li>
-        </ul>
+{{#each this}}
+<li class='gallery-item'>
+  <a href='#' class='gallery-link'>
+    <img src='https://image.tmdb.org/t/p/w300{{poster_path}}' alt='{{original_title}}' class='gallery-img' />
+    <h2 class='title-item'>
+      {{title}}
+    </h2>
+    <div class='wrapper-description'>
 
-        <span class='description-separator'>|</span>
-        <p class='description-yaer'>
-         {{release_date}}
-        </p>
-      </div>
-    </a>
-  </li>
+      <ul class='description-list'>
+        {{#each genreName}}
+        <li class='description-genres'>
+          <span>{{this}}</span>
+          <span class='genres-separator'>,</span>
+        </li>
+        {{/each}}
+      </ul>
+
+      <span class='description-separator'>|</span>
+      <p class='description-year'>
+        {{release_date}}
+      </p>
+      <p class="rating-library">
+        {{vote_average}}
+      </p>
+
+    </div>
+  </a>
+</li>
 {{/each}}

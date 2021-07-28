@@ -6,7 +6,7 @@ h1 {
   width: 320px;
   padding: 0 20px;
   margin: 0 auto;
-  background-color: blueviolet;
+  // background-color: blueviolet;
 }
 
 .header {
@@ -16,7 +16,7 @@ h1 {
 
 .main {
   padding: 20px 0 40px;
-  background-color: rgb(231, 38, 4);
+  // background-color: rgb(231, 38, 4);
 }
 
 @media screen and (min-width: 768px) {
@@ -24,7 +24,7 @@ h1 {
     width: 768px;
     padding: 0 76px;
     margin: 0 auto;
-    background-color: blueviolet;
+    // background-color: blueviolet;
   }
 
   .header {
@@ -34,7 +34,7 @@ h1 {
 
   .main {
     padding: 60px 0;
-    background-color: rgb(231, 38, 4);
+    // background-color: rgb(231, 38, 4);
   }
 }
 
@@ -43,7 +43,7 @@ h1 {
     width: 1024px;
     padding: 0 71px;
     margin: 0 auto;
-    background-color: blueviolet;
+    // background-color: blueviolet;
   }
 
   .header {

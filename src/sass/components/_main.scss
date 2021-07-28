@@ -12,8 +12,7 @@
 // Выше
 
 .main {
-  background: white;
-  //   background: $--white-color;
+  background: var(--white-color);
 }
 .gallery-list {
   display: block;
@@ -21,7 +20,7 @@
 }
 .gallery-item {
   margin: 20px;
-  background: white;
+  background: var(--white-color);
 }
 .gallery-img {
   width: 280px;
@@ -33,6 +32,9 @@
 }
 .title-item {
   margin-bottom: 5px;
+  @include calculator(500, 12, 14);
+  text-transform: uppercase;
+  color: var(--title-color);
 }
 .wrapper-description,
 .description-list {
@@ -51,6 +53,12 @@
     color: rgb(206, 32, 32);
   }
 }
+.description-genres,
+.description-separator,
+.description-year {
+  @include calculator(500, 12, 16);
+  color: var(--accent-color);
+}
 .genres-separator {
   display: inline-block;
   justify-content: start;
@@ -65,11 +73,11 @@
   display: flex;
   width: 36px;
   height: 16px;
-
+  @include calculator(500, 12, 14);
   margin-left: 10px;
 
-  background: #ff6b01;
-  color: #ffffff;
+  background: var(--accent-color);
+  color: var(--white-color);
   border-radius: 5px;
   align-items: center;
   justify-content: center;
@@ -89,7 +97,7 @@
   }
   .title-item {
     width: 293px;
-    padding: 0 5px;
+    // padding: 0 5px;
   }
 }
 
