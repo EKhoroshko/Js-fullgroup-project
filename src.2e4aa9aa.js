@@ -15,4 +15,4 @@ function l(l,n,u){var e,t,o,a,r;function i(){var c=Date.now()-a;c<n&&c>=0?e=setT
 },{}],"Focm":[function(require,module,exports) {
 "use strict";require("./sass/main.scss");var e=t(require("./templation/card.hbs")),r=t(require("./js/ApiServer"));function t(e){return e&&e.__esModule?e:{default:e}}var u=require("debounce");const n=document.querySelector(".gallery-list"),a=document.querySelector(".modal-form-input"),i=new r.default;function s(r){n.insertAdjacentHTML("beforeend",(0,e.default)(r))}function c(e){e.preventDefault(),i.searchQuery=e.target.value,i.fetchFilmsByKeyWord()}a.addEventListener("input",u(c,400));
 },{"./sass/main.scss":"clu1","./templation/card.hbs":"b6m6","./js/ApiServer":"Yylg","debounce":"dLxY"}]},{},["Focm"], null)
-//# sourceMappingURL=/Js-fullgroup-project/src.d83fdedd.js.map
+//# sourceMappingURL=/Js-fullgroup-project/src.2e4aa9aa.js.map
