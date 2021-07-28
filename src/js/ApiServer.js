@@ -75,7 +75,13 @@ export default class FilmsApiServise {
         return response.json();
       })
       .then(data => {
-        console.log(data);
+        const newRes = data.results.map(result => {
+          const genreName = this.giveGenre(result.genre_ids);
+          return { ...result, genreName };
+        })
+
+        console.log(newRes);
+        // this.giveGenre(data.results[3].genre_ids) //[35, 18]
       });
   }
 }
@@ -93,6 +99,7 @@ export default class FilmsApiServise {
 
 // //console.log(data.results[0].genre_ids); получили массив ID жанров
   
+
  /* giveGenre(arrayGenre) {
     console.log(arrayGenre);
     const commonElements = [];
@@ -103,8 +110,8 @@ export default class FilmsApiServise {
         }
       })
     }
-
+return commonElements;
     // const genre = genreMovis.reduce((acc, genreMov) => { acc.push(genreMov.name); return acc }, []);
-    console.log(commonElements);
+    // console.log(commonElements);
   }
   */
