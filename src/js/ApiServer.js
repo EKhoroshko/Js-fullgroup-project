@@ -20,10 +20,13 @@ export default class FilmsApiServise {
       .then(data => {
         const newRes = data.results.map(result => {
           const genreName = this.giveGenres(result.genre_ids);
-          const filmDate = result.release_date;
+          const oficialFilmsDate = result.release_date;
+          const maybeFilmsDate = result.first_air_date;
           let cutDate = '';
-          if (filmDate !== undefined) {
-            cutDate = filmDate.slice(0, 4);
+          if (oficialFilmsDate !== undefined) {
+            cutDate = oficialFilmsDate.slice(0, 4);
+          } else {
+            cutDate = maybeFilmsDate.slice(0, 4);
           }
           return { ...result, genreName, cutDate };
         });
@@ -42,10 +45,13 @@ export default class FilmsApiServise {
       .then(data => {
         const newRes = data.results.map(result => {
           const genreName = this.giveGenres(result.genre_ids);
-          const filmDate = result.release_date;
+          const oficialFilmsDate = result.release_date;
+          const maybeFilmsDate = result.first_air_date;
           let cutDate = '';
-          if (filmDate !== undefined) {
-            cutDate = filmDate.slice(0, 4);
+          if (oficialFilmsDate !== undefined) {
+            cutDate = oficialFilmsDate.slice(0, 4);
+          } else {
+            cutDate = maybeFilmsDate.slice(0, 4);
           }
           return { ...result, genreName, cutDate };
         });
