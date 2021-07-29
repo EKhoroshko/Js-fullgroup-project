@@ -10,7 +10,7 @@ export default class FilmsApiServise {
     this.filmID = '';
     this.page = 1;
   }
-
+  // объекты фильмов из "интересного",  в которые добавлены значения жанров и короткой даты
   getFilm() {
     const url = `https://api.themoviedb.org/3/trending/all/day?api_key=${KEY}`;
     return fetch(url)
@@ -20,15 +20,19 @@ export default class FilmsApiServise {
       .then(data => {
         const newRes = data.results.map(result => {
           const genreName = this.giveGenres(result.genre_ids);
-          return { ...result, genreName };
+          const filmDate = result.release_date;
+          let cutDate = '';
+          if (filmDate !== undefined) {
+            cutDate = filmDate.slice(0, 4);
+          }
+          return { ...result, genreName, cutDate };
         });
-
         console.log(newRes);
         return newRes;
       });
   }
 
-  // получаем объекты фильмов, в которые добавлены значения жанров
+  // получаем по ключевому слову объекты фильмов, в которые добавлены значения жанров и короткой даты
   fetchFilms() {
     const url = `${BASE_URL}search/movie?api_key=${KEY}&language=en-US&page=1&include_adult=false&query=${this.searchQuery}`;
     return fetch(url)
@@ -38,9 +42,13 @@ export default class FilmsApiServise {
       .then(data => {
         const newRes = data.results.map(result => {
           const genreName = this.giveGenres(result.genre_ids);
-          return { ...result, genreName };
+          const filmDate = result.release_date;
+          let cutDate = '';
+          if (filmDate !== undefined) {
+            cutDate = filmDate.slice(0, 4);
+          }
+          return { ...result, genreName, cutDate };
         });
-
         console.log(newRes);
         return newRes;
       });
@@ -55,6 +63,11 @@ export default class FilmsApiServise {
           findingGenres.push(genre.name);
         }
       }
+    }
+    if (findingGenres.length > 2) {
+      findingGenres.splice(2, 10, 'Other');
+    } else if (findingGenres.length === 0) {
+      findingGenres.push('Other');
     }
     return findingGenres;
   }
