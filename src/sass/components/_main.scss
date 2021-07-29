@@ -13,6 +13,7 @@
 
 .main {
   background: var(--white-color);
+  min-height: calc(100vh - 290px);
 }
 .gallery-list {
   display: block;
@@ -84,6 +85,9 @@
 }
 
 @media screen and (min-width: 768px) {
+  .main {
+    min-height: calc(100vh - 300px);
+  }
   .gallery-list {
     display: flex;
     flex-wrap: wrap;
