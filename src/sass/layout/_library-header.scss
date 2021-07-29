@@ -4,7 +4,7 @@
   background-size: cover;
   background-repeat: no-repeat;
   background-image: linear-gradient(to right, rgba(47, 48, 58, 0.4), rgba(47, 48, 58, 0.4)),
-    url(../images/header_mobile_red.jpg);
+    url(../images/header_desktop_red.jpg);
 }
 .logo {
   padding-top: 50px;
@@ -71,4 +71,30 @@
 }
 .library .container {
   background-color: initial;
+}
+@media screen and (min-width: 768px) {
+  .logo-icon {
+    margin-left: 12px;
+    margin-right: 12px;
+  }
+  .logo {
+    align-items: center;
+  }
+  .navHeadList {
+    display: flex;
+    margin-left: auto;
+  }
+}
+@media screen and (min-width: 1024px) {
+  .logo-icon {
+    margin-left: 12px;
+    margin-right: 12px;
+  }
+  .logo {
+    align-items: center;
+  }
+  .navHeadList {
+    display: flex;
+    margin-left: auto;
+  }
 }
