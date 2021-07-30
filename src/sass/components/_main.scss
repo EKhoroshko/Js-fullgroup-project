@@ -26,11 +26,16 @@
 .gallery-img {
   width: 280px;
   height: 398px;
-  background-color: grey;
+  background-color: #dbd8d88e;
   margin-bottom: 10px;
-
   border-radius: 5px;
+
+  background-position: center;
+  background-size: 70% auto;
+  background-repeat: no-repeat;
+  background-image: url(../images/fon.png);
 }
+
 .title-item {
   margin-bottom: 5px;
   @include calculator(500, 12, 14);
