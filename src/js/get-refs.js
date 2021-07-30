@@ -8,5 +8,9 @@ export default function getRefs() {
     modalForm: document.querySelector('.about-form'),
     watchedBtn: document.querySelector('.movie-add-watched'),
     queueBtn: document.querySelector('.movie-add-queue'),
+    navLink: document.querySelectorAll('.navigationLink'),
+    inputSearch: document.querySelector('.search'),
+    headerOverlay: document.querySelector('.overlay'),
+btnLibrary:document.querySelector('.library_buttons')
   };
 }

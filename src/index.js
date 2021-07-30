@@ -15,12 +15,38 @@ const filmsApiServise = new FilmsApiServise();
 
 refs.inputRef.addEventListener('input', debounce(onInputSearch, 500));
 
+
+refs.navLink[1].addEventListener('click',  (event) => {
+  if (event.target.classList.contains('navTitle')) {
+      
+    refs.navLink[1].classList.add('current');
+    refs.navLink[0].classList.remove('current');
+      refs.inputSearch.classList.add('is-hidden');
+      refs.headerOverlay.classList.add('library')
+      refs.btnLibrary.classList.remove('is-hidden');
+
+    }
+})
+
+refs.navLink[0].addEventListener('click',  (event) => {
+  if (event.target.classList.contains('navTitle')) {
+      
+     refs.navLink[0].classList.add('current');
+    refs.navLink[1].classList.remove('current');
+      refs.inputSearch.classList.remove('is-hidden');
+      refs.headerOverlay.classList.remove('library')
+      refs.btnLibrary.classList.add('is-hidden');
+renderStartFilms();
+    }
+})
+
+
 function renderStartFilms() {
   filmsApiServise.getFilm().then(hits => {
     renderCardMain(hits);
   });
 }
-renderStartFilms();
+
 function onInputSearch(e) {
   e.preventDefault();
   filmsApiServise.searchQuery = e.target.value;
@@ -47,3 +73,5 @@ function renderCardMain(results) {
 function clearfilms() {
   refs.$render.innerHTML = '';
 }
+
+renderStartFilms();
