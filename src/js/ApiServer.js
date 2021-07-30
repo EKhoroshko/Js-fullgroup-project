@@ -87,20 +87,8 @@ export default class FilmsApiServise {
       return response.json();
     })
      .then(data => {
-        const newRes = data.results.map(result => {
-          const genreName = this.giveGenres(result.genre_ids);
-          const oficialFilmsDate = result.release_date;
-          const maybeFilmsDate = result.first_air_date;
-          let cutDate = '';
-          oficialFilmsDate !== undefined
-            ? (cutDate = oficialFilmsDate.slice(0, 4))
-            : (cutDate = maybeFilmsDate.slice(0, 4));
-          result.poster_path === 'null' ? result.splice(indexOf(poster_path), 1) : result;
-
-          return { ...result, genreName, cutDate };
-        });
-        console.log(newRes);
-        return newRes;
+       const genreName = data.genres.map(genre => genre.name);
+        return { ...data, genreName };
       });
 
 
