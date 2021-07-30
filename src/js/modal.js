@@ -16,25 +16,28 @@ import FilmsApiServise from './ApiServer';
 const filmsApiServise = new FilmsApiServise();
 
 function onOpenModal(result) {
+  result.preventDefault();
+  if (result.target.nodeName !== 'IMG') {
+    return;
+  }
   refs.modal.classList.remove('is-hidden');
   renderCardModal(result);
 }
 
 function onCloseModal(e) {
   const target = e.target;
-    if (target.matches('.about-close') || target.matches('.modal-backdrop')) {
+  if (target.matches('.about-close') || target.matches('.modal-backdrop') ||
+    target.matches('.close-icon')) {
       refs.modal.classList.add('is-hidden');
     } 
 }
 
 function renderCardModal(result) {
-  const film = result.target;
-  console.log(film);
-  
-  filmsApiServise.fetchFilmsDescription(film);
-  modalForm.insertAdjacentHTML('beforeend', cardModal(result));
+  const film = result.target.id; 
+  filmsApiServise.fetchFilmsDescription(film).then(data =>
+  {
+    refs.modalForm.innerHTML = (cardModal(data));});
 }
-// для result - берем id фильма?
 
 refs.$render.addEventListener('click', onOpenModal);
 refs.closeModalBtn.addEventListener('click', onCloseModal);
