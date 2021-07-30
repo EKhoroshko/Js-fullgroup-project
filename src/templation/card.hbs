@@ -1,20 +1,9 @@
 {{#each this}}
 
   <li class='gallery-item' id='{{id}}'>
-    <a href='#' class='gallery-link'>
-      <img
-        src='https://image.tmdb.org/t/p/w300{{poster_path}}'
-        alt='{{original_title}}'
-        class='gallery-img'
-        id='{{id}}'
-      />
-      <h2 class='title-item'>
-        {{title}}
-      </h2>
-      <div class='wrapper-description'>
-      
+    <a href='#' class='gallery-link'> 
     {{#if poster_path}}
-    <img src='https://image.tmdb.org/t/p/w300{{poster_path}}' alt='{{original_title}}' class='gallery-img' />
+    <img src='https://image.tmdb.org/t/p/w300{{poster_path}}' alt='{{original_title}}' class='gallery-img' id='{{id}}'/>
     {{else}}
     <div class='gallery-img'></div>
     {{/if}}
