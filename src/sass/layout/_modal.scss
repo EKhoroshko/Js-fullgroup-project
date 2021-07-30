@@ -66,6 +66,13 @@
   height: 14px;
   width: 14px;
 }
+
+.film-picture{
+      display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+
 img {
   display: block;
   margin: 0;
@@ -113,7 +120,6 @@ img {
 
 .info-criteria-item {
   color: var(--modal-color);
-  margin-bottom: 10px;
   min-width: 110px;
   //width: 50%;
 
@@ -121,6 +127,12 @@ img {
     margin-bottom: 0;
   }
 }
+
+.info-criteria-genre{
+      display: flex;
+    flex-wrap: wrap;
+}
+
 
 .info-api-item {
   color: var(--title-color);
@@ -190,7 +202,7 @@ img {
   .modal {
     display: flex;
     min-width: 618px;
-    height: 562px;
+    
     padding: 40px 28px 42px 30px;
     //overflow: hidden;
   }
@@ -210,7 +222,7 @@ img {
   .modal {
     display: flex;
     width: 882px;
-    height: 568px;
+   
     padding: 40px 30px 50px 30px;
   }
   .modal-wrapper {
