@@ -90,7 +90,11 @@ export default class FilmsApiServise {
         return response.json();
       })
       .then(data => {
-        const genreName = data.genres.map(genre => genre.name);
+        let genreName = '';
+        if (data.genres) {
+          genreName = data.genres.map(genre => genre.name);
+        } 
+        //const genreName = data.genres.map(genre => genre.name);
         return { ...data, genreName };
       });
 

@@ -4,7 +4,12 @@
 </div>
 
 <div class='movie'>
-  <h2 class='movie-info-title'>{{title}}</h2>
+  
+   {{#if title}}
+   <h2 class='movie-info-title'>{{title}}</h2>
+    {{else}}
+  <h2 class='movie-info-title'>{{name}}</h2>
+    {{/if}}
   <ul class='movie-info'>
     <li class='info-criteria'>
       <p class='info-criteria-item'>Vote / Votes</p>
