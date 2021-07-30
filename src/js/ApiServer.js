@@ -10,6 +10,7 @@ export default class FilmsApiServise {
     this.filmID = '';
     this.page = 1;
   }
+
   // объекты фильмов из "интересного",  в которые добавлены значения жанров и короткой даты
   getFilm() {
     const url = `${BASE_URL}trending/all/day?api_key=${KEY}`;
@@ -79,27 +80,21 @@ export default class FilmsApiServise {
 
   // получаем информацию о конкретном фильме
 
-  fetchFilmsDescription() {
-    const url = `${BASE_URL}movie/${this.filmID}?api_key=${KEY}&language=en-US`;
-    return fetch(url)
-      .then(response => {
-        return response.json();
-      })
+
+  fetchFilmsDescription(id) {
+    const url = `${BASE_URL}movie/${id}?api_key=${KEY}&language=en-US`;
+    return fetch(url).then(response => {
+      return response.json();
+    })
      .then(data => {
-        const newRes = data.results.map(result => {
-          const genreName = this.giveGenres(result.genre_ids);
-          const oficialFilmsDate = result.release_date;
-          const maybeFilmsDate = result.first_air_date;
-          let cutDate = '';
-          oficialFilmsDate !== undefined
-            ? (cutDate = oficialFilmsDate.slice(0, 4))
-            : (cutDate = maybeFilmsDate.slice(0, 4));
-          result.poster_path === 'null' ? result.splice(indexOf(poster_path), 1) : result;
-          return { ...result, genreName, cutDate };
-        });
-        console.log(newRes);
-        return newRes;
+       const genreName = data.genres.map(genre => genre.name);
+        return { ...data, genreName };
       });
+
+
+
+
+
     // .then(data => {
     //   const newRes = data.results.map(result => {
     //     const genreName = this.giveGenre(result.genre_ids);
