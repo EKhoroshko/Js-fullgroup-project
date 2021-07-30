@@ -24,6 +24,7 @@ renderStartFilms();
 function onInputSearch(e) {
   e.preventDefault();
   filmsApiServise.searchQuery = e.target.value;
+
   if (filmsApiServise.searchQuery === '') {
     clearfilms();
     renderStartFilms();
