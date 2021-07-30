@@ -17,28 +17,29 @@
     height: 50px;
     -webkit-box-pack: center;
         -ms-flex-pack: center;
-            justify-content: center;
+            justify-content: flex-start;
     -webkit-box-align: center;
         -ms-flex-align: center;
-            align-items: center;
+            align-items: flex-start;
     -webkit-box-flex: 1;
         -ms-flex: 1;
             flex: 1;
   }
-  .header{
-      position: relative;
-  }
+  // .header .container{
+  //     position: relative;
+  // }
 .box_3{
-    position: absolute;
+    // position: absolute;
     top: 0px;
-    right: 5px;
+    right: 0px;
     margin-left:auto ;
     background:transparent;
+    margin-top: 0;
   }
   
   .toggle_switch{
     width: 70px;
-    height: 45px;
+    height: 30px;
     position: relative;
   }
   
@@ -186,7 +187,7 @@
 }
 .filmoteka {
   display: flex;
-  margin-right: 100px;
+  margin-right: 40px;
 }
 .logoName {
   display: none;
@@ -303,7 +304,7 @@
   .logotype {
     display: flex;
     align-items: baseline;
-    margin-right: 300px;
+    margin-right: 200px;
   }
   .navTitle {
     font-family: Roboto;
@@ -331,6 +332,6 @@
 }
 @media screen and(min-width:1024px) {
   .logotype {
-    margin-right: 565px;
+    margin-right: 400px;
   }
 }
