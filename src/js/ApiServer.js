@@ -63,37 +63,36 @@ export default class FilmsApiServise {
   // реализация получения жанров (кто знает как сделать красивее - милости прошу)))))
   giveGenres(arrayGenre) {
     const findingGenres = [];
-    for (const arr of arrayGenre) {
-      for (const genre of genreMovies) {
-        if (arr === genre.id) {
+    //Kir refactoring
+    for (let i = 0; i < arrayGenre.length; i++) {
+      genreMovies.forEach(genre => {
+        if (genre.id === arrayGenre[i]) {
           findingGenres.push(genre.name);
         }
-      }
+      });
     }
+
     if (findingGenres.length > 2) {
-      findingGenres.splice(2, findingGenres.length, 'Other');
+      findingGenres.splice(2, findingGenres.length, '...other');
     } else if (findingGenres.length === 0) {
-      findingGenres.push('Other');
+      findingGenres.push('Genre not defined');
     }
     return findingGenres;
-  }
+  } 
 
   // получаем информацию о конкретном фильме
 
 
   fetchFilmsDescription(id) {
     const url = `${BASE_URL}movie/${id}?api_key=${KEY}&language=en-US`;
-    return fetch(url).then(response => {
-      return response.json();
-    })
-     .then(data => {
-       const genreName = data.genres.map(genre => genre.name);
+    return fetch(url)
+      .then(response => {
+        return response.json();
+      })
+      .then(data => {
+        const genreName = data.genres.map(genre => genre.name);
         return { ...data, genreName };
       });
-
-
-
-
 
     // .then(data => {
     //   const newRes = data.results.map(result => {
