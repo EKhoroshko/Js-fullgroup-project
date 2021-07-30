@@ -13,7 +13,7 @@ export default class FilmsApiServise {
 
   // объекты фильмов из "интересного",  в которые добавлены значения жанров и короткой даты
   getFilm() {
-    const url = `https://api.themoviedb.org/3/trending/all/day?api_key=${KEY}`;
+    const url = `${BASE_URL}trending/all/day?api_key=${KEY}`;
     return fetch(url)
       .then(response => {
         return response.json();
@@ -24,11 +24,11 @@ export default class FilmsApiServise {
           const oficialFilmsDate = result.release_date;
           const maybeFilmsDate = result.first_air_date;
           let cutDate = '';
-          if (oficialFilmsDate !== undefined) {
-            cutDate = oficialFilmsDate.slice(0, 4);
-          } else {
-            cutDate = maybeFilmsDate.slice(0, 4);
-          }
+          oficialFilmsDate !== undefined
+            ? (cutDate = oficialFilmsDate.slice(0, 4))
+            : (cutDate = maybeFilmsDate.slice(0, 4));
+          result.poster_path === 'null' ? result.splice(indexOf(poster_path), 1) : result;
+
           return { ...result, genreName, cutDate };
         });
         console.log(newRes);
@@ -49,11 +49,10 @@ export default class FilmsApiServise {
           const oficialFilmsDate = result.release_date;
           const maybeFilmsDate = result.first_air_date;
           let cutDate = '';
-          if (oficialFilmsDate !== undefined) {
-            cutDate = oficialFilmsDate.slice(0, 4);
-          } else {
-            cutDate = maybeFilmsDate.slice(0, 4);
-          }
+          oficialFilmsDate !== undefined
+            ? (cutDate = oficialFilmsDate.slice(0, 4))
+            : (cutDate = maybeFilmsDate.slice(0, 4));
+          result.poster_path === 'null' ? result.splice(indexOf(poster_path), 1) : result;
           return { ...result, genreName, cutDate };
         });
         console.log(newRes);
@@ -72,7 +71,7 @@ export default class FilmsApiServise {
       }
     }
     if (findingGenres.length > 2) {
-      findingGenres.splice(2, 10, 'Other');
+      findingGenres.splice(2, findingGenres.length, 'Other');
     } else if (findingGenres.length === 0) {
       findingGenres.push('Other');
     }
@@ -80,6 +79,7 @@ export default class FilmsApiServise {
   }
 
   // получаем информацию о конкретном фильме
+
 
   fetchFilmsDescription(id) {
     const url = `${BASE_URL}movie/${id}?api_key=${KEY}&language=en-US`;
@@ -89,7 +89,6 @@ export default class FilmsApiServise {
      .then(data => {
        const genreName = data.genres.map(genre => genre.name);
         return { ...data, genreName };
-        
       });
 
 
