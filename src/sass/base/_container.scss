@@ -1,22 +1,15 @@
-h1 {
-  color: red;
-}
-
 .container {
   width: 320px;
   padding: 0 20px;
   margin: 0 auto;
-  // background-color: blueviolet;
 }
 
 .header {
   padding: 47px 0 43px;
-  background-color: green;
 }
 
 .main {
   padding: 20px 0 40px;
-  // background-color: rgb(231, 38, 4);
 }
 
 @media screen and (min-width: 768px) {
@@ -24,17 +17,14 @@ h1 {
     width: 768px;
     padding: 0 76px;
     margin: 0 auto;
-    // background-color: blueviolet;
   }
 
   .header {
     padding: 41px 0 59px;
-    background-color: green;
   }
 
   .main {
     padding: 60px 0;
-    // background-color: rgb(231, 38, 4);
   }
 }
 
@@ -43,16 +33,13 @@ h1 {
     width: 1024px;
     padding: 0 71px;
     margin: 0 auto;
-    // background-color: blueviolet;
   }
 
   .header {
     padding: 41px 0 59px;
-    background-color: green;
   }
 
   .main {
     padding: 60px 0;
-    background-color: rgb(231, 38, 4);
   }
 }

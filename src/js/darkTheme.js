@@ -1,29 +1,27 @@
-export const Theme = {
-    LIGHT: 'light-theme',
-    DARK: 'dark-theme',
-  };
+
   
   const select = document.querySelector('.switch_3');
   
-  select.addEventListener('change', (e) => {
-    if (localStorage.getItem('theme') === Theme.LIGHT) {
-        localStorage.setItem('theme', Theme.DARK);
+select.addEventListener('change', (e) => {
+  e.preventDefault();
+    if (localStorage.getItem('theme') === 'dark-theme') {
+      localStorage.setItem('theme', 'light-theme');
     }
     else {
-        localStorage.setItem('theme', Theme.LIGHT);
+      localStorage.setItem('theme', 'dark-theme');
     }
     addDarkTheme();
   });
   
   function addDarkTheme() {
-    if (localStorage.getItem('theme') === Theme.LIGHT) {
-        document.querySelector('body').classList.add(Theme.LIGHT);
+    if (localStorage.getItem('theme') === 'dark-theme') {
+      document.querySelector('.main').classList.add('dark-theme');
+      document.querySelector('.footer').classList.add('dark-theme');
         select.setAttribute('checked', true);
     }
     else {
-        document.querySelector('body').classList.remove(Theme.LIGHT);
+      document.querySelector('.main').classList.remove('dark-theme');
+      document.querySelector('.footer').classList.remove('dark-theme');
     }
   }
   addDarkTheme();
-
-  console.log()
