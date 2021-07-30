@@ -21,7 +21,7 @@ function renderCardMain(results) {
 function onInputSearch(e) {
   e.preventDefault();
   filmsApiServise.searchQuery = e.target.value;
-  filmsApiServise.fetchFilmsByKeyWord()
+  filmsApiServise.fetchFilmsByKeyWord();
   //  .then(data => renderCardMain(data)); 
   // console.log(filmsApiServise.fetchFilmsByKeyWord())
 }
