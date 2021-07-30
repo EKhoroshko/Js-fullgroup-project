@@ -7,6 +7,8 @@ import { toggleModal } from './js/modal';
 
 import cardMain from './templation/card.hbs';
 import FilmsApiServise from './js/ApiServer';
+import darkTheme from './js/darkTheme';
+
 
 var debounce = require('debounce');
 const filmsApiServise = new FilmsApiServise();
@@ -44,3 +46,21 @@ function renderCardMain(results) {
 function clearfilms() {
   refs.$render.innerHTML = '';
 }
+<<<<<<< Updated upstream
+=======
+
+renderStartFilms();
+
+
+
+
+
+
+
+
+
+
+
+
+
+>>>>>>> Stashed changes
