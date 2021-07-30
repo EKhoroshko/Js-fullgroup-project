@@ -6,12 +6,16 @@ const filmsApiServise = new FilmsApiServise();
 
 function onOpenModal(result) {
   result.preventDefault();
-  if (result.target.nodeName !== 'IMG') {
-    return;
-  }
+  if (result.target.nodeName === 'IMG' || result.target.nodeName === 'H2') {
+     console.log(result.target.nodeName);
   refs.modal.classList.remove('is-hidden');
   renderCardModal(result);
   disableScroll();
+  }
+  // console.log(result.target.nodeName);
+  // refs.modal.classList.remove('is-hidden');
+  // renderCardModal(result);
+  // disableScroll();
 }
 
 function onCloseModal(e) {
