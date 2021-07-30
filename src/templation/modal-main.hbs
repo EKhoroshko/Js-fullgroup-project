@@ -1,42 +1,47 @@
-<div class="modal-backdrop is-hidden" id="modal" about-modal>
-    <div class="modal">
-        <button class="about-close" type="button" about-modal-close>
-            <svg class="close-icon">
-                <use href="./images/sprite.svg#icon-modal-close"></use>
-            </svg>
-        </button>
-        <form action="#" class="about-form" id=">
-            <div class="film-picture">
-                <img class="picture" src="{{poster_path}}" alt="{{original_title}}"/>
-            </div>
+<div class="modal-wrapper">
+<div class='film-picture'>
+  <img class='picture' src='https://image.tmdb.org/t/p/w300{{poster_path}}' alt='{{original_title}}' />
+</div>
 
-            <div class="movie">
-                <h2 class="movie-info-title">{{title}}</h2>
-                <ul class="movie-info">
-                    <li class="info-criteria">
-                        <p class="info-criteria-item">Vote / Votes</p>
-                        <p class="info-criteria-item">Popularity</p>
-                        <p class="info-criteria-item">Original Title</p>
-                        <p class="info-criteria-item">Genre</p>
-                    </li>
-                    <li class="info-api">
-                        <p class="info-api-item">{{popularity}}</p>
-                        <p class="info-api-item">{{vote_count}}</p>
-                        <p class="info-api-item">{{original_title}}</p>
-                        {{#each this}}
-                        <p class="info-api-item">{{genre_ids}}</p>
-                        {{/each}}
-                    </li>
-                </ul>
-                <h3 class="movie-about">About</h3>
-                <p class="movie-text">{{overview}}</p>
+<div class='movie'>
+  
+   {{#if title}}
+   <h2 class='movie-info-title'>{{title}}</h2>
+    {{else}}
+  <h2 class='movie-info-title'>{{name}}</h2>
+    {{/if}}
+  <ul class='movie-info'>
+    <li class='info-criteria'>
+      <p class='info-criteria-item'>Vote / Votes</p>
+      <p class='info-api-item'>
+        <span class="film-raiting-accent">{{vote_average}}</span> 
+        <span class="film-raiting-slash"> / </span>
+        {{vote_count}}
+      </p>
+    </li>
+    <li class='info-criteria'> 
+      <p class='info-criteria-item'>Popularity</p>
+      <p class='info-api-item'>{{popularity}}</p>
+    </li>
+    <li class='info-criteria'>
+      <p class='info-criteria-item'>Original Title</p>
+      <p class='info-api-item'>{{original_title}}</p>
+    </li>
+    <li class='info-criteria'>
+      <p class='info-criteria-item'>Genre</p>
+      <div class="info-criteria-genre">
+         {{#each genreName}}
+      <p class='info-api-item try'>{{this}}</p>
+      {{/each}}
+      </div>
+    </li>
+  </ul>
+  <h3 class='movie-about'>About</h3>
+  <p class='movie-text'>{{overview}}</p>
+<div class='movie-buttons'>
+  <button type='button' class='modal-button movie-add-watched' data-id=''>add to Watched</button>
+  <button type='button' class='modal-button movie-add-queue' data-id=''>add to queue</button>
+</div>
+</div>
 
-            </div>
-            <div class="movie-buttons">
-                <button type="button" class=" modal-button movie-add-watched" data-id="{{}}">add to Watched</button>
-                <button type="button" class=" modal-button movie-add-queue" data-id="{{}}">add to queue</button>
-            </div>
-            
-        </form>
-    </div>
 </div>

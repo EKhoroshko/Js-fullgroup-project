@@ -3,7 +3,9 @@ import getRefs from './js/get-refs.js';
 const refs = getRefs();
 
 // в консоли были ошибки я закомментировал
-import { toggleModal } from './js/modal';
+/* import { onOpenModal, onCloseModal } from './js/modal';
+ */
+import { onOpenModal, onCloseModal, onQueueList, onWatchedList  } from './js/modal.js';
 
 import cardMain from './templation/card.hbs';
 import FilmsApiServise from './js/ApiServer';
@@ -15,15 +17,42 @@ const filmsApiServise = new FilmsApiServise();
 
 refs.inputRef.addEventListener('input', debounce(onInputSearch, 500));
 
+
+refs.navLink[1].addEventListener('click', (event) => {
+  if (event.target.classList.contains('navTitle')) {
+      
+    refs.navLink[1].classList.add('current');
+    refs.navLink[0].classList.remove('current');
+    refs.inputSearch.classList.add('is-hidden');
+    refs.headerOverlay.classList.add('library');
+    refs.btnLibrary.classList.remove('is-hidden');
+
+  }
+});
+
+refs.navLink[0].addEventListener('click', (event) => {
+  if (event.target.classList.contains('navTitle')) {
+      
+    refs.navLink[0].classList.add('current');
+    refs.navLink[1].classList.remove('current');
+    refs.inputSearch.classList.remove('is-hidden');
+    refs.headerOverlay.classList.remove('library');
+    refs.btnLibrary.classList.add('is-hidden');
+    renderStartFilms();
+  }
+});
+
+
 function renderStartFilms() {
   filmsApiServise.getFilm().then(hits => {
     renderCardMain(hits);
   });
 }
-renderStartFilms();
+
 function onInputSearch(e) {
   e.preventDefault();
   filmsApiServise.searchQuery = e.target.value;
+
   if (filmsApiServise.searchQuery === '') {
     clearfilms();
     renderStartFilms();
@@ -46,21 +75,4 @@ function renderCardMain(results) {
 function clearfilms() {
   refs.$render.innerHTML = '';
 }
-<<<<<<< Updated upstream
-=======
-
 renderStartFilms();
-
-
-
-
-
-
-
-
-
-
-
-
-
->>>>>>> Stashed changes

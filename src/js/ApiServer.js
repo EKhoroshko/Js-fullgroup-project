@@ -10,9 +10,10 @@ export default class FilmsApiServise {
     this.filmID = '';
     this.page = 1;
   }
+
   // объекты фильмов из "интересного",  в которые добавлены значения жанров и короткой даты
   getFilm() {
-    const url = `https://api.themoviedb.org/3/trending/all/day?api_key=${KEY}`;
+    const url = `${BASE_URL}trending/movie/week?api_key=${KEY}`;
     return fetch(url)
       .then(response => {
         return response.json();
@@ -23,11 +24,11 @@ export default class FilmsApiServise {
           const oficialFilmsDate = result.release_date;
           const maybeFilmsDate = result.first_air_date;
           let cutDate = '';
-          if (oficialFilmsDate !== undefined) {
-            cutDate = oficialFilmsDate.slice(0, 4);
-          } else {
-            cutDate = maybeFilmsDate.slice(0, 4);
-          }
+          oficialFilmsDate !== undefined
+            ? (cutDate = oficialFilmsDate.slice(0, 4))
+            : (cutDate = maybeFilmsDate.slice(0, 4));
+          result.poster_path === 'null' ? result.splice(indexOf(poster_path), 1) : result;
+
           return { ...result, genreName, cutDate };
         });
         console.log(newRes);
@@ -48,11 +49,10 @@ export default class FilmsApiServise {
           const oficialFilmsDate = result.release_date;
           const maybeFilmsDate = result.first_air_date;
           let cutDate = '';
-          if (oficialFilmsDate !== undefined) {
-            cutDate = oficialFilmsDate.slice(0, 4);
-          } else {
-            cutDate = maybeFilmsDate.slice(0, 4);
-          }
+          oficialFilmsDate !== undefined
+            ? (cutDate = oficialFilmsDate.slice(0, 4))
+            : (cutDate = maybeFilmsDate.slice(0, 4));
+          result.poster_path === 'null' ? result.splice(indexOf(poster_path), 1) : result;
           return { ...result, genreName, cutDate };
         });
         console.log(newRes);
@@ -63,36 +63,36 @@ export default class FilmsApiServise {
   // реализация получения жанров (кто знает как сделать красивее - милости прошу)))))
   giveGenres(arrayGenre) {
     const findingGenres = [];
-    for (const arr of arrayGenre) {
-      for (const genre of genreMovies) {
-        if (arr === genre.id) {
+    for (let i = 0; i < arrayGenre.length; i++) {
+      genreMovies.forEach(genre => {
+        if (genre.id === arrayGenre[i]) {
           findingGenres.push(genre.name);
         }
-      }
+      });
     }
+
     if (findingGenres.length > 2) {
-      findingGenres.splice(2, 10, 'Other');
+      findingGenres.splice(2, findingGenres.length, '...other');
     } else if (findingGenres.length === 0) {
-      findingGenres.push('Other');
+      findingGenres.push('Genre not defined');
     }
     return findingGenres;
   }
 
   // получаем информацию о конкретном фильме
 
-  fetchFilmsDescription() {
-    const url = `${BASE_URL}movie/${this.filmID}?api_key=${KEY}&language=en-US`;
-    return fetch(url).then(response => {
-      return response.json();
-    });
-    // .then(data => {
-    //   const newRes = data.results.map(result => {
-    //     const genreName = this.giveGenre(result.genre_ids);
-    //     return { ...result, genreName };
-    //   })
-
-    //   console.log(newRes);
-    //   // this.giveGenre(data.results[3].genre_ids) //[35, 18]
-    // });
+  fetchFilmsDescription(id) {
+    const url = `${BASE_URL}movie/${id}?api_key=${KEY}&language=en-US`;
+    return fetch(url)
+      .then(response => {
+        return response.json();
+      })
+      .then(data => {
+        let genreName = '';
+        if (data.genres) {
+          genreName = data.genres.map(genre => genre.name);
+        }
+        return { ...data, genreName };
+      });
   }
 }

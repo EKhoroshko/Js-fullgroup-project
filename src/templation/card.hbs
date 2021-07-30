@@ -1,10 +1,22 @@
 {{#each this}}
-<li class='gallery-item'>
-  <a href='#' class='gallery-link'>
-    <img src='https://image.tmdb.org/t/p/w300{{poster_path}}' alt='{{original_title}}' class='gallery-img' />
-    <h2 class='title-item'>
+
+  <li class='gallery-item' id='{{id}}'>
+    <a href='#' class='gallery-link'> 
+    {{#if poster_path}}
+    <img src='https://image.tmdb.org/t/p/w300{{poster_path}}' alt='{{original_title}}' class='gallery-img' id='{{id}}'/>
+    {{else}}
+    <div class='gallery-img'></div>
+    {{/if}}
+
+    {{#if title}}
+    <h2 class='title-item' id='{{id}}'>
       {{title}}
     </h2>
+    {{else}}
+    <h2 class='title-item' id='{{id}}'>
+      {{name}}
+    </h2>
+    {{/if}}
     <div class='wrapper-description'>
 
       <ul class='description-list'>
@@ -15,12 +27,11 @@
         </li>
         {{/each}}
       </ul>
-
       <span class='description-separator'>|</span>
       <p class='description-year'>
         {{cutDate}}
       </p>
-      <p class="rating-library">
+      <p class='rating-library'>
         {{vote_average}}
       </p>
 
