@@ -13,7 +13,7 @@ export default class FilmsApiServise {
 
   // объекты фильмов из "интересного",  в которые добавлены значения жанров и короткой даты
   getFilm() {
-    const url = `${BASE_URL}trending/all/day?api_key=${KEY}`;
+    const url = `${BASE_URL}trending/movie/week?api_key=${KEY}`;
     return fetch(url)
       .then(response => {
         return response.json();
@@ -63,7 +63,6 @@ export default class FilmsApiServise {
   // реализация получения жанров (кто знает как сделать красивее - милости прошу)))))
   giveGenres(arrayGenre) {
     const findingGenres = [];
-    //Kir refactoring
     for (let i = 0; i < arrayGenre.length; i++) {
       genreMovies.forEach(genre => {
         if (genre.id === arrayGenre[i]) {
@@ -78,10 +77,9 @@ export default class FilmsApiServise {
       findingGenres.push('Genre not defined');
     }
     return findingGenres;
-  } 
+  }
 
   // получаем информацию о конкретном фильме
-
 
   fetchFilmsDescription(id) {
     const url = `${BASE_URL}movie/${id}?api_key=${KEY}&language=en-US`;
@@ -93,19 +91,8 @@ export default class FilmsApiServise {
         let genreName = '';
         if (data.genres) {
           genreName = data.genres.map(genre => genre.name);
-        } 
-        //const genreName = data.genres.map(genre => genre.name);
+        }
         return { ...data, genreName };
       });
-
-    // .then(data => {
-    //   const newRes = data.results.map(result => {
-    //     const genreName = this.giveGenre(result.genre_ids);
-    //     return { ...result, genreName };
-    //   })
-
-    //   console.log(newRes);
-    //   // this.giveGenre(data.results[3].genre_ids) //[35, 18]
-    // });
   }
 }
