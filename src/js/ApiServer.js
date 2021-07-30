@@ -10,6 +10,7 @@ export default class FilmsApiServise {
     this.filmID = '';
     this.page = 1;
   }
+
   // объекты фильмов из "интересного",  в которые добавлены значения жанров и короткой даты
   getFilm() {
     const url = `https://api.themoviedb.org/3/trending/all/day?api_key=${KEY}`;
@@ -80,27 +81,21 @@ export default class FilmsApiServise {
 
   // получаем информацию о конкретном фильме
 
-  fetchFilmsDescription() {
-    const url = `${BASE_URL}movie/${this.filmID}?api_key=${KEY}&language=en-US`;
+  fetchFilmsDescription(id) {
+    const url = `${BASE_URL}movie/${id}?api_key=${KEY}&language=en-US`;
     return fetch(url).then(response => {
       return response.json();
     })
-    .then(data => {
-        const newRes = data.results.map(result => {
-          const genreName = this.giveGenres(result.genre_ids);
-          const oficialFilmsDate = result.release_date;
-          const maybeFilmsDate = result.first_air_date;
-          let cutDate = '';
-          if (oficialFilmsDate !== undefined) {
-            cutDate = oficialFilmsDate.slice(0, 4);
-          } else {
-            cutDate = maybeFilmsDate.slice(0, 4);
-          }
-          return { ...result, genreName, cutDate };
-        });
-        console.log(newRes);
-        return newRes;
+     .then(data => {
+       const genreName = data.genres.map(genre => genre.name);
+        return { ...data, genreName };
+        
       });
+
+
+
+
+
     // .then(data => {
     //   const newRes = data.results.map(result => {
     //     const genreName = this.giveGenre(result.genre_ids);
