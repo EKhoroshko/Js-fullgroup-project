@@ -1,14 +1,3 @@
-/* import getRefs from './get-refs';
-const refs = getRefs();
-
-function toggleModal() {
-  refs.modal.classList.toggle('is-hidden');
-}
-
-refs.closeModalBtn.addEventListener('click', toggleModal);
-refs.footerLink.addEventListener('click', toggleModal);
-export    { toggleModal }; */
-
 import getRefs from './get-refs';
 const refs = getRefs();
 import cardModal from '../templation/modal-main.hbs';
@@ -22,13 +11,14 @@ function onOpenModal(result) {
   }
   refs.modal.classList.remove('is-hidden');
   renderCardModal(result);
+  disableScroll();
 }
 
 function onCloseModal(e) {
   const target = e.target;
-  if (target.matches('.about-close') || target.matches('.modal-backdrop') ||
-    target.matches('.close-icon')) {
-      refs.modal.classList.add('is-hidden');
+  if (target.matches('.about-close') || target.matches('.modal-backdrop') || target.matches('.close-icon')) {
+    refs.modal.classList.add('is-hidden');
+    enableScroll();
     } 
 }
 
@@ -41,6 +31,29 @@ function renderCardModal(result) {
 
 refs.$render.addEventListener('click', onOpenModal);
 refs.closeModalBtn.addEventListener('click', onCloseModal);
+
+// scroll
+
+const disableScroll = () => {
+    const widthScroll = window.innerWidth - document.body.offsetWidth;
+    document.body.dbScrollY = window.scrollY;
+    document.body.style.cssText = `
+        position: fixed;
+        top: ${-window.scrollY}px;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        overflow: hidden;
+        padding-right: ${widthScroll}px;
+    `;
+};
+
+const enableScroll = () => {
+    document.body.style.cssText = '';
+    window.scroll({
+        top: document.body.dbScrollY,
+    })
+}
 
 // for library
 
