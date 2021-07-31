@@ -1,21 +1,30 @@
-<div class="modal-wrapper">
+
+
+
+<div class='modal-wrapper'>
   <div class='film-picture'>
-    <img class='picture' src='https://image.tmdb.org/t/p/w300{{poster_path}}' alt='{{original_title}}' />
+    <img
+      class='picture'
+      src='https://image.tmdb.org/t/p/w300{{poster_path}}'
+      alt='{{original_title}}'
+    />
+
   </div>
 
   <div class='movie'>
 
     {{#if title}}
-    <h2 class='movie-info-title'>{{title}}</h2>
+
+      <h2 class='movie-info-title'>{{title}}</h2>
     {{else}}
-    <h2 class='movie-info-title'>{{name}}</h2>
+      <h2 class='movie-info-title'>{{name}}</h2>
     {{/if}}
     <ul class='movie-info'>
       <li class='info-criteria'>
         <p class='info-criteria-item'>Vote / Votes</p>
         <p class='info-api-item'>
-          <span class="film-raiting-accent">{{vote_average}}</span>
-          <span class="film-raiting-slash"> / </span>
+          <span class='film-raiting-accent'>{{vote_average}}</span>
+          <span class='film-raiting-slash'> / </span>
           {{vote_count}}
         </p>
       </li>
@@ -29,9 +38,10 @@
       </li>
       <li class='info-criteria'>
         <p class='info-criteria-item'>Genre</p>
-        <div class="info-criteria-genre">
+
+        <div class='info-criteria-genre'>
           {{#each genreName}}
-          <p class='info-api-item try'>{{this}}</p>
+            <p class='info-api-item try'>&nbsp{{this}}</p>
           {{/each}}
         </div>
       </li>
@@ -39,7 +49,7 @@
     <h3 class='movie-about'>About</h3>
     <p class='movie-text'>{{overview}}</p>
     <div class='movie-buttons'>
-      <button type='button' class='modal-button movie-add-watched' data-id=''>add to Watched</button>
+      <button type='button' class='modal-button movie-add-watched' data-id='{{id}}'>add to Watched</button>
       <button type='button' class='modal-button movie-add-queue' id='{{id}}'>add to queue</button>
     </div>
   </div>

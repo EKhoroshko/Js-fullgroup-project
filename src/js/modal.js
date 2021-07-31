@@ -17,23 +17,6 @@ function onOpenModal(result) {
     renderCardModal(result);
     disableScroll();
   }
-  // console.log(result.target.nodeName);
-  // refs.modal.classList.remove('is-hidden');
-  // renderCardModal(result);
-  // disableScroll();
-}
-
-function onCloseModal(e) {
-  const target = e.target;
-  if (
-    target.matches('.about-close') ||
-    target.matches('.modal-backdrop') ||
-    target.matches('.close-icon')
-  ) {
-    refs.modal.classList.add('is-hidden');
-    enableScroll();
-  }
-}
 
 function renderCardModal(result) {
   const film = result.target.id;
@@ -41,6 +24,29 @@ function renderCardModal(result) {
     refs.modalForm.innerHTML = cardModal(data);
   });
 }
+
+function onCloseModal(e) {
+  const target = e.target;
+  if (target.matches('.about-close') || target.matches('.close-icon')) { 
+    refs.modal.classList.add('is-hidden');
+    enableScroll();
+  }
+    refs.closeModalBtn.removeEventListener('click', onCloseModal);
+}
+
+refs.backdrop.addEventListener('click', function() {
+  refs.modal.classList.add('is-hidden');
+  this.classList.add('is-hidden');
+  enableScroll();
+});
+
+document.addEventListener('keydown', function(e) {
+  const ESCAPE_CODE = "Escape";
+  if (e.key === ESCAPE_CODE) {
+    refs.modal.classList.add('is-hidden');
+    enableScroll();
+  }  
+});
 
 refs.$render.addEventListener('click', onOpenModal);
 refs.closeModalBtn.addEventListener('click', onCloseModal);
