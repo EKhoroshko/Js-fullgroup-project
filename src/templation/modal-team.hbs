@@ -1,0 +1,44 @@
+<div class="team-modal-header"
+<h2 class='team-modal-title'>{{title}}</h2>
+</div>
+<div class="team-modal-wrapper">
+    <div class='team-modal-img'>
+        <ul>
+            {{#each this}}
+            <li>
+            <img class='student-img' src='
+                    {{student_img}}' alt='{{student_img}}' />
+            </li>
+            {{/each}}
+        </ul>
+    </div>
+
+    <div class='team-modal-info'>
+        
+        <ul class='team-student-info'>
+            {{#each this}}
+            <li class='student-info'>
+                <p class='info-item'>Name</p>
+                <p class='info-item-student'>{{name}}
+                </p>
+            </li>
+            <li class='student-info'>
+                <p class='info-item'>Position</p>
+                <p class='info-item-student'>{{position}}</p>
+            </li>
+            <li class='student-info'>
+                <p class='info-item'>Срок исправительных работ</p>
+                <p class='info-item-student'>{{time}}</p>
+            </li>
+            <li class='student-info'>
+                <p class='info-item'>Личное дело</p>
+                <p class='info-item-student'>{{github}}
+                </p>
+            </li>
+            {{/each}}
+        </ul>
+        <div class='team-button'>
+            <button type='team-button' class='team-modal-button' data-id=''>Смотреть варианты побега!</button>
+        </div>
+    </div>
+
