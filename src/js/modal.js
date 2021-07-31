@@ -17,6 +17,7 @@ function onOpenModal(result) {
     renderCardModal(result);
     disableScroll();
   }
+}
 
 function renderCardModal(result) {
   const film = result.target.id;
