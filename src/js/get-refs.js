@@ -9,7 +9,7 @@ export default function getRefs() {
     watchedBtn: document.querySelector('.movie-add-watched'),
     queueBtn: document.querySelector('.movie-add-queue'),
     navLink: document.querySelectorAll('.navigationLink'),
-    inputSearch: document.querySelector('.search'),
+    inputSearch: document.querySelector('.input-form'),
     headerOverlay: document.querySelector('.overlay'),
 btnLibrary:document.querySelector('.library_buttons')
   };
