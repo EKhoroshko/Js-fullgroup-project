@@ -12,6 +12,7 @@ export default function getRefs() {
     inputSearch: document.querySelector('.input-form'),
     headerOverlay: document.querySelector('.overlay'),
     btnLibrary: document.querySelector('.library_buttons'),
+    addQueue: document.querySelector('[queue]'),
     backdrop: document.querySelector('.modal-backdrop'),
   };
 }

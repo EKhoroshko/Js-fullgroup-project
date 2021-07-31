@@ -33,6 +33,7 @@
       </li>
       <li class='info-criteria'>
         <p class='info-criteria-item'>Genre</p>
+
         <div class='info-criteria-genre'>
           {{#each genreName}}
             <p class='info-api-item try'>&nbsp{{this}}</p>
@@ -43,9 +44,13 @@
     <h3 class='movie-about'>About</h3>
     <p class='movie-text'>{{overview}}</p>
     <div class='movie-buttons'>
-      <button type='button' class='modal-button movie-add-watched' data-id=''>add to Watched</button>
-      <button type='button' class='modal-button movie-add-queue' data-id=''>add to queue</button>
-    </div>
+      <button type='button' class='modal-button movie-add-watched' data-id='{{id}}'>add to Watched</button>
+      {{#if queue}}
+      <button type='button' class='modal-button movie-add-queue delete' id='{{id}}' {{queue}}>remove from queue</button>
+      {{else}}
+      <button type='button' class='modal-button movie-add-queue' id='{{id}}'>add to queue</button>
+      {{/if}}
+      </div>
   </div>
 
 </div>
