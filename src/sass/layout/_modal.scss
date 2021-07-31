@@ -67,10 +67,10 @@
   width: 14px;
 }
 
-.film-picture{
-      display: flex;
-    justify-content: center;
-    margin-bottom: 30px;
+.film-picture {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 30px;
 }
 
 img {
@@ -128,11 +128,10 @@ img {
   }
 }
 
-.info-criteria-genre{
-      display: flex;
-    flex-wrap: wrap;
+.info-criteria-genre {
+  display: flex;
+  flex-wrap: wrap;
 }
-
 
 .info-api-item {
   color: var(--title-color);
@@ -188,7 +187,7 @@ img {
 }
 //запятые между жанрами
 .try:after {
-  content: ',';
+  content: ', ';
 }
 //после последнего убираю
 .try:last-child:after {
@@ -202,7 +201,7 @@ img {
   .modal {
     display: flex;
     min-width: 618px;
-    
+
     padding: 40px 28px 42px 30px;
     //overflow: hidden;
   }
@@ -222,7 +221,7 @@ img {
   .modal {
     display: flex;
     width: 882px;
-   
+
     padding: 40px 30px 50px 30px;
   }
   .modal-wrapper {
