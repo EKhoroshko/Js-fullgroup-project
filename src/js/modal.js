@@ -108,7 +108,6 @@ function renderCardModal(result) {
     `;
   };
 
-
   const enableScroll = () => {
     document.body.style.cssText = '';
     window.scroll({
@@ -180,14 +179,3 @@ function renderCardModal(result) {
 
   
   // console.log(film);
-
-=======
-
-
-
-
-
-
-
-
-
