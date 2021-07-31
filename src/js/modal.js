@@ -143,4 +143,4 @@ refs.queueBtn.addEventListener('click', onQueueList);
 
 export { onOpenModal, onCloseModal, onQueueList, onWatchedList };
 
-/* export { onOpenModal, onCloseModal }; */
+export { onOpenModal, onCloseModal }; */
