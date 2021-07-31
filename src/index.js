@@ -20,12 +20,12 @@ refs.navLink[1].addEventListener('click', event => {
   if (event.target.classList.contains('navTitle')) {
     refs.navLink[1].classList.add('current');
     refs.navLink[0].classList.remove('current');
-    refs.inputSearch.classList.add('is-hidden');
+    refs.inputSearch.classList.add('is-hidden','js-modal');
     refs.headerOverlay.classList.add('library');
+
     refs.btnLibrary.classList.remove('is-hidden');
     clearfilms();
     renderCardMain(JSON.parse(localStorage.getItem('queue')));
-    console.log(JSON.parse(localStorage.getItem('queue')));
   }
 });
 
@@ -33,9 +33,9 @@ refs.navLink[0].addEventListener('click', event => {
   if (event.target.classList.contains('navTitle')) {
     refs.navLink[0].classList.add('current');
     refs.navLink[1].classList.remove('current');
-    refs.inputSearch.classList.remove('is-hidden');
+    refs.inputSearch.classList.remove('is-hidden','js-modal');
     refs.headerOverlay.classList.remove('library');
-    refs.btnLibrary.classList.add('is-hidden');
+    refs.btnLibrary.classList.add('is-hidden','js-modal');
     renderStartFilms();
   }
 });
