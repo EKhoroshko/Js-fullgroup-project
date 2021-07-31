@@ -1,6 +1,3 @@
-
-
-
 <div class='modal-wrapper'>
   <div class='film-picture'>
     <img
@@ -8,13 +5,11 @@
       src='https://image.tmdb.org/t/p/w300{{poster_path}}'
       alt='{{original_title}}'
     />
-
   </div>
 
   <div class='movie'>
 
     {{#if title}}
-
       <h2 class='movie-info-title'>{{title}}</h2>
     {{else}}
       <h2 class='movie-info-title'>{{name}}</h2>
@@ -50,8 +45,12 @@
     <p class='movie-text'>{{overview}}</p>
     <div class='movie-buttons'>
       <button type='button' class='modal-button movie-add-watched' data-id='{{id}}'>add to Watched</button>
+      {{#if queue}}
+      <button type='button' class='modal-button movie-add-queue delete' id='{{id}}' {{queue}}>remove from queue</button>
+      {{else}}
       <button type='button' class='modal-button movie-add-queue' id='{{id}}'>add to queue</button>
-    </div>
+      {{/if}}
+      </div>
   </div>
 
 </div>
