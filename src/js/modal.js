@@ -32,13 +32,17 @@ function onCloseModal(e) {
     refs.modal.classList.add('is-hidden');
     enableScroll();
   }
-    refs.closeModalBtn.removeEventListener('click', onCloseModal);
+  /* refs.closeModalBtn.removeEventListener('click', onCloseModal); */
 }
 
-refs.backdrop.addEventListener('click', function() {
-  refs.modal.classList.add('is-hidden');
-  this.classList.add('is-hidden');
-  enableScroll();
+refs.closeModalBtn.addEventListener('click', onCloseModal);
+
+refs.modal.addEventListener('click', function (e) {
+  if (e.target.classList.contains('.modal')) {
+    refs.modal.classList.add('is-hidden');
+    enableScroll();
+  }
+  console.log(e.target);
 });
 
 document.addEventListener('keydown', function(e) {
@@ -50,8 +54,11 @@ document.addEventListener('keydown', function(e) {
 });
 
 refs.$render.addEventListener('click', onOpenModal);
-refs.closeModalBtn.addEventListener('click', onCloseModal);
+
 //================
+
+// library
+
 refs.modal.addEventListener('click', e => {
   if (e.target.classList.contains('movie-add-queue')) {
     if (e.target.classList.contains('delete')) {
@@ -107,39 +114,3 @@ const enableScroll = () => {
     top: document.body.dbScrollY,
   });
 };
-
-// for library
-
-/* const getLocalStorage = () => JSON?.parse(localStorage.getItem('gallery-list')) || [];
-const setLocalStorage = (data) => localStorage.setItem('gallery-list', JSON.stringify(data));
-
-function onQueueList (id) {
-  const filmsQueue = getLocalStorage();
-  const newQueueFilm = filmsQueue.filter(film => film.id != id);
-  if (newQueueFilm) {
-    setLocalStorage(newQueueFilm);
-    // add to queue list insertAdjacentHTML('beforeend', newQueueFilm)
-    refs.queueBtn.textContent = 'Remove from queue';
-  } else {
-    refs.queueBtn.textContent = 'Add to queue';
-    // remove from queue list 
-  }
-}
-
-function onWatchedList (id) {
-  const watchedFilms = getLocalStorage();
-  const newWatchedFilm = watchedFilms.filter(film => film.id != id);
-  if (newWatchedFilm) {
-    setLocalStorage(newWatchedFilm);
-    // add to watched list insertAdjacentHTML('beforeend', newWatchedFilm)
-    refs.watchedBtn.textContent = 'Remove from watched';
-  } else {
-    refs.watchedBtn.textContent = 'Add to watched';
-    // remove from watched list 
-  }
-}
-
-refs.watchedBtn.addEventListener('click', onWatchedList);
-refs.queueBtn.addEventListener('click', onQueueList);
-
-export { onOpenModal, onCloseModal, onQueueList, onWatchedList };*/

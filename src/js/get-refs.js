@@ -1,6 +1,5 @@
 export default function getRefs() {
   return {
-    modal: document.querySelector('[about-modal]'),
     closeModalBtn: document.querySelector('[about-modal-close]'),
     footerLink: document.querySelector('[js-modal-open]'),
     $render: document.querySelector('.gallery-list'),
@@ -13,6 +12,8 @@ export default function getRefs() {
     headerOverlay: document.querySelector('.overlay'),
     btnLibrary: document.querySelector('.library_buttons'),
     addQueue: document.querySelector('[queue]'),
-    backdrop: document.querySelector('.modal-backdrop'),
+
+    modal: document.querySelector('#modal'),
+    modalWindow: document.querySelector('.modal'),
   };
 }
