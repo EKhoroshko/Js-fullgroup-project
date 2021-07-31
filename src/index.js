@@ -26,7 +26,9 @@ refs.navLink[1].addEventListener('click', (event) => {
     refs.inputSearch.classList.add('is-hidden');
     refs.headerOverlay.classList.add('library');
     refs.btnLibrary.classList.remove('is-hidden');
-
+    clearfilms()
+    renderCardMain(JSON.parse(localStorage.getItem('queue')))
+    console.log(JSON.parse(localStorage.getItem('queue')))
   }
 });
 

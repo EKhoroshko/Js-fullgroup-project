@@ -11,6 +11,7 @@ export default function getRefs() {
     navLink: document.querySelectorAll('.navigationLink'),
     inputSearch: document.querySelector('.search'),
     headerOverlay: document.querySelector('.overlay'),
-btnLibrary:document.querySelector('.library_buttons')
+    btnLibrary: document.querySelector('.library_buttons'),
+addQueue: document.querySelector('[queue]'),
   };
 }
