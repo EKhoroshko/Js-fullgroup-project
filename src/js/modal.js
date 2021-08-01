@@ -38,19 +38,12 @@ function onCloseModal(e) {
   }
 }
 
-refs.modal.addEventListener('click', function (e) {
-  if (e.target.classList.contains('.modal')) {
-    refs.modal.classList.add('is-hidden');
+refs.backdrop.addEventListener('click', function (e) {
+  if (e.target === e.currentTarget) {
+    this.classList.add('is-hidden');
     enableScroll();
   }
 });
-
-refs.backdrop.addEventListener('click', function () {
-  refs.modal.classList.add('is-hidden');
-  this.classList.add('is-hidden');
-  enableScroll();
-}
-);
 
 document.addEventListener('keydown', function (e) {
   const ESCAPE_CODE = "Escape";
@@ -64,17 +57,6 @@ refs.$render.addEventListener('click', onOpenModal);
 refs.closeModalBtn.addEventListener('click', onCloseModal);
 
 // library
-refs.modal.addEventListener('click', e => {
-  if (e.target.classList.contains('movie-add-queue')) {
-    if (e.target.classList.contains('delete')) {
-      deleteFilm(e.target.id);
-      e.target.classList.remove('delete');
-      e.target.textContent = 'add to queue';
-      return;
-    }
-  }
-});
-
 refs.modal.addEventListener('click', e => {
   if (e.target.classList.contains('movie-add-queue')) {
     if (e.target.classList.contains('delete')) {
