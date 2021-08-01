@@ -12,7 +12,7 @@ const setLocalStorageQueue = data => localStorage.setItem('queue', JSON.stringif
 
 function onOpenModal(result) {
   result.preventDefault();
-  if (result.target.nodeName === 'IMG' || result.target.nodeName === 'H2') {
+ if (result.target.nodeName === 'IMG' || result.target.nodeName === 'H2') {
     refs.modal.classList.remove('is-hidden');
     renderCardModal(result);
     disableScroll();
@@ -35,6 +35,7 @@ function onCloseModal(e) {
   const target = e.target;
   if (target.matches('.about-close') || target.matches('.close-icon')) {
     refs.modal.classList.add('is-hidden');
+    refs.modalForm.innerHTML = '';
     enableScroll();
   }
 }
@@ -42,6 +43,7 @@ function onCloseModal(e) {
 refs.backdrop.addEventListener('click', function (e) {
   if (e.target === e.currentTarget) {
     this.classList.add('is-hidden');
+    refs.modalForm.innerHTML = '';
     enableScroll();
   }
 });
@@ -50,6 +52,7 @@ document.addEventListener('keydown', function (e) {
   const ESCAPE_CODE = "Escape";
   if (e.key === ESCAPE_CODE) {
     refs.modal.classList.add('is-hidden');
+    refs.modalForm.innerHTML = '';
     enableScroll();
   }
 });
@@ -74,23 +77,29 @@ refs.modal.addEventListener('click', e => {
       let queue = 'true';
       filmsData.sort().push({ ...data, queue });
       setLocalStorageQueue(filmsData);
+
+        if (wherIAm()) {
+    renderCardMain(filmsData)
+  }      
     });
   }
 });
 
-// OLD
-// const deleteFilm = id => {
-//   const filmsItems = getLocalStorageQueue();
-//   const newFilmsItems = filmsItems.sort().filter(item => {
-//     item.id !== id;
-//   });
-//   setLocalStorageQueue(newFilmsItems);
-// };
 // START NEW
+//  const currentSection = document.querySelector('.current')
+// console.dir(currentSection);
+  
+function wherIAm() {
 
-// function wherIAm() {
-//   return boolean is Libruary
-// }
+  const currentSection = document.querySelector('.current')
+  console.dir(currentSection);
+  
+  if (currentSection.textContent === 'MY LIBRARY') {
+    console.dir(currentSection);
+    return true
+  }
+  return console.dir(currentSection);
+}
 
 const deleteFilm = id => {
    console.log(id)
@@ -103,9 +112,6 @@ const deleteFilm = id => {
     if (item.id !== Number(id.id)) {
         arrayUpdateFilms.push(item)
     }
-    // else if () {
-      
-    // }
   });
   console.log(id.textContent);
 //   if (e.target.textContent = 'add to queue') {
@@ -113,9 +119,12 @@ const deleteFilm = id => {
 // }
   setLocalStorageQueue(arrayUpdateFilms);
 
-  // if(wherIAm()){renderCardMain(arrayUpdateFilms)}
+  if (wherIAm()) {
+    renderCardMain(arrayUpdateFilms)
+
+  }
   
-  renderCardMain(arrayUpdateFilms)
+  // renderCardMain(arrayUpdateFilms)
 
   console.log(arrayUpdateFilms);
   };
