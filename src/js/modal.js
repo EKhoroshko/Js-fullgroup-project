@@ -22,7 +22,7 @@ function renderCardModal(result) {
   const film = result.target.id;
   const switchData = data => data.id === Number(film);
   if (getLocalStorageQueue().some(switchData)) {
-    refs.modalForm.innerHTML = cardModal(getLocalStorageQueue().find(switchData))
+    refs.modalForm.innerHTML = cardModal(getLocalStorageQueue().find(switchData));
     return;
   } 
   filmsApiServise.fetchFilmsDescription(film).then(data => {
@@ -74,7 +74,9 @@ refs.modal.addEventListener('click', e => {
       e.target.classList.remove('delete');
       e.target.textContent = 'add to queue';
       return;
-  });
+  }
+  }
+});
 
   refs.modal.addEventListener('click', e => {
     if (e.target.classList.contains('movie-add-queue')) {
@@ -128,4 +130,3 @@ const enableScroll = () => {
     top: document.body.dbScrollY,
   });
 };
-
