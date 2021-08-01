@@ -1,27 +1,13 @@
-{{!-- <div class="team-modal-header">
-<h2 class='team-modal-title'>IT ISLAND</h2>
-</div>
-<div class="team-modal-wrapper">
-    <div class='team-modal-info'> --}}
-       
-        
-        {{!-- <ul class='team-student-info'> --}}
-            {{#each this}}
-        <li class='student-info'>
-                <img class='student-img' src='
-                                {{image}}' alt='{{student_img}}' />
-        
-                <p class='info-item'>Name: <span class='info-item-student'>{{name}}</span></p>
-                <p class='info-item'>Position: <span class='info-item-student'>{{position}}</span></p>
-                <p class='info-item'>Срок исправительных работ: <span class='info-item-student'>{{time}}</span></p>
-                <p class='info-item-student'>{{time}}</p>
-                <p class='info-item'>Личное дело: <span class='info-item-student'>{{github}}</span></p>
-                
-        </li>
-            {{/each}}
-        {{!-- </ul>
-        <div class='team-button'>
-            <button type='button' class='team-modal-button' data-id=''>Покинуть остров!</button>
-        </div> --}}
-    {{!-- </div> --}}
+{{#each this}}
+  <li class='student-info'>
+    <img class='student-img' src='{{image}}' alt='{{student_img}}' />
 
+    <p class='info-item'>Name: <span class='info-item-student'>{{name}}</span></p>
+    <p class='info-item'>Position: <span class='info-item-student'>{{position}}</span></p>
+    <p class='info-item'>Срок исправительных работ:
+      <span class='info-item-student'>{{time}}</span></p>
+    <p class='info-item-student'>{{time}}</p>
+    <p class='info-item'>Личное дело: <span class='info-item-student'>{{github}}</span></p>
+
+  </li>
+{{/each}}
