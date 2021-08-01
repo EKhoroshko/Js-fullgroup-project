@@ -87,6 +87,7 @@ export default class FilmsApiServise {
         return response.json();
       })
       .then(data => {
+
         let genreName = '';
         if (data.genres) {
           genreName = data.genres.map(genre => genre.name);
