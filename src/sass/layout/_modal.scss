@@ -242,19 +242,14 @@ img {
     display: flex;
   }
   .film-picture {
-    width: 396px;
+    max-width: 396px;
     margin-right: 30px;
-    /*  height: 477.8px; */
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
   }
   .picture {
-    min-width: 396px;
-    height: auto;
-    /*    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat; */
+    width: 396px;
+    height: 478px;    
+    object-fit: cover; 
+    // object-fit: contain;    
   }
   .movie-info-title {
     font-size: 30px;
