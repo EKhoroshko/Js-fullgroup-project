@@ -108,7 +108,6 @@ refs.modal.addEventListener('click', e => {
 
 function wherIAm() {
   const currentSection = document.querySelector('.current');
-
   if (currentSection.textContent === 'MY LIBRARY') {
     return true;
   }
@@ -124,7 +123,6 @@ const deleteFilm = id => {
       arrayUpdateFilms.push(item);
     }
   });
-  // console.log(id.textContent);
   //   if (e.target.textContent = 'add to queue') {
   //   arrayUpdateFilms.push(item)
   // }
@@ -133,6 +131,7 @@ const deleteFilm = id => {
   if (wherIAm()) {
     renderCardMain(arrayUpdateFilms);
   }
+
 };
 
 // END NEW
