@@ -7,6 +7,7 @@ import { template } from 'lodash';
 function onOpenTeamModal(e) {
   e.preventDefault();
   refs.modalTeam.classList.remove('is-hidden');
+  renderTeamModal(team);
   //renderCardModal(e);
   //disableScroll();
   //}
@@ -14,17 +15,23 @@ function onOpenTeamModal(e) {
 function onCloseTeamModal() {
   refs.modalTeam.classList.add('is-hidden');
 }
-// function renderCardModal(result) {
-//   const film = result.target.id;
-//   filmsApiServise.fetchFilmsDescription(film).then(data => {
-//     refs.modalForm.innerHTML = cardModal(data);
-//   });
-// }
+
+function renderTeamModal(data) {
+  // console.log(data.length);
+  // if ((data.length = 2)) {
+  //   console.log(data.length);
+  refs.leadList.insertAdjacentHTML('beforeend', cardTeamModal(team));
+  //   console.log(team[0]);
+  //   console.log(cardTeamModal([]));
+  // } else if (data) {
+  refs.membersList.insertAdjacentHTML('beforeend', cardTeamModal(team));
+  // }
+}
 
 refs.footerLink.addEventListener('click', onOpenTeamModal);
 refs.closeTeamModalBtn.addEventListener('click', onCloseTeamModal);
 
-const refTeamForm = document.querySelector('.team-modal-form');
-console.log(refTeamForm);
-refTeamForm.insertAdjacentHTML('beforeend', cardTeamModal(team));
-console.log(cardTeamModal([]));
+// const refTeamForm = document.querySelector('.team-modal-form');
+// console.log(refTeamForm);
+// refs.leadList.insertAdjacentHTML('beforeend', cardTeamModal(team));
+// console.log(cardTeamModal([]));
