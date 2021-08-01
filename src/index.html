@@ -11,8 +11,9 @@
       crossorigin="anonymous"
     />
     <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
+  
   </head>
-  <body>
+  <body class="global" data-spy="scroll" >
     <!-- Так добавляются фрагменты в главные HTML-файлы страниц. -->
     <include src="./partials/header.html"></include>
     <include src="./partials/main.html"></include>
@@ -21,7 +22,10 @@
     <include src="./partials/modal-main.html"></include>
     <include src="./partials/modal-team.html"></include>
 
-    <!-- Скрипт идёт последним в разметке. В нём уже подключен главный SASS-файл. -->
+    <!-- Скрипт идёт последним в разметке. В нём уже подключен гла
+      вный SASS-файл. -->
+      <div id="scrollup"><img alt="Scroll up" src="./images/up.png" class="anhor"></div>
+      <script type='text/javascript' src='./js/anhor.js'></script>
     <script src="./index.js"></script>
   </body>
 </html>
