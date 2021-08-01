@@ -36,8 +36,12 @@ refs.navLink[0].addEventListener('click', event => {
 });
 
 function renderStartFilms() {
+  refs.$loader.classList.add('show');
+  refs.$loader.classList.remove('hide');
   filmsApiServise.getFilm().then(hits => {
     renderCardMain(hits);
+    refs.$loader.classList.add('hide');
+    refs.$loader.classList.remove('show');
   });
 }
 
@@ -54,8 +58,12 @@ function onInputSearch(e) {
 }
 
 function createFilmsList() {
+  refs.$loader.classList.add('show');
+  refs.$loader.classList.remove('hide');
   filmsApiServise.fetchFilms().then(hits => {
     renderCardMain(hits);
+    refs.$loader.classList.add('hide');
+    refs.$loader.classList.remove('show');
   });
 }
 
@@ -68,5 +76,4 @@ function clearfilms() {
 }
 renderStartFilms();
 
-// export { renderCardMain as default};
 export { renderCardMain };

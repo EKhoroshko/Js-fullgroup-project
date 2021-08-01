@@ -12,7 +12,7 @@ const setLocalStorageQueue = data => localStorage.setItem('queue', JSON.stringif
 
 function onOpenModal(result) {
   result.preventDefault();
- if (result.target.nodeName === 'IMG' || result.target.nodeName === 'H2') {
+  if (result.target.nodeName === 'IMG' || result.target.nodeName === 'H2') {
     refs.modal.classList.remove('is-hidden');
     renderCardModal(result);
     disableScroll();
@@ -78,9 +78,9 @@ refs.modal.addEventListener('click', e => {
       filmsData.sort().push({ ...data, queue });
       setLocalStorageQueue(filmsData);
 
-        if (wherIAm()) {
-    renderCardMain(filmsData)
-  }      
+      if (wherIAm()) {
+        renderCardMain(filmsData);
+      }
     });
   }
 });
@@ -88,46 +88,46 @@ refs.modal.addEventListener('click', e => {
 // START NEW
 //  const currentSection = document.querySelector('.current')
 // console.dir(currentSection);
-  
+
 function wherIAm() {
 
-  const currentSection = document.querySelector('.current')
+  const currentSection = document.querySelector('.current');
   console.dir(currentSection);
-  
+
   if (currentSection.textContent === 'MY LIBRARY') {
     console.dir(currentSection);
-    return true
+    return true;
   }
   return console.dir(currentSection);
 }
 
 const deleteFilm = id => {
-   console.log(id)
-    const filmsItems = Array.from(getLocalStorageQueue());
-  console.log('filmsItems',filmsItems);
-  
+  console.log(id);
+  const filmsItems = Array.from(getLocalStorageQueue());
+  console.log('filmsItems', filmsItems);
+
   const arrayUpdateFilms = [];
-  const bufer={}
+  const bufer = {};
   const newFilmsItems = filmsItems.filter(item => {
     if (item.id !== Number(id.id)) {
-        arrayUpdateFilms.push(item)
+      arrayUpdateFilms.push(item);
     }
   });
   console.log(id.textContent);
-//   if (e.target.textContent = 'add to queue') {
-//   arrayUpdateFilms.push(item)
-// }
+  //   if (e.target.textContent = 'add to queue') {
+  //   arrayUpdateFilms.push(item)
+  // }
   setLocalStorageQueue(arrayUpdateFilms);
 
   if (wherIAm()) {
-    renderCardMain(arrayUpdateFilms)
+    renderCardMain(arrayUpdateFilms);
 
   }
-  
+
   // renderCardMain(arrayUpdateFilms)
 
   console.log(arrayUpdateFilms);
-  };
+};
 
 // END NEW
 // scroll
