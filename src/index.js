@@ -67,3 +67,6 @@ function clearfilms() {
   refs.$render.innerHTML = '';
 }
 renderStartFilms();
+
+// export { renderCardMain as default};
+export { renderCardMain };
