@@ -12,7 +12,7 @@ const setLocalStorageQueue = data => localStorage.setItem('queue', JSON.stringif
 
 function onOpenModal(result) {
   result.preventDefault();
-  if (result.target.nodeName === 'IMG' || result.target.nodeName === 'H2'|| result.target.nodeName === 'DIV') {
+  if (result.target.nodeName === 'IMG' || result.target.nodeName === 'H2') {
     refs.modal.classList.remove('is-hidden');
     renderCardModal(result);
     disableScroll();
