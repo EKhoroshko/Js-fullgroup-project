@@ -157,3 +157,5 @@ const enableScroll = () => {
     top: document.body.dbScrollY,
   });
 };
+
+export { disableScroll, enableScroll };
