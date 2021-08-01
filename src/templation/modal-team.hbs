@@ -1,44 +1,27 @@
-<div class="team-modal-header"
-<h2 class='team-modal-title'>{{title}}</h2>
+{{!-- <div class="team-modal-header">
+<h2 class='team-modal-title'>IT ISLAND</h2>
 </div>
 <div class="team-modal-wrapper">
-    <div class='team-modal-img'>
-        <ul>
-            {{#each this}}
-            <li>
-            <img class='student-img' src='
-                    {{student_img}}' alt='{{student_img}}' />
-            </li>
-            {{/each}}
-        </ul>
-    </div>
-
-    <div class='team-modal-info'>
+    <div class='team-modal-info'> --}}
+       
         
-        <ul class='team-student-info'>
+        {{!-- <ul class='team-student-info'> --}}
             {{#each this}}
-            <li class='student-info'>
-                <p class='info-item'>Name</p>
-                <p class='info-item-student'>{{name}}
-                </p>
-            </li>
-            <li class='student-info'>
-                <p class='info-item'>Position</p>
-                <p class='info-item-student'>{{position}}</p>
-            </li>
-            <li class='student-info'>
-                <p class='info-item'>Срок исправительных работ</p>
+        <li class='student-info'>
+                <img class='student-img' src='
+                                {{image}}' alt='{{student_img}}' />
+        
+                <p class='info-item'>Name: <span class='info-item-student'>{{name}}</span></p>
+                <p class='info-item'>Position: <span class='info-item-student'>{{position}}</span></p>
+                <p class='info-item'>Срок исправительных работ: <span class='info-item-student'>{{time}}</span></p>
                 <p class='info-item-student'>{{time}}</p>
-            </li>
-            <li class='student-info'>
-                <p class='info-item'>Личное дело</p>
-                <p class='info-item-student'>{{github}}
-                </p>
-            </li>
+                <p class='info-item'>Личное дело: <span class='info-item-student'>{{github}}</span></p>
+                
+        </li>
             {{/each}}
-        </ul>
+        {{!-- </ul>
         <div class='team-button'>
-            <button type='team-button' class='team-modal-button' data-id=''>Смотреть варианты побега!</button>
-        </div>
-    </div>
+            <button type='button' class='team-modal-button' data-id=''>Покинуть остров!</button>
+        </div> --}}
+    {{!-- </div> --}}
 

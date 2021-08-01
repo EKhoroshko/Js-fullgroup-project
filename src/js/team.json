@@ -3,12 +3,66 @@
     "id": 1,
     "name": "Евгений",
     "position": "TeamLead",
-    "image": "https://s1.eda.ru/StaticContent/Photos/140812180013/140820212258/p_O.jpg"
+    "image": "https://ca.slack-edge.com/T01QBJQP8PR-U01RV3CG492-1a171aa63ad7-48"
   },
   {
     "id": 2,
-    "name": "Евгений",
-    "position": "TeamLead",
-    "image": "https://s1.eda.ru/StaticContent/Photos/140812180013/140820212258/p_O.jpg"
+    "name": "Kateryna",
+    "position": "Scrum master",
+    "image": "https://ca.slack-edge.com/T01QBJQP8PR-U01RGH0E5B8-777595472893-512"
+  },
+  {
+    "id": 3,
+    "name": "Aleksandr",
+    "position": "Front end developer",
+    "image": "https://ca.slack-edge.com/T01QBJQP8PR-U01RGH0E5B8-777595472893-512"
+  },
+  {
+    "id": 4,
+    "name": "Valentyna",
+    "position": "Front end developer",
+    "image": "https://ca.slack-edge.com/T01QBJQP8PR-U01RNFVLGVB-876cc7ba9ac4-48"
+  },
+  {
+    "id": 5,
+    "name": "Kateryna",
+    "position": "Front end developer",
+    "image": "https://ca.slack-edge.com/T01QBJQP8PR-U01RGH0E5B8-777595472893-512"
+  },
+  {
+    "id": 6,
+    "name": "Kateryna",
+    "position": "Front end developer",
+    "image": "https://ca.slack-edge.com/T01QBJQP8PR-U01RGH0E5B8-777595472893-512"
+  },
+  {
+    "id": 7,
+    "name": "Kateryna",
+    "position": "Front end developer",
+    "image": "https://ca.slack-edge.com/T01QBJQP8PR-U01RGH0E5B8-777595472893-512"
+  },
+  {
+    "id": 8,
+    "name": "Kateryna",
+    "position": "Front end developer",
+    "image": "https://ca.slack-edge.com/T01QBJQP8PR-U01RGH0E5B8-777595472893-512"
+  },
+  {
+    "id": 9,
+    "name": "Kateryna",
+    "position": "Front end developer",
+    "image": "https://ca.slack-edge.com/T01QBJQP8PR-U01RGH0E5B8-777595472893-512"
+  },
+  {
+    "id": 10,
+    "name": "Kateryna",
+    "position": "Front end developer",
+    "image": "https://ca.slack-edge.com/T01QBJQP8PR-U01RGH0E5B8-777595472893-512"
+  },
+  {
+    "id": 11,
+    "name": "Kateryna",
+    "position": "Front end developer",
+    "image": "https://ca.slack-edge.com/T01QBJQP8PR-U01RGH0E5B8-777595472893-512"
   }
 ]
