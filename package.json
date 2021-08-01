@@ -29,6 +29,8 @@
     "axios": "^0.21.1",
     "debounce": "^1.2.1",
     "material-design-icons": "^3.0.1",
-    "pagination": "^0.4.6"
+    "pagination": "^0.4.6",
+    "pnotify": "^5.2.0",
+    "toaster-js": "^2.2.3"
   }
 }
