@@ -8,11 +8,18 @@ const filmsApiServise = new FilmsApiServise();
 //==============
 const getLocalStorageQueue = () => JSON?.parse(localStorage.getItem('queue')) || [];
 const setLocalStorageQueue = data => localStorage.setItem('queue', JSON.stringify(data));
+const getLocalStorageWatched = () => JSON?.parse(localStorage.getItem('watched')) || [];
+const setLocalStorageWatched = data => localStorage.setItem('watched', JSON.stringify(data));
+
 //==================
 
 function onOpenModal(result) {
   result.preventDefault();
- if (result.target.nodeName === 'IMG' || result.target.nodeName === 'H2') {
+  if (
+    result.target.nodeName === 'IMG' ||
+    result.target.nodeName === 'H2' ||
+    result.target.nodeName === 'DIV'
+  ) {
     refs.modal.classList.remove('is-hidden');
     renderCardModal(result);
     disableScroll();
@@ -49,7 +56,7 @@ refs.backdrop.addEventListener('click', function (e) {
 });
 
 document.addEventListener('keydown', function (e) {
-  const ESCAPE_CODE = "Escape";
+  const ESCAPE_CODE = 'Escape';
   if (e.key === ESCAPE_CODE) {
     refs.modal.classList.add('is-hidden');
     refs.modalForm.innerHTML = '';
@@ -78,9 +85,19 @@ refs.modal.addEventListener('click', e => {
       filmsData.sort().push({ ...data, queue });
       setLocalStorageQueue(filmsData);
 
-        if (wherIAm()) {
-    renderCardMain(filmsData)
-  }      
+      if (wherIAm()) {
+        renderCardMain(filmsData);
+      }
+    });
+  }
+});
+
+refs.modal.addEventListener('click', e => {
+  if (e.target.classList.contains('movie-add-watched')) {
+    filmsApiServise.fetchFilmsDescription(e.target.id).then(data => {
+      let filmsData = getLocalStorageWatched();
+      filmsData.sort().push(data);
+      setLocalStorageWatched(filmsData);
     });
   }
 });
@@ -88,46 +105,35 @@ refs.modal.addEventListener('click', e => {
 // START NEW
 //  const currentSection = document.querySelector('.current')
 // console.dir(currentSection);
-  
-function wherIAm() {
 
-  const currentSection = document.querySelector('.current')
-  console.dir(currentSection);
-  
+function wherIAm() {
+  const currentSection = document.querySelector('.current');
+
   if (currentSection.textContent === 'MY LIBRARY') {
-    console.dir(currentSection);
-    return true
+    return true;
   }
-  return console.dir(currentSection);
+  return;
 }
 
 const deleteFilm = id => {
-   console.log(id)
-    const filmsItems = Array.from(getLocalStorageQueue());
-  console.log('filmsItems',filmsItems);
-  
+  const filmsItems = Array.from(getLocalStorageQueue());
   const arrayUpdateFilms = [];
-  const bufer={}
+  const bufer = {};
   const newFilmsItems = filmsItems.filter(item => {
     if (item.id !== Number(id.id)) {
-        arrayUpdateFilms.push(item)
+      arrayUpdateFilms.push(item);
     }
   });
-  console.log(id.textContent);
-//   if (e.target.textContent = 'add to queue') {
-//   arrayUpdateFilms.push(item)
-// }
+  // console.log(id.textContent);
+  //   if (e.target.textContent = 'add to queue') {
+  //   arrayUpdateFilms.push(item)
+  // }
   setLocalStorageQueue(arrayUpdateFilms);
 
   if (wherIAm()) {
-    renderCardMain(arrayUpdateFilms)
-
+    renderCardMain(arrayUpdateFilms);
   }
-  
-  // renderCardMain(arrayUpdateFilms)
-
-  console.log(arrayUpdateFilms);
-  };
+};
 
 // END NEW
 // scroll
