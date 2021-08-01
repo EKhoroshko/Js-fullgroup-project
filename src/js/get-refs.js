@@ -8,12 +8,16 @@ export default function getRefs() {
     watchedBtn: document.querySelector('.movie-add-watched'),
     queueBtn: document.querySelector('.movie-add-queue'),
     navLink: document.querySelectorAll('.navigationLink'),
-    inputSearch: document.querySelector('.search'),
+    inputSearch: document.querySelector('.input-form'),
     headerOverlay: document.querySelector('.overlay'),
     btnLibrary: document.querySelector('.library_buttons'),
     addQueue: document.querySelector('[queue]'),
-
     modal: document.querySelector('#modal'),
     modalWindow: document.querySelector('.modal'),
+    backdrop: document.querySelector('.modal-backdrop'),
+    modalTeam: document.querySelector('[team-modal]'),
+    closeTeamModalBtn: document.querySelector('[team-modal-close]'),
+    teamModalBackdrop: document.querySelector('.team-modal-backdrop'),
+
   };
 }

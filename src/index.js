@@ -2,47 +2,38 @@ import './sass/main.scss';
 import getRefs from './js/get-refs.js';
 const refs = getRefs();
 
-// в консоли были ошибки я закомментировал
-
 import { onOpenModal, onCloseModal  } from './js/modal.js';
-
 import cardMain from './templation/card.hbs';
 import FilmsApiServise from './js/ApiServer';
 import darkTheme from './js/darkTheme';
-
 
 var debounce = require('debounce');
 const filmsApiServise = new FilmsApiServise();
 
 refs.inputRef.addEventListener('input', debounce(onInputSearch, 500));
 
-
-refs.navLink[1].addEventListener('click', (event) => {
+refs.navLink[1].addEventListener('click', event => {
   if (event.target.classList.contains('navTitle')) {
-      
     refs.navLink[1].classList.add('current');
     refs.navLink[0].classList.remove('current');
-    refs.inputSearch.classList.add('is-hidden');
+    refs.inputSearch.classList.add('is-hidden','js-modal');
     refs.headerOverlay.classList.add('library');
     refs.btnLibrary.classList.remove('is-hidden');
-    clearfilms()
-    renderCardMain(JSON.parse(localStorage.getItem('queue')))
-    console.log(JSON.parse(localStorage.getItem('queue')))
+    clearfilms();
+    renderCardMain(JSON.parse(localStorage.getItem('queue')));
   }
 });
 
-refs.navLink[0].addEventListener('click', (event) => {
+refs.navLink[0].addEventListener('click', event => {
   if (event.target.classList.contains('navTitle')) {
-      
     refs.navLink[0].classList.add('current');
     refs.navLink[1].classList.remove('current');
-    refs.inputSearch.classList.remove('is-hidden');
+    refs.inputSearch.classList.remove('is-hidden','js-modal');
     refs.headerOverlay.classList.remove('library');
-    refs.btnLibrary.classList.add('is-hidden');
+    refs.btnLibrary.classList.add('is-hidden','js-modal');
     renderStartFilms();
   }
 });
-
 
 function renderStartFilms() {
   filmsApiServise.getFilm().then(hits => {
@@ -53,7 +44,6 @@ function renderStartFilms() {
 function onInputSearch(e) {
   e.preventDefault();
   filmsApiServise.searchQuery = e.target.value;
-
   if (filmsApiServise.searchQuery === '') {
     clearfilms();
     renderStartFilms();
