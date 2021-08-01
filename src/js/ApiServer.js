@@ -35,8 +35,8 @@ export default class FilmsApiServise {
   }
 
   // получаем по ключевому слову объекты фильмов, в которые добавлены значения жанров и короткой даты
-  fetchFilms() {
-    const url = `${BASE_URL}search/movie?api_key=${KEY}&language=en-US&page=1&include_adult=false&query=${this.searchQuery}`;
+  fetchFilms(pageNumber) {
+    const url = `${BASE_URL}search/movie?api_key=${KEY}&language=en-US&page=${pageNumber}&include_adult=false&query=${this.searchQuery}`;
     return fetch(url)
       .then(response => {
         return response.json();
@@ -53,7 +53,11 @@ export default class FilmsApiServise {
           result.poster_path === 'null' ? result.splice(indexOf(poster_path), 1) : result;
           return { ...result, genreName, cutDate };
         });
-        return newRes;
+        return {
+          results: newRes,
+          totalAmount: data.total_results,
+          pageNumber: this.page,
+        };
       });
   }
 
