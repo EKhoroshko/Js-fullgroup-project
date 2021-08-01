@@ -46,11 +46,16 @@
     <div class='movie-buttons'>
       <button type='button' class='modal-button movie-add-watched' data-id='{{id}}'>add to Watched</button>
       {{#if queue}}
-      <button type='button' class='modal-button movie-add-queue delete' id='{{id}}' {{queue}}>remove from queue</button>
+        <button
+          type='button'
+          class='modal-button movie-add-queue delete'
+          id='{{id}}'
+          {{queue}}
+        >remove from queue</button>
       {{else}}
-      <button type='button' class='modal-button movie-add-queue' id='{{id}}'>add to queue</button>
+        <button type='button' class='modal-button movie-add-queue' id='{{id}}'>add to queue</button>
       {{/if}}
-      </div>
+    </div>
   </div>
 
 </div>
