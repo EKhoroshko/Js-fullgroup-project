@@ -2,7 +2,7 @@ import './sass/main.scss';
 import getRefs from './js/get-refs.js';
 const refs = getRefs();
 
-import { onOpenModal, onCloseModal  } from './js/modal.js';
+import { onOpenModal, onCloseModal } from './js/modal.js';
 import cardMain from './templation/card.hbs';
 import FilmsApiServise from './js/ApiServer';
 import darkTheme from './js/darkTheme';
@@ -16,7 +16,7 @@ refs.navLink[1].addEventListener('click', event => {
   if (event.target.classList.contains('navTitle')) {
     refs.navLink[1].classList.add('current');
     refs.navLink[0].classList.remove('current');
-    refs.inputSearch.classList.add('is-hidden','js-modal');
+    refs.inputSearch.classList.add('is-hidden', 'js-modal');
     refs.headerOverlay.classList.add('library');
     refs.btnLibrary.classList.remove('is-hidden');
     clearfilms();
@@ -28,9 +28,9 @@ refs.navLink[0].addEventListener('click', event => {
   if (event.target.classList.contains('navTitle')) {
     refs.navLink[0].classList.add('current');
     refs.navLink[1].classList.remove('current');
-    refs.inputSearch.classList.remove('is-hidden','js-modal');
+    refs.inputSearch.classList.remove('is-hidden', 'js-modal');
     refs.headerOverlay.classList.remove('library');
-    refs.btnLibrary.classList.add('is-hidden','js-modal');
+    refs.btnLibrary.classList.add('is-hidden', 'js-modal');
     renderStartFilms();
   }
 });

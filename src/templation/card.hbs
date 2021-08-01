@@ -1,41 +1,46 @@
 {{#each this}}
 
   <li class='gallery-item' id='{{id}}'>
-    <a href='#' class='gallery-link'> 
-    {{#if poster_path}}
-    <img src='https://image.tmdb.org/t/p/w300{{poster_path}}' alt='{{original_title}}' class='gallery-img' id='{{id}}'/>
-    {{else}}
-    <div class='gallery-img'></div>
-    {{/if}}
+    <a href='#' class='gallery-link'>
+      {{#if poster_path}}
+        <img
+          src='https://image.tmdb.org/t/p/w300{{poster_path}}'
+          alt='{{original_title}}'
+          class='gallery-img'
+          id='{{id}}'
+        />
+      {{else}}
+        <div class='gallery-img'></div>
+      {{/if}}
 
-    {{#if title}}
-    <h2 class='title-item' id='{{id}}'>
-      {{title}}
-    </h2>
-    {{else}}
-    <h2 class='title-item' id='{{id}}'>
-      {{name}}
-    </h2>
-    {{/if}}
-    <div class='wrapper-description'>
+      {{#if title}}
+        <h2 class='title-item' id='{{id}}'>
+          {{title}}
+        </h2>
+      {{else}}
+        <h2 class='title-item' id='{{id}}'>
+          {{name}}
+        </h2>
+      {{/if}}
+      <div class='wrapper-description'>
 
-      <ul class='description-list'>
-        {{#each genreName}}
-        <li class='description-genres'>
-          <span>{{this}}</span>
-          <span class='genres-separator'>,</span>
-        </li>
-        {{/each}}
-      </ul>
-      <span class='description-separator'>|</span>
-      <p class='description-year'>
-        {{cutDate}}
-      </p>
-      <p class='rating-library'>
-        {{vote_average}}
-      </p>
+        <ul class='description-list'>
+          {{#each genreName}}
+            <li class='description-genres'>
+              <span>{{this}}</span>
+              <span class='genres-separator'>,</span>
+            </li>
+          {{/each}}
+        </ul>
+        <span class='description-separator'>|</span>
+        <p class='description-year'>
+          {{cutDate}}
+        </p>
+        <p class='rating-library'>
+          {{vote_average}}
+        </p>
 
-    </div>
-  </a>
-</li>
+      </div>
+    </a>
+  </li>
 {{/each}}

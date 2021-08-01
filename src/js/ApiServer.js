@@ -28,10 +28,8 @@ export default class FilmsApiServise {
             ? (cutDate = oficialFilmsDate.slice(0, 4))
             : (cutDate = maybeFilmsDate.slice(0, 4));
           result.poster_path === 'null' ? result.splice(indexOf(poster_path), 1) : result;
-
           return { ...result, genreName, cutDate };
         });
-        console.log(newRes);
         return newRes;
       });
   }
@@ -55,7 +53,6 @@ export default class FilmsApiServise {
           result.poster_path === 'null' ? result.splice(indexOf(poster_path), 1) : result;
           return { ...result, genreName, cutDate };
         });
-        console.log(newRes);
         return newRes;
       });
   }
@@ -70,7 +67,6 @@ export default class FilmsApiServise {
         }
       });
     }
-
     if (findingGenres.length > 2) {
       findingGenres.splice(2, findingGenres.length, '...other');
     } else if (findingGenres.length === 0) {
@@ -80,7 +76,6 @@ export default class FilmsApiServise {
   }
 
   // получаем информацию о конкретном фильме
-
   fetchFilmsDescription(id) {
     const url = `${BASE_URL}movie/${id}?api_key=${KEY}&language=en-US`;
     return fetch(url)
