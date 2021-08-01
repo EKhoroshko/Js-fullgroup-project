@@ -19,5 +19,7 @@ export default function getRefs() {
     closeTeamModalBtn: document.querySelector('[team-modal-close]'),
     teamModalBackdrop: document.querySelector('.team-modal-backdrop'),
     $loader: document.querySelector('.loader'),
+    leadList: document.querySelector('.lead'),
+    membersList: document.querySelector('.team-student-info'),
   };
 }

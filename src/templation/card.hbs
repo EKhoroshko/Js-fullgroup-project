@@ -23,7 +23,7 @@
       <ul class='description-list'>
         {{#each genreName}}
         <li class='description-genres'>
-          <span>{{this}}</span>
+          <p>{{this}}</p>
           <span class='genres-separator'>,</span>
         </li>
         {{/each}}
@@ -32,7 +32,7 @@
       <p class='description-year'>
         {{cutDate}}
       </p>
-      <p class='rating-library'>
+      <p class='rating-library is-hidden'>
         {{vote_average}}
       </p>
 
