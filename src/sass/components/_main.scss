@@ -20,8 +20,8 @@
   margin: -20px;
 }
 
-.gallery-link{
-    color:inherit;
+.gallery-link {
+  color: inherit;
 }
 
 .gallery-item {
@@ -65,14 +65,12 @@ div.gallery-img {
 .description-genres,
 .description-separator,
 .description-year {
+  display: flex;
   @include calculator(500, 12, 16);
   color: var(--accent-color);
 }
 .genres-separator {
-  display: inline-block;
-  justify-content: start;
   margin-right: 3px;
-  margin-left: -4px; //сделать правку после подключения шрифтов
 }
 .description-separator {
   margin: 0 5px;
