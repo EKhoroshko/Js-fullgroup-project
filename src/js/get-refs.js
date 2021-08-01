@@ -18,6 +18,5 @@ export default function getRefs() {
     modalTeam: document.querySelector('[team-modal]'),
     closeTeamModalBtn: document.querySelector('[team-modal-close]'),
     teamModalBackdrop: document.querySelector('.team-modal-backdrop'),
-
   };
 }
