@@ -2,11 +2,7 @@ import './sass/main.scss';
 import getRefs from './js/get-refs.js';
 const refs = getRefs();
 
-// в консоли были ошибки я закомментировал
-/* import { onOpenModal, onCloseModal } from './js/modal';
- */
-import { onOpenModal, onCloseModal, onQueueList, onWatchedList } from './js/modal.js';
-import { onOpenTeamModal, onCloseTeamModal } from './js/team-modal.js';
+import { onOpenModal, onCloseModal  } from './js/modal.js';
 import cardMain from './templation/card.hbs';
 import FilmsApiServise from './js/ApiServer';
 import darkTheme from './js/darkTheme';
@@ -22,7 +18,6 @@ refs.navLink[1].addEventListener('click', event => {
     refs.navLink[0].classList.remove('current');
     refs.inputSearch.classList.add('is-hidden','js-modal');
     refs.headerOverlay.classList.add('library');
-
     refs.btnLibrary.classList.remove('is-hidden');
     clearfilms();
     renderCardMain(JSON.parse(localStorage.getItem('queue')));
@@ -49,7 +44,6 @@ function renderStartFilms() {
 function onInputSearch(e) {
   e.preventDefault();
   filmsApiServise.searchQuery = e.target.value;
-
   if (filmsApiServise.searchQuery === '') {
     clearfilms();
     renderStartFilms();
