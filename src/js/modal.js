@@ -50,7 +50,7 @@ refs.modal.addEventListener('click', function (e) {
     this.classList.add('is-hidden');
     enableScroll();
   }  
-});
+);
 
 document.addEventListener('keydown', function (e) {
     const ESCAPE_CODE = "Escape";
