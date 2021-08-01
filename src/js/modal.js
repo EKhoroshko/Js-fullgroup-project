@@ -2,6 +2,7 @@ import getRefs from './get-refs';
 const refs = getRefs();
 import cardModal from '../templation/modal-main.hbs';
 import FilmsApiServise from './ApiServer';
+import { renderCardMain } from '../index';
 const filmsApiServise = new FilmsApiServise();
 
 //==============
@@ -60,13 +61,13 @@ refs.closeModalBtn.addEventListener('click', onCloseModal);
 refs.modal.addEventListener('click', e => {
   if (e.target.classList.contains('movie-add-queue')) {
     if (e.target.classList.contains('delete')) {
-      deleteFilm(e.target.id);
+      deleteFilm(e.target);
       e.target.classList.remove('delete');
       e.target.textContent = 'add to queue';
       return;
     }
     e.target.classList.add('delete');
-    e.target.textContent = 'remove to queue';
+    e.target.textContent = 'remove from queue';
 
     filmsApiServise.fetchFilmsDescription(e.target.id).then(data => {
       let filmsData = getLocalStorageQueue();
@@ -77,14 +78,49 @@ refs.modal.addEventListener('click', e => {
   }
 });
 
-const deleteFilm = id => {
-  const filmsItems = getLocalStorageQueue();
-  const newFilmsItems = filmsItems.sort().filter(item => {
-    item.id !== id;
-  });
-  setLocalStorageQueue(newFilmsItems);
-};
+// OLD
+// const deleteFilm = id => {
+//   const filmsItems = getLocalStorageQueue();
+//   const newFilmsItems = filmsItems.sort().filter(item => {
+//     item.id !== id;
+//   });
+//   setLocalStorageQueue(newFilmsItems);
+// };
+// START NEW
 
+// function wherIAm() {
+//   return boolean is Libruary
+// }
+
+const deleteFilm = id => {
+   console.log(id)
+    const filmsItems = Array.from(getLocalStorageQueue());
+  console.log('filmsItems',filmsItems);
+  
+  const arrayUpdateFilms = [];
+  const bufer={}
+  const newFilmsItems = filmsItems.filter(item => {
+    if (item.id !== Number(id.id)) {
+        arrayUpdateFilms.push(item)
+    }
+    // else if () {
+      
+    // }
+  });
+  console.log(id.textContent);
+//   if (e.target.textContent = 'add to queue') {
+//   arrayUpdateFilms.push(item)
+// }
+  setLocalStorageQueue(arrayUpdateFilms);
+
+  // if(wherIAm()){renderCardMain(arrayUpdateFilms)}
+  
+  renderCardMain(arrayUpdateFilms)
+
+  console.log(arrayUpdateFilms);
+  };
+
+// END NEW
 // scroll
 const disableScroll = () => {
   const widthScroll = window.innerWidth - document.body.offsetWidth;
