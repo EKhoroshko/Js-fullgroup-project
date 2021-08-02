@@ -11,6 +11,8 @@ export default function getRefs() {
     inputSearch: document.querySelector('.input-form'),
     headerOverlay: document.querySelector('.overlay'),
     btnLibrary: document.querySelector('.library_buttons'),
+    btnWatchedInHeader: document.querySelector('.headerBtnLeft'),
+    btnQueueInHeader: document.querySelector('.headerBtnRight'),
     addQueue: document.querySelector('[queue]'),
     modal: document.querySelector('#modal'),
     modalWindow: document.querySelector('.modal'),

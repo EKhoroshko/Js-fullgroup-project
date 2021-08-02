@@ -38,7 +38,6 @@ refs.navLink[0].addEventListener('click', event => {
   }
 });
 
-
 refs.logotype.addEventListener('click', event => {
   if (event.target.classList.contains('logotype')) {
     refs.navLink[0].classList.add('current');

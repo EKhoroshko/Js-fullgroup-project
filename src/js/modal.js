@@ -72,6 +72,14 @@ refs.$render.addEventListener('click', onOpenModal);
 refs.modal.addEventListener('click', onCloseModal);
 
 // library
+
+refs.btnWatchedInHeader.addEventListener('click', () => {
+  renderCardMain(getLocalStorageWatched());
+});
+refs.btnQueueInHeader.addEventListener('click', () => {
+  renderCardMain(getLocalStorageQueue());
+});
+
 refs.modal.addEventListener('click', e => {
   if (e.target.classList.contains('movie-add-queue')) {
     if (e.target.classList.contains('delete')) {
@@ -113,9 +121,24 @@ refs.modal.addEventListener('click', e => {
   if (e.target.classList.contains('movie-add-watched')) {
     filmsApiServise.fetchFilmsDescription(e.target.id).then(data => {
       let filmData = getLocalStorageWatched();
-      filmData.push(data);
-      //  filmData.filter((item, index) => {filmData.indexOf(item) === index});
 
+      let inLibrary = 'true',
+        genreName = data.inModalGenreName.slice();
+      const oficialFilmsDate = data.release_date,
+        maybeFilmsDate = data.first_air_date;
+      let cutDate = '';
+      oficialFilmsDate !== undefined
+        ? (cutDate = oficialFilmsDate.slice(0, 4))
+        : (cutDate = maybeFilmsDate.slice(0, 4));
+      data.poster_path === 'null' ? data.splice(indexOf(poster_path), 1) : data;
+
+      if (genreName.length > 2) {
+        genreName.splice(2, genreName.length, '...other');
+      } else if (genreName.length === 0) {
+        genreName.push('Genre not defined');
+      }
+      filmData.push({ ...data, cutDate, inLibrary, genreName });
+      //  filmData.filter((item, index) => {filmData.indexOf(item) === index});
       setLocalStorageWatched(filmData);
     });
   }
