@@ -15,13 +15,11 @@ window.onload = function() { // после загрузки страницы
   var scrolled;
   var timer;
 
-  
   scrollUp.onclick = function () {
        scrolled= window.pageYOffset //обработка клика
       //window.scrollTo(0,0);
     scrollToTop();
-      
-
+     
     };
   function scrollToTop() {
     if (scrolled > 0) {
