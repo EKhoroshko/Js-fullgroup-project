@@ -40,20 +40,20 @@ function renderCardModal(result) {
 
 function onCloseModal(e) {
   const target = e.target;
-  if (target.matches('.about-close') || target.matches('.close-icon')) {
+  if (target.matches('.about-close') || target.matches('.close-icon') || target.classList.contains('modal-backdrop')) {
     refs.modal.classList.add('is-hidden');
     refs.modalForm.innerHTML = '';
     enableScroll();
   }
 }
 
-refs.backdrop.addEventListener('click', function (e) {
-  if (e.target === e.currentTarget) {
-    this.classList.add('is-hidden');
-    refs.modalForm.innerHTML = '';
-    enableScroll();
-  }
-});
+// refs.backdrop.addEventListener('click', function (e) {
+//   if (e.target === e.currentTarget) {
+//     this.classList.add('is-hidden');
+//     refs.modalForm.innerHTML = '';
+//     enableScroll();
+//   }
+// });
 
 document.addEventListener('keydown', function (e) {
   const ESCAPE_CODE = 'Escape';
@@ -65,7 +65,7 @@ document.addEventListener('keydown', function (e) {
 });
 
 refs.$render.addEventListener('click', onOpenModal);
-refs.closeModalBtn.addEventListener('click', onCloseModal);
+refs.modal.addEventListener('click', onCloseModal);
 
 // library
 refs.modal.addEventListener('click', e => {
@@ -78,13 +78,26 @@ refs.modal.addEventListener('click', e => {
     }
     e.target.classList.add('delete');
     e.target.textContent = 'remove from queue';
-
     filmsApiServise.fetchFilmsDescription(e.target.id).then(data => {
-      let filmsData = getLocalStorageQueue();
-      let queue = 'true';
-      filmsData.sort().push({ ...data, queue });
+      const filmsData = getLocalStorageQueue(),
+        queue = 'true',
+        inLibrary = 'true',
+       genreName = data.inModalGenreName.slice();
+          const oficialFilmsDate = data.release_date,
+           maybeFilmsDate = data.first_air_date;
+          let cutDate = '';
+          oficialFilmsDate !== undefined
+            ? (cutDate = oficialFilmsDate.slice(0, 4))
+            : (cutDate = maybeFilmsDate.slice(0, 4));
+          data.poster_path === 'null' ? data.splice(indexOf(poster_path), 1) : data;
+       
+      if (genreName.length > 2) {
+      genreName.splice(2, genreName.length, '...other');
+    } else if (genreName.length === 0) {
+      genreName.push('Genre not defined');
+    }
+      filmsData.push({ ...data, queue, cutDate, inLibrary,genreName });
       setLocalStorageQueue(filmsData);
-
       if (wherIAm()) {
         renderCardMain(filmsData);
       }
@@ -95,9 +108,11 @@ refs.modal.addEventListener('click', e => {
 refs.modal.addEventListener('click', e => {
   if (e.target.classList.contains('movie-add-watched')) {
     filmsApiServise.fetchFilmsDescription(e.target.id).then(data => {
-      let filmsData = getLocalStorageWatched();
-      filmsData.sort().push(data);
-      setLocalStorageWatched(filmsData);
+      let filmData = getLocalStorageWatched();
+      filmData.push(data)
+      //  filmData.filter((item, index) => {filmData.indexOf(item) === index});
+
+      setLocalStorageWatched(filmData);
     });
   }
 });

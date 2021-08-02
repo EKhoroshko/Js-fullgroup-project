@@ -88,11 +88,11 @@ export default class FilmsApiServise {
       })
       .then(data => {
 
-        let genreName = '';
+        let inModalGenreName = '';
         if (data.genres) {
-          genreName = data.genres.map(genre => genre.name);
+          inModalGenreName = data.genres.map(genre => genre.name);
         }
-        return { ...data, genreName };
+        return { ...data, inModalGenreName };
       });
   }
 }

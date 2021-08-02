@@ -32,9 +32,16 @@
       <p class='description-year'>
         {{cutDate}}
       </p>
+
+      {{#if inLibrary}}
+      <p class='rating-library' {{inLibrary}}>
+        {{vote_average}}
+      </p>
+      {{else}}
       <p class='rating-library is-hidden'>
         {{vote_average}}
       </p>
+      {{/if}}
 
     </div>
   </a>
