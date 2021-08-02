@@ -40,7 +40,11 @@ function renderCardModal(result) {
 
 function onCloseModal(e) {
   const target = e.target;
-  if (target.matches('.about-close') || target.matches('.close-icon') || target.classList.contains('modal-backdrop')) {
+  if (
+    target.matches('.about-close') ||
+    target.matches('.close-icon') ||
+    target.classList.contains('modal-backdrop')
+  ) {
     refs.modal.classList.add('is-hidden');
     refs.modalForm.innerHTML = '';
     enableScroll();
@@ -82,21 +86,21 @@ refs.modal.addEventListener('click', e => {
       const filmsData = getLocalStorageQueue(),
         queue = 'true',
         inLibrary = 'true',
-       genreName = data.inModalGenreName.slice();
-          const oficialFilmsDate = data.release_date,
-           maybeFilmsDate = data.first_air_date;
-          let cutDate = '';
-          oficialFilmsDate !== undefined
-            ? (cutDate = oficialFilmsDate.slice(0, 4))
-            : (cutDate = maybeFilmsDate.slice(0, 4));
-          data.poster_path === 'null' ? data.splice(indexOf(poster_path), 1) : data;
-       
+        genreName = data.inModalGenreName.slice();
+      const oficialFilmsDate = data.release_date,
+        maybeFilmsDate = data.first_air_date;
+      let cutDate = '';
+      oficialFilmsDate !== undefined
+        ? (cutDate = oficialFilmsDate.slice(0, 4))
+        : (cutDate = maybeFilmsDate.slice(0, 4));
+      data.poster_path === 'null' ? data.splice(indexOf(poster_path), 1) : data;
+
       if (genreName.length > 2) {
-      genreName.splice(2, genreName.length, '...other');
-    } else if (genreName.length === 0) {
-      genreName.push('Genre not defined');
-    }
-      filmsData.push({ ...data, queue, cutDate, inLibrary,genreName });
+        genreName.splice(2, genreName.length, '...other');
+      } else if (genreName.length === 0) {
+        genreName.push('Genre not defined');
+      }
+      filmsData.push({ ...data, queue, cutDate, inLibrary, genreName });
       setLocalStorageQueue(filmsData);
       if (wherIAm()) {
         renderCardMain(filmsData);
@@ -109,7 +113,7 @@ refs.modal.addEventListener('click', e => {
   if (e.target.classList.contains('movie-add-watched')) {
     filmsApiServise.fetchFilmsDescription(e.target.id).then(data => {
       let filmData = getLocalStorageWatched();
-      filmData.push(data)
+      filmData.push(data);
       //  filmData.filter((item, index) => {filmData.indexOf(item) === index});
 
       setLocalStorageWatched(filmData);
@@ -146,7 +150,6 @@ const deleteFilm = id => {
   if (wherIAm()) {
     renderCardMain(arrayUpdateFilms);
   }
-
 };
 
 // END NEW
