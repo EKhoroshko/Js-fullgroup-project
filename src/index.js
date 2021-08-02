@@ -18,7 +18,7 @@ refs.navLink[1].addEventListener('click', event => {
     refs.navLink[0].classList.remove('current');
     refs.inputSearch.classList.add('is-hidden', 'js-modal');
     refs.headerOverlay.classList.add('library');
-    refs.btnLibrary.classList.remove('is-hidden');
+    refs.btnLibrary.classList.remove('is-hidden','js-modal');
     clearfilms();
     renderCardMain(JSON.parse(localStorage.getItem('queue')));
   }
