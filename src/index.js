@@ -38,6 +38,18 @@ refs.navLink[0].addEventListener('click', event => {
   }
 });
 
+
+refs.logotype.addEventListener('click', event => {
+  if (event.target.classList.contains('logotype')) {
+    refs.navLink[0].classList.add('current');
+    refs.navLink[1].classList.remove('current');
+    refs.inputSearch.classList.remove('is-hidden', 'js-modal');
+    refs.headerOverlay.classList.remove('library');
+    refs.btnLibrary.classList.add('is-hidden', 'js-modal');
+    renderStartFilms();
+  }
+});
+
 function renderStartFilms() {
   refs.$loader.classList.add('show');
   refs.$loader.classList.remove('hide');

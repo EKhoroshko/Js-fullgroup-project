@@ -1,6 +1,6 @@
 #scrollup {
     position: fixed; /* фиксированная позиция */
-    opacity: 0.8; /* прозрачность */
+    opacity: 0.5; /* прозрачность */
     padding: 1px 1px 1px; /* отступы */
     background: #aaa;
     color: var(--accent-color);
@@ -8,9 +8,11 @@
     border-radius: 50%; /* скругление углов */
     -webkit-border-radius: 50%;
     -moz-border-radius: 50%;
+    border:2px solid #ff6b01;
     right: 10px; /* отступ слева */
     bottom: 15px; /* отступ снизу */
     display: none; /* спрятать блок */
     cursor: pointer;
+    scroll-behavior: smooth;
     }
-    
+

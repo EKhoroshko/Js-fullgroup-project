@@ -4,16 +4,19 @@ window.onload = function() { // после загрузки страницы
   
     scrollUp.onmouseover = function() { // добавить прозрачность
       scrollUp.style.opacity=0.3;
-      scrollUp.style.filter  = 'alpha(opacity=30)';
+      scrollUp.style.filter  = 'alpha(opacity=20)';
     };
   
     scrollUp.onmouseout = function() { //убрать прозрачность
       scrollUp.style.opacity = 0.5;
-      scrollUp.style.filter  = 'alpha(opacity=40)';
+      scrollUp.style.filter  = 'alpha(opacity=20)';
     };
   
     scrollUp.onclick = function() { //обработка клика
       window.scrollTo(0,0);
+      window.scrollBy({ behavior: 'smooth'});
+      
+
     };
   
   // show button
