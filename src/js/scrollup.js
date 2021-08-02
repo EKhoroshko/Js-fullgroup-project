@@ -14,9 +14,8 @@ window.onload = function() { // после загрузки страницы
   
     scrollUp.onclick = function() { //обработка клика
       window.scrollTo(0,0);
-      window.scrollBy({ behavior: 'smooth'});
       
-
+     
     };
   
   // show button

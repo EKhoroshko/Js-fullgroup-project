@@ -523,6 +523,8 @@ select:-webkit-autofill:focus {
     display: flex;
     align-items: baseline;
     margin-right: 200px;
+    cursor: pointer;
+    height: 35px;
   }
   .navTitle {
     font-family: Roboto;
