@@ -19,18 +19,7 @@ export default class FilmsApiServise {
         return response.json();
       })
       .then(data => {
-        const newRes = data.results.map(result => {
-          const genreName = this.giveGenres(result.genre_ids);
-          const oficialFilmsDate = result.release_date;
-          const maybeFilmsDate = result.first_air_date;
-          let cutDate = '';
-          oficialFilmsDate !== undefined
-            ? (cutDate = oficialFilmsDate.slice(0, 4))
-            : (cutDate = maybeFilmsDate.slice(0, 4));
-          result.poster_path === 'null' ? result.splice(indexOf(poster_path), 1) : result;
-          return { ...result, genreName, cutDate };
-        });
-        return newRes;
+        return this.addedNewKeytoArr(data);
       });
   }
 
@@ -42,23 +31,27 @@ export default class FilmsApiServise {
         return response.json();
       })
       .then(data => {
-        const newRes = data.results.map(result => {
-          const genreName = this.giveGenres(result.genre_ids);
-          const oficialFilmsDate = result.release_date;
-          const maybeFilmsDate = result.first_air_date;
-          let cutDate = '';
-          oficialFilmsDate !== undefined
-            ? (cutDate = oficialFilmsDate.slice(0, 4))
-            : (cutDate = maybeFilmsDate.slice(0, 4));
-          result.poster_path === 'null' ? result.splice(indexOf(poster_path), 1) : result;
-          return { ...result, genreName, cutDate };
-        });
         return {
-          results: newRes,
+          results: this.addedNewKeytoArr(data),
           totalAmount: data.total_results,
           pageNumber: this.page,
         };
       });
+  }
+// трансформируем полученный массив обьектов фильмов добавляя новые ключи
+  addedNewKeytoArr(data) {
+    return data.results.map(result => {
+      const genreName = this.giveGenres(result.genre_ids),
+       oficialFilmsDate = result.release_date,
+       maybeFilmsDate = result.first_air_date;
+      let cutDate = '';
+      oficialFilmsDate !== undefined
+        ? (cutDate = oficialFilmsDate.slice(0, 4))
+        : (cutDate = maybeFilmsDate.slice(0, 4));
+      result.poster_path === 'null' ? result.splice(indexOf(poster_path), 1) : result;
+      return { ...result, genreName, cutDate };
+    });
+   
   }
 
   // реализация получения жанров (кто знает как сделать красивее - милости прошу)))))
@@ -87,12 +80,11 @@ export default class FilmsApiServise {
         return response.json();
       })
       .then(data => {
-
-        let genreName = '';
+        let inModalGenreName = '';
         if (data.genres) {
-          genreName = data.genres.map(genre => genre.name);
+          inModalGenreName = data.genres.map(genre => genre.name);
         }
-        return { ...data, genreName };
+        return { ...data, inModalGenreName };
       });
   }
 }

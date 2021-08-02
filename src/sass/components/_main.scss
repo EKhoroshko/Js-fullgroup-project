@@ -34,12 +34,14 @@
   margin-bottom: 10px;
   border-radius: 5px;
 }
-div.gallery-img {
+div.gallery-img,
+div.picture {
   background-position: center;
   background-size: 70% auto;
   background-repeat: no-repeat;
   background-image: url(../images/fon.png);
 }
+
 .title-item {
   margin-bottom: 5px;
   @include calculator(500, 12, 14);

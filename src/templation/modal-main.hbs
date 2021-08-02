@@ -1,6 +1,13 @@
 <div class='modal-wrapper'>
   <div class='film-picture'>
+
+    {{#if poster_path}}
     <img class='picture' src='https://image.tmdb.org/t/p/w300{{poster_path}}' alt='{{original_title}}' />
+    {{else}}
+    <div class='picture'></div>
+    {{/if}}
+
+
   </div>
 
   <div class='movie'>
@@ -31,8 +38,8 @@
         <p class='info-criteria-item'>Genre</p>
 
         <div class='info-criteria-genre'>
-          {{#each genreName}}
-          <p class='info-api-item try'>&nbsp{{this}}</p>
+          {{#each inModalGenreName}}
+          <p class='info-api-item try'>{{this}}</p>
           {{/each}}
         </div>
       </li>
@@ -40,7 +47,7 @@
     <h3 class='movie-about'>About</h3>
     <p class='movie-text'>{{overview}}</p>
     <div class='movie-buttons'>
-      <button type='button' class='modal-button movie-add-watched' data-id='{{id}}'>add to Watched</button>
+      <button type='button' class='modal-button movie-add-watched' id='{{id}}'>add to Watched</button>
       {{#if queue}}
       <button type='button' class='modal-button movie-add-queue delete' id='{{id}}' {{queue}}>remove from queue</button>
       {{else}}
