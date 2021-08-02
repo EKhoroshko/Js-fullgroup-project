@@ -1,3 +1,4 @@
+const modalScroll = require('./modal-scroll');
 import getRefs from './get-refs';
 const refs = getRefs();
 import cardModal from '../templation/modal-main.hbs';
@@ -22,7 +23,7 @@ function onOpenModal(result) {
   ) {
     refs.modal.classList.remove('is-hidden');
     renderCardModal(result);
-    disableScroll();
+    modalScroll.disableScroll();
   }
 }
 
@@ -47,24 +48,16 @@ function onCloseModal(e) {
   ) {
     refs.modal.classList.add('is-hidden');
     refs.modalForm.innerHTML = '';
-    enableScroll();
+    modalScroll.enableScroll();
   }
 }
-
-// refs.backdrop.addEventListener('click', function (e) {
-//   if (e.target === e.currentTarget) {
-//     this.classList.add('is-hidden');
-//     refs.modalForm.innerHTML = '';
-//     enableScroll();
-//   }
-// });
 
 document.addEventListener('keydown', function (e) {
   const ESCAPE_CODE = 'Escape';
   if (e.key === ESCAPE_CODE) {
     refs.modal.classList.add('is-hidden');
     refs.modalForm.innerHTML = '';
-    enableScroll();
+    modalScroll.enableScroll();
   }
 });
 
@@ -154,7 +147,7 @@ const deleteFilm = id => {
 
 // END NEW
 // scroll
-const disableScroll = () => {
+/* const disableScroll = () => {
   const widthScroll = window.innerWidth - document.body.offsetWidth;
   document.body.dbScrollY = window.scrollY;
   document.body.style.cssText = `
@@ -173,6 +166,6 @@ const enableScroll = () => {
   window.scroll({
     top: document.body.dbScrollY,
   });
-};
+}; */
 
-export { disableScroll, enableScroll };
+/* export { disableScroll, enableScroll }; */
