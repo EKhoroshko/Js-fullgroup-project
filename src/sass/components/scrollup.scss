@@ -3,6 +3,8 @@
     opacity: 0.5; /* прозрачность */
     padding: 1px 1px 1px; /* отступы */
     background: #aaa;
+    color: var(--accent-color);
+    border-color: var(--accent-color);
     border-radius: 50%; /* скругление углов */
     -webkit-border-radius: 50%;
     -moz-border-radius: 50%;
@@ -12,5 +14,5 @@
     display: none; /* спрятать блок */
     cursor: pointer;
     scroll-behavior: smooth;
-
     }
+
