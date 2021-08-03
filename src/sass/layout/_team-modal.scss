@@ -115,6 +115,11 @@
   margin-bottom: 15px;
 }
 
+.info-item-link {
+  color: #0000ff;
+  text-decoration: underline;
+}
+
 @media screen and (min-width: 768px) and (max-width: 1023px) {
   .team-modal {
     display: flex;
