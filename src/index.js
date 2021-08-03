@@ -52,7 +52,7 @@ function renderStartFilms() {
   refs.$loader.classList.add('show');
   refs.$loader.classList.remove('hide');
   filmsApiServise.getFilm().then(hits => {
-    renderCardMain(hits);
+    renderCardMain(hits.results);
     refs.$loader.classList.add('hide');
     refs.$loader.classList.remove('show');
   });
@@ -68,16 +68,6 @@ function onInputSearch(e) {
     clearfilms();
     createFilmsList();
   }
-}
-
-function createFilmsList() {
-  refs.$loader.classList.add('show');
-  refs.$loader.classList.remove('hide');
-  filmsApiServise.fetchFilms().then(hits => {
-    renderCardMain(hits);
-    refs.$loader.classList.add('hide');
-    refs.$loader.classList.remove('show');
-  });
 }
 
 function renderCardMain(results) {
@@ -128,12 +118,15 @@ pagination.on('afterMove', event => {
   filmsApiServise.fetchFilms(currentPage).then(hits => {
     renderCardMain(hits.results);
   });
- 
 });
 
 function createFilmsList(data) {
+  refs.$loader.classList.add('show');
+  refs.$loader.classList.remove('hide');
   filmsApiServise.fetchFilms(data).then(hits => {
     renderCardMain(hits.results);
+    refs.$loader.classList.add('hide');
+    refs.$loader.classList.remove('show');
     pagination.reset(hits.totalAmount);
     pagination.movePageTo(hits.pageNumber);
   });
