@@ -88,9 +88,9 @@ const container = document.getElementById('pagination');
 const options = {
   totalItems: 20,
   itemsPerPage: 20,
-  visiblePages: 10,
+  visiblePages: 5,
   page: 1,
-  centerAlign: false,
+  centerAlign: true,
   firstItemClassName: 'tui-first-child',
   lastItemClassName: 'tui-last-child',
   template: {
