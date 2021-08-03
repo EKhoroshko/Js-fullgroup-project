@@ -93,19 +93,12 @@ div.picture {
   justify-content: center;
 }
 
-/*!
- * TOAST UI Pagination
- * @version 3.4.1
- * @author NHN FE Development Team <dl_javascript@nhn.com>
- * @license MIT
- */
-//  @charset 'utf-8';
-//  .tui-pagination * {
-//      -moz-user-select: none;
-//      -webkit-user-select: none;
-//      -ms-user-select: none;
-//      user-select: none;
-//  }
+ .tui-pagination * {
+      -moz-user-select: none;
+     -webkit-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+  }
  
  .tui-ico-ellipsis, .tui-ico-first, .tui-ico-last, .tui-ico-next, .tui-ico-prev {
      overflow: hidden;
@@ -283,6 +276,7 @@ div.picture {
      vertical-align: top
  }
  
+
 
 
 @media screen and (min-width: 768px) {
