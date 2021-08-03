@@ -9,7 +9,7 @@
   },
   {
     "id": 2,
-    "name": "Kateryna",
+    "name": "Катерина",
     "position": "Scrum master",
     "image": "https://ca.slack-edge.com/T01QBJQP8PR-U01RGH0E5B8-777595472893-512",
     "tasks": "main-modal,team-modal",
@@ -17,55 +17,55 @@
   },
   {
     "id": 3,
-    "name": "Aleksandr",
+    "name": "Александр",
     "position": "Front end developer",
     "image": "https://ca.slack-edge.com/T01QBJQP8PR-U01RGH0E5B8-777595472893-512"
   },
   {
     "id": 4,
-    "name": "Valentina",
+    "name": "Валентина",
     "position": "Front end developer",
     "image": "https://ca.slack-edge.com/T01QBJQP8PR-U01RNFVLGVB-876cc7ba9ac4-48"
   },
   {
     "id": 5,
-    "name": "Kateryna",
+    "name": "Дмитрий",
     "position": "Front end developer",
     "image": "https://ca.slack-edge.com/T01QBJQP8PR-U01RGH0E5B8-777595472893-512"
   },
   {
     "id": 6,
-    "name": "Kateryna",
+    "name": "Кирилл",
     "position": "Front end developer",
     "image": "https://ca.slack-edge.com/T01QBJQP8PR-U01RGH0E5B8-777595472893-512"
   },
   {
     "id": 7,
-    "name": "Kateryna",
+    "name": "Алена",
     "position": "Front end developer",
     "image": "https://ca.slack-edge.com/T01QBJQP8PR-U01RGH0E5B8-777595472893-512"
   },
   {
     "id": 8,
-    "name": "Kateryna",
+    "name": "Евгений",
     "position": "Front end developer",
     "image": "https://ca.slack-edge.com/T01QBJQP8PR-U01RGH0E5B8-777595472893-512"
   },
   {
     "id": 9,
-    "name": "Kateryna",
+    "name": "Влад",
     "position": "Front end developer",
     "image": "https://ca.slack-edge.com/T01QBJQP8PR-U01RGH0E5B8-777595472893-512"
   },
   {
     "id": 10,
-    "name": "Kateryna",
+    "name": "Виктория",
     "position": "Front end developer",
     "image": "https://ca.slack-edge.com/T01QBJQP8PR-U01RGH0E5B8-777595472893-512"
   },
   {
     "id": 11,
-    "name": "Kateryna",
+    "name": "Сергей",
     "position": "Front end developer",
     "image": "https://ca.slack-edge.com/T01QBJQP8PR-U01RGH0E5B8-777595472893-512"
   }

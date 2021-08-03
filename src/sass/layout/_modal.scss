@@ -43,7 +43,6 @@
 
 .about-close {
   position: absolute;
-  /* background: var(--white-color); */
   background-color: transparent;
   cursor: pointer;
   @extend %transition;
@@ -51,7 +50,7 @@
   height: 30px;
   top: 10px;
   right: 10px;
-  //fill: var(--title-color);
+  fill: var(--title-color);
 
   border: none;
 
@@ -108,15 +107,6 @@ img {
   color: var(--title-color);
   text-transform: uppercase;
 }
-
-// .movie-info {
-//   display: flex;
-//   flex-direction: row;
-//   font-weight: 500;
-//   font-size: 12px;
-//   line-height: 16px;
-//   margin-bottom: 20px;
-// }
 
 .info-criteria {
   display: flex;

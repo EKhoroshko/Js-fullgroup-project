@@ -26,6 +26,11 @@
     cursor: pointer;
   }
 }
+
+.team-modal-button {
+  border: 1px solid var(--accent-color);
+  color: var(--accent-color);
+}
 .movie-add-queue {
   margin-left: 15px;
 }
