@@ -13,13 +13,16 @@ export default class FilmsApiServise {
 
   // объекты фильмов из "интересного",  в которые добавлены значения жанров и короткой даты
   getFilm() {
-    const url = `${BASE_URL}trending/movie/week?api_key=${KEY}`;
+    const url = `${BASE_URL}/trending/movie/week?api_key=${KEY}`;
     return fetch(url)
       .then(response => {
         return response.json();
       })
       .then(data => {
-        return this.addedNewKeytoArr(data);
+        return {
+          results: this.addedNewKeytoArr(data),
+          totalAmount: data.total_result,
+        };
       });
   }
 
@@ -38,16 +41,16 @@ export default class FilmsApiServise {
         };
       });
   }
+
 // трансформируем полученный массив обьектов фильмов добавляя новые ключи
   addedNewKeytoArr(data) {
     return data.results.map(result => {
       const genreName = this.giveGenres(result.genre_ids),
-       oficialFilmsDate = result.release_date,
-       maybeFilmsDate = result.first_air_date;
+        oficialFilmsDate = result.release_date;
       let cutDate = '';
-      oficialFilmsDate !== undefined
-        ? (cutDate = oficialFilmsDate.slice(0, 4))
-        : (cutDate = maybeFilmsDate.slice(0, 4));
+      if (oficialFilmsDate !== undefined) {
+        (cutDate = oficialFilmsDate.slice(0, 4));
+      }
       result.poster_path === 'null' ? result.splice(indexOf(poster_path), 1) : result;
       return { ...result, genreName, cutDate };
     });
