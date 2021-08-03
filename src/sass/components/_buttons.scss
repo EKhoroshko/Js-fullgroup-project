@@ -18,8 +18,8 @@
   color: var(--title-color);
 
   &:hover,
-  :focus,
-  :active {
+  &:focus,
+  &:active {
     background: var(--accent-color);
     color: var(--white-color);
     border: 1px solid var(--accent-color);
@@ -40,7 +40,7 @@
 
 @media screen and (min-width: 1024px) {
   .modal-button {
-    max-width: 136px;
+    width: 136px;
     padding: 13px 10px;
   }
 }
