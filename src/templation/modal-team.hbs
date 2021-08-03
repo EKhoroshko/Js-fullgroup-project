@@ -4,21 +4,8 @@
 
     <p class='info-item'>Name: <span class='info-item-student'>{{name}}</span></p>
     <p class='info-item'>Position: <span class='info-item-student'>{{position}}</span></p>
-    <p class='info-item'>Completed tasks:
-      <span class='info-item-student'>{{tasks}}</span></p>
-    {{!-- <p class='info-item'>GitHub:</p> --}}
-    
-    <a class='info-item-student' href="{{gitHub}}">
-      <svg class="icon-github"width="24px" height="24px">
-        <use href="./images/sprite.svg#icon-Group"></use>
-      </svg>
-      {{!-- <div class="logotype">
-        <svg class="filmoteka" width="24px" height="24px">
-          <use href="../images/sprite.svg#icon-github"></use>
-        </svg>
-        <span class="logoName">Filmoteka</span> --}}
-      {{!-- <img class='student-img' src="../images/sprite.svg#icon-github" alt='github_img' /> --}}
-    </a>
-    
+
+    <a class='info-item info-item-link' href='{{gitHub}}'>Github</a>
+
   </li>
 {{/each}}
