@@ -140,13 +140,13 @@ div.picture {
 
 .tui-pagination .tui-is-selected, .tui-pagination strong {
     color: #fff;
-    background: #ff6b01;
-    border-color: #ff6b01;
+    background: var(--accent-color);
+    border-color: var(--accent-color);
     cursor: default;
 }
 
 .tui-pagination .tui-is-selected:hover {
-    background-color: #ff6b01;
+    background-color: var(--accent-color);
 }
 
 .tui-pagination .tui-first-child.tui-is-selected, .tui-pagination strong.tui-first-child {
@@ -154,11 +154,11 @@ div.picture {
 }
 
 .tui-pagination .tui-first-child.tui-is-selected {
-    border-left: 1px solid #ff6b01
+    border-left: 1px solid var(--accent-color);
 }
 
 .tui-pagination .tui-last-child.tui-is-selected {
-    border-right: 1px solid #ff6b01
+    border-right: 1px solid var(--accent-color);
 }
 
 .tui-pagination .tui-first, .tui-pagination .tui-prev, .tui-pagination .tui-next, .tui-pagination .tui-last, .tui-pagination .tui-prev-is-ellip, .tui-pagination .tui-next-is-ellip {
