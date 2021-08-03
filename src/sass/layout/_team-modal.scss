@@ -52,7 +52,8 @@
 
 .btn-close {
   position: absolute;
-  background-color: #df6616;
+  background-color: var(--white-color);
+  fill: var(--title-color);
   cursor: pointer;
   @extend %transition;
   width: 30px;
@@ -64,7 +65,8 @@
 
   &:focus,
   &:hover {
-    fill: var(--accent-color);
+    background-color: var(--accent-color);
+    fill: var(--white-color);
   }
 }
 
@@ -77,10 +79,15 @@
   display: flex;
   flex-direction: column;
 }
+
 .team-modal-title {
+  color: var(--accent-color);
+  font-weight: 700;
+  text-shadow: 3px 4px 3px rgba(0, 0, 0, 0.3);
   text-align: center;
   margin-top: 15px;
   margin-bottom: 15px;
+  font-size: 30px;
 }
 .student-img {
   margin: auto;
@@ -107,30 +114,7 @@
   justify-content: center;
   margin-bottom: 15px;
 }
-.team-modal-button {
-  text-transform: uppercase;
-  min-width: 113px;
-  height: 44px;
-  padding: 14px 8px;
-  background-color: var(--accent-color);
-  border: 1px solid var(--title-color);
-  box-sizing: border-box;
-  border-radius: 5px;
-  font-weight: 500;
-  // font-size: 12px;
-  line-height: 1.3;
-  color: var(--title-color);
 
-  &:hover,
-  :focus,
-  :active {
-    color: var(--white-color);
-    border: 1px solid var(--accent-color);
-    font-weight: 500;
-
-    cursor: pointer;
-  }
-}
 @media screen and (min-width: 768px) and (max-width: 1023px) {
   .team-modal {
     display: flex;
