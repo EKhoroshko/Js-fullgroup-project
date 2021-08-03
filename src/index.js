@@ -1,7 +1,6 @@
 import './sass/main.scss';
 import getRefs from './js/get-refs.js';
 import Pagination from 'tui-pagination';
-import 'tui-pagination/dist/tui-pagination.css';
 const refs = getRefs();
 
 import { onOpenModal, onCloseModal } from './js/modal.js';
@@ -126,10 +125,10 @@ const pagination = new Pagination('pagination', options);
 
 pagination.on('afterMove', event => {
   const currentPage = event.page;
-  console.log(currentPage);
   filmsApiServise.fetchFilms(currentPage).then(hits => {
     renderCardMain(hits.results);
   });
+ 
 });
 
 function createFilmsList(data) {
