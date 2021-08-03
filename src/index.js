@@ -91,7 +91,7 @@ renderStartFilms();
 
 export { renderCardMain };
 
-// Pagination start
+// Pagination  start
 
 const container = document.getElementById('pagination');
 
