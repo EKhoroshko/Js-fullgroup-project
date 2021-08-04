@@ -7,7 +7,7 @@ import { onOpenModal, onCloseModal } from './js/modal.js';
 import cardMain from './templation/card.hbs';
 import FilmsApiServise from './js/ApiServer';
 import darkTheme from './js/darkTheme';
-import { onOpenTeamModal, onCloseTeamModal } from './js/team-modal.js';
+import { onOpenTeamModal, onCloseTeamModal, wherIAm } from './js/team-modal.js';
 
 var debounce = require('debounce');
 const filmsApiServise = new FilmsApiServise();
@@ -49,9 +49,10 @@ refs.navLink[1].addEventListener('click', event => {
     refs.navLink[0].classList.remove('current');
     refs.inputSearch.classList.add('is-hidden', 'js-modal');
     refs.headerOverlay.classList.add('library');
-    refs.btnLibrary.classList.remove('is-hidden','js-modal');
+    refs.btnLibrary.classList.remove('is-hidden', 'js-modal');
     clearfilms();
     renderCardMain(JSON.parse(localStorage.getItem('queue')));
+    pagination.reset(0);
   }
 });
 
@@ -78,10 +79,15 @@ refs.logotype.addEventListener('click', event => {
 });
 
 pagination.on('afterMove', event => {
-  const currentPage = event.page;
-  filmsApiServise.fetchFilms(currentPage).then(hits => {
-    renderCardMain(hits.results);
-  });
+  let currentPage;
+  if (wherIAm()) {
+    currentPage = false;
+  } else {
+    currentPage = event.page;
+    filmsApiServise.fetchFilms(currentPage).then(hits => {
+      renderCardMain(hits.results);
+    });
+  }
 });
 
 function renderStartFilms() {
@@ -102,7 +108,6 @@ function createFilmsList(data) {
   filmsApiServise.fetchFilms(data).then(hits => {
     renderCardMain(hits.results);
     pagination.reset(hits.totalAmount);
-    // pagination.movePageTo(hits.pageNumber);
     refs.$loader.classList.add('hide');
     refs.$loader.classList.remove('show');
   });
@@ -116,7 +121,8 @@ function onInputSearch(e) {
     renderStartFilms();
   } else {
     clearfilms();
-    createFilmsList();    
+    createFilmsList();
+    refs.inputRef.value = '';
   }
 }
 
@@ -130,14 +136,3 @@ function clearfilms() {
 
 
 export { renderCardMain, clearfilms };
-
-// Pagination  start
-
-
-
-function renderCardMain(results) {
-
-  refs.$render.innerHTML = cardMain(results);
-}
-
-// Pagination end
