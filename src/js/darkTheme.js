@@ -13,14 +13,12 @@ select.addEventListener('change', (e) => {
 
 function addDarkTheme() {
   if (localStorage.getItem('theme') === 'dark-theme') {
-    document.querySelector('.global').classList.add('dark-theme');
     document.querySelector('.main').classList.add('dark-theme');
     document.querySelector('.footer').classList.add('dark-theme');
     document.querySelector('.tui-pagination').classList.add('dark-theme');
     select.setAttribute('checked', true);
   }
   else {
-    document.querySelector('.global').classList.remove('dark-theme');
     document.querySelector('.main').classList.remove('dark-theme');
     document.querySelector('.footer').classList.remove('dark-theme');
     document.querySelector('.tui-pagination').classList.remove('dark-theme');
