@@ -1,77 +1,77 @@
 [
   {
     "id": 1,
-    "name": "Евгений",
+    "name": "Evhenyi",
     "position": "TeamLead",
     "image": "https://ca.slack-edge.com/T01QBJQP8PR-U01RV3CG492-1a171aa63ad7-48",
     "gitHub": "https://github.com/EKhoroshko"
   },
   {
     "id": 2,
-    "name": "Катерина",
+    "name": "Kateryna",
     "position": "Scrum master",
     "image": "https://ca.slack-edge.com/T01QBJQP8PR-U01RGH0E5B8-777595472893-512",
     "gitHub": "https://github.com/Kateryna03"
   },
   {
     "id": 3,
-    "name": "Александр",
+    "name": "Alexandr",
     "position": "Front end developer",
     "image": "https://ca.slack-edge.com/T01QBJQP8PR-U01RGC52M62-64c52b357555-72",
     "gitHub": "https://github.com/oleksandr-suslov"
   },
   {
     "id": 4,
-    "name": "Валентина",
+    "name": "Valentyna",
     "position": "Front end developer",
     "image": "https://ca.slack-edge.com/T01QBJQP8PR-U01RNFVLGVB-5bfb8655f5ff-512",
     "gitHub": "https://github.com/Valentina-Mingalieva"
   },
   {
     "id": 5,
-    "name": "Дмитрий",
+    "name": "Dmytryi",
     "position": "Front end developer",
     "image": "https://ca.slack-edge.com/T01QBJQP8PR-U01RVB1UXA8-7c360e714feb-72",
     "gitHub": "https://github.com/dimagorga"
   },
   {
     "id": 6,
-    "name": "Кирилл",
+    "name": "Kyryll",
     "position": "Front end developer",
     "image": "https://ca.slack-edge.com/T01QBJQP8PR-U01RPCLA4RG-3092bbc92bf5-72",
     "gitHub": "https://github.com/Kirill-Filonchuk"
   },
   {
     "id": 7,
-    "name": "Алена",
+    "name": "Alena",
     "position": "Front end developer",
     "image": "https://ca.slack-edge.com/T01QBJQP8PR-U01R85LMMHD-cfc61d4269ea-512",
     "gitHub": "https://github.com/Alyona-Ihnatenko"
   },
   {
     "id": 8,
-    "name": "Евгений",
+    "name": "Evhenyi",
     "position": "Front end developer",
     "image": "https://ca.slack-edge.com/T01QBJQP8PR-U01R858PUMD-a040ad7b2acc-512",
     "gitHub": "https://github.com/yevhensmirnov"
   },
   {
     "id": 9,
-    "name": "Влад",
+    "name": "Vlad",
     "position": "Front end developer",
     "image": "https://ca.slack-edge.com/T01QBJQP8PR-U01SFHU4U1W-5b0be32e05b4-72",
     "gitHub": "https://github.com/Vlad-Starinets"
   },
   {
     "id": 10,
-    "name": "Виктория",
+    "name": "Victoria",
     "position": "Front end developer",
     "image": "https://ca.slack-edge.com/T01QBJQP8PR-U01RR5X1FAA-f9eb5cd9bf3b-72",
     "gitHub": "https://github.com/Viktoriia-Kapustiuk"
   },
   {
     "id": 11,
-    "name": "Сергей",
+    "name": "Sergey",
     "position": "Front end developer",
     "image": "https://ca.slack-edge.com/T01QBJQP8PR-U01R84YHXPZ-6eec0a52924d-72",
     "gitHub": "https://github.com/Sergii-Khololov"
