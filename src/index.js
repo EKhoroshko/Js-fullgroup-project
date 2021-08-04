@@ -79,7 +79,7 @@ function clearfilms() {
 }
 renderStartFilms();
 
-export { renderCardMain };
+export { renderCardMain, clearfilms };
 
 // Pagination  start
 
@@ -133,6 +133,7 @@ function createFilmsList(data) {
 }
 
 function renderCardMain(results) {
+
   refs.$render.innerHTML = cardMain(results);
 }
 
