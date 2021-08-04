@@ -7,7 +7,7 @@ import { onOpenModal, onCloseModal, wherIAm} from './js/modal.js';
 import cardMain from './templation/card.hbs';
 import FilmsApiServise from './js/ApiServer';
 import darkTheme from './js/darkTheme';
-import { onOpenTeamModal, onCloseTeamModal, wherIAm } from './js/team-modal.js';
+import { onOpenTeamModal, onCloseTeamModal} from './js/team-modal.js';
 
 var debounce = require('debounce');
 const filmsApiServise = new FilmsApiServise();
