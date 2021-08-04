@@ -8,6 +8,9 @@ import cardMain from './templation/card.hbs';
 import FilmsApiServise from './js/ApiServer';
 import darkTheme from './js/darkTheme';
 import { onOpenTeamModal, onCloseTeamModal } from './js/team-modal.js';
+import {Toast} from './js/toast';
+
+
 
 var debounce = require('debounce');
 const filmsApiServise = new FilmsApiServise();
@@ -37,6 +40,7 @@ refs.navLink[0].addEventListener('click', event => {
   }
 });
 
+
 refs.logotype.addEventListener('click', event => {
   if (event.target) {
     refs.navLink[0].classList.add('current');
@@ -64,6 +68,12 @@ function onInputSearch(e) {
   if (filmsApiServise.searchQuery === '') {
     clearfilms();
     renderStartFilms();
+    Toast.add({
+      text: 'Всем привет',
+      color: '#dc3545 !important',
+      autohide: false
+      });
+      console.log(Toast);
   } else {
     clearfilms();
     createFilmsList();
@@ -137,3 +147,20 @@ function renderCardMain(results) {
 }
 
 // Pagination end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
