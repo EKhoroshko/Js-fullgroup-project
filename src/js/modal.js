@@ -29,12 +29,12 @@ function renderCardModal(result) {
   const switchData = data => data.id === Number(film);
 
   if (getLocalStorageWatched().some(switchData) || getLocalStorageQueue().some(switchData)) {
-    let ollFilms = {
+    let allFilms = {
       ...getLocalStorageQueue().find(switchData),
       ...getLocalStorageWatched().find(switchData),
     };
-
-    refs.modalForm.innerHTML = cardModal(ollFilms);
+console.log('allFilms',allFilms);
+    refs.modalForm.innerHTML = cardModal(allFilms);
     return
   }
 
@@ -90,10 +90,9 @@ function btnQueueInHeader (e) {
 refs.modal.addEventListener('click', e => {
      
   if (e.target.classList.contains('movie-add-queue')) {
-    console.log('movie-add-queue');
-    console.log( e.target.textContent);
+   
     if (e.target.classList.contains('delete-queue') || e.target.textContent === 'remove from queue') {
-      console.log('delete-queue');
+      
       deleteFilm(e.target);
       e.target.classList.remove('delete-queue');
       e.target.textContent = 'add to queue';
@@ -122,7 +121,7 @@ refs.modal.addEventListener('click', e => {
       } else if (genreName.length === 0) {
         genreName.push('Genre not defined');
       }
-      getLocalStorageWatched().find(item => item.id == e.target.id)
+      getLocalStorageWatched().includes(item => item.id == e.target.id)
         ? filmsData.push({ ...data, queue, cutDate, inLibrary, genreName, watched })
         : filmsData.push({ ...data, queue, cutDate, inLibrary, genreName });
       let newFilmsData = [];
@@ -146,10 +145,9 @@ refs.modal.addEventListener('click', e => {
 refs.modal.addEventListener('click', e => {
       
   if (e.target.classList.contains('movie-add-watched')) {
-    console.log('movie-add-watched');
-    console.log(e.target.textContent);
-    if (e.target.classList.contains('delete-watched') || e.target.textContent === 'remove from Watched') {
-      console.log('delete-watched');
+    
+    if (e.target.classList.contains('delete-watched') || e.target.textContent === 'remove from watched') {
+     
       deleteFilm(e.target);
       e.target.classList.remove('delete-watched');
       e.target.textContent = 'add to watched';
@@ -179,7 +177,7 @@ refs.modal.addEventListener('click', e => {
         genreName.push('Genre not defined');
       }
 
-      getLocalStorageQueue().find(item => item.id == e.target.id)
+      getLocalStorageQueue().includes(item => item.id == e.target.id)
         ? filmsData.push({ ...data, queue, cutDate, inLibrary, genreName, watched })
         : filmsData.push({ ...data, watched, cutDate, inLibrary, genreName });
       let newFilmsData = [];
