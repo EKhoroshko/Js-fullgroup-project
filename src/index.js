@@ -129,13 +129,14 @@ function clearfilms() {
 }
 
 
-export { renderCardMain };
+export { renderCardMain, clearfilms };
 
 // Pagination  start
 
 
 
 function renderCardMain(results) {
+
   refs.$render.innerHTML = cardMain(results);
 }
 
