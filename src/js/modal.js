@@ -229,3 +229,4 @@ function deleteFilm(id) {
     setLocalStorageWatched(arrayWatchedFilms);
   }
 }
+export {wherIAm};

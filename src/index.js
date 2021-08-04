@@ -3,7 +3,7 @@ import getRefs from './js/get-refs.js';
 import Pagination from 'tui-pagination';
 const refs = getRefs();
 
-import { onOpenModal, onCloseModal } from './js/modal.js';
+import { onOpenModal, onCloseModal, wherIAm} from './js/modal.js';
 import cardMain from './templation/card.hbs';
 import FilmsApiServise from './js/ApiServer';
 import darkTheme from './js/darkTheme';
@@ -80,6 +80,9 @@ refs.logotype.addEventListener('click', event => {
 
 pagination.on('afterMove', event => {
   let currentPage;
+
+   
+
   if (wherIAm()) {
     currentPage = false;
   } else {
@@ -122,7 +125,7 @@ function onInputSearch(e) {
   } else {
     clearfilms();
     createFilmsList();
-    refs.inputRef.value = '';
+
   }
 }
 
@@ -136,3 +139,8 @@ function clearfilms() {
 
 
 export { renderCardMain, clearfilms };
+
+
+
+
+

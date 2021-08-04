@@ -106,11 +106,12 @@ div.picture {
  
  .tui-pagination {
      height:30px;
-     margin: 14px 0 12px;
+     margin-bottom: 20px;
      line-height: normal;
      text-align: center;
      font-size: 0;
  }
+ 
  
  .tui-pagination .tui-page-btn {
     display: inline-block;
@@ -126,7 +127,7 @@ div.picture {
     border-width: 1px 0;
     border-radius: 5px;
 }
- 
+
  .tui-pagination .tui-page-btn:hover {
      background-color: var(--pagination-color);
  }
