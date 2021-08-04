@@ -15,11 +15,13 @@ function addDarkTheme() {
   if (localStorage.getItem('theme') === 'dark-theme') {
     document.querySelector('.main').classList.add('dark-theme');
     document.querySelector('.footer').classList.add('dark-theme');
+    document.querySelector('.pagination-section').classList.add('dark-theme');
     select.setAttribute('checked', true);
   }
   else {
     document.querySelector('.main').classList.remove('dark-theme');
     document.querySelector('.footer').classList.remove('dark-theme');
+    document.querySelector('.pagination-section').classList.remove('dark-theme');
   }
 }
 addDarkTheme();

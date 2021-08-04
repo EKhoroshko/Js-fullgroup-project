@@ -26,7 +26,7 @@ document.addEventListener('keydown', function (e) {
   const ESCAPE_CODE = 'Escape';
   if (e.key === ESCAPE_CODE) {
     refs.modalTeam.classList.add('is-hidden');
-    refs.modalForm.innerHTML = '';
+    refs.membersList.innerHTML = '';
     modalScroll.enableScroll();
   }
 });

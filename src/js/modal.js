@@ -3,17 +3,14 @@ import getRefs from './get-refs';
 const refs = getRefs();
 import cardModal from '../templation/modal-main.hbs';
 import FilmsApiServise from './ApiServer';
-import { renderCardMain } from '../index';
+import { renderCardMain, clearfilms } from '../index';
 const filmsApiServise = new FilmsApiServise();
-
 //==============
 const getLocalStorageQueue = () => JSON?.parse(localStorage.getItem('queue')) || [];
 const setLocalStorageQueue = data => localStorage.setItem('queue', JSON.stringify(data));
 const getLocalStorageWatched = () => JSON?.parse(localStorage.getItem('watched')) || [];
 const setLocalStorageWatched = data => localStorage.setItem('watched', JSON.stringify(data));
-
 //==================
-
 function onOpenModal(result) {
   result.preventDefault();
   if (
@@ -30,15 +27,22 @@ function onOpenModal(result) {
 function renderCardModal(result) {
   const film = result.target.id;
   const switchData = data => data.id === Number(film);
-  if (getLocalStorageQueue().some(switchData)) {
-    refs.modalForm.innerHTML = cardModal(getLocalStorageQueue().find(switchData));
-    return;
+
+  if (getLocalStorageWatched().some(switchData) || getLocalStorageQueue().some(switchData)) {
+    let allFilms = {
+      ...getLocalStorageQueue().find(switchData),
+      ...getLocalStorageWatched().find(switchData),
+    };
+console.log('allFilms',allFilms);
+    refs.modalForm.innerHTML = cardModal(allFilms);
+    return
   }
+
   filmsApiServise.fetchFilmsDescription(film).then(data => {
     refs.modalForm.innerHTML = cardModal(data);
   });
 }
-
+// CLOSE
 function onCloseModal(e) {
   const target = e.target;
   if (
@@ -63,83 +67,136 @@ document.addEventListener('keydown', function (e) {
 
 refs.$render.addEventListener('click', onOpenModal);
 refs.modal.addEventListener('click', onCloseModal);
+// END CLOSE
 
 // library
+// Watched
+refs.btnWatchedInHeader.addEventListener('click', btnWatchedInHeader);
 
-refs.btnWatchedInHeader.addEventListener('click', () => {
+function btnWatchedInHeader(e) {
+   refs.btnWatchedInHeader.classList.add('activeHeaderBtn');
+  refs.btnQueueInHeader.classList.remove('activeHeaderBtn');
   renderCardMain(getLocalStorageWatched());
-});
-refs.btnQueueInHeader.addEventListener('click', () => {
+}
+// Queue
+refs.btnQueueInHeader.addEventListener('click', btnQueueInHeader);
+
+function btnQueueInHeader (e) {
+  refs.btnQueueInHeader.classList.add('activeHeaderBtn');
+  refs.btnWatchedInHeader.classList.remove('activeHeaderBtn');
   renderCardMain(getLocalStorageQueue());
-});
+}
 
 refs.modal.addEventListener('click', e => {
+     
   if (e.target.classList.contains('movie-add-queue')) {
-    if (e.target.classList.contains('delete')) {
+   
+    if (e.target.classList.contains('delete-queue') || e.target.textContent === 'remove from queue') {
+      
       deleteFilm(e.target);
-      e.target.classList.remove('delete');
+      e.target.classList.remove('delete-queue');
       e.target.textContent = 'add to queue';
+      if (wherIAm() && refs.btnQueueInHeader.classList.contains('activeHeaderBtn')) {
+        clearfilms();
+        renderCardMain(getLocalStorageQueue());
+      }
       return;
     }
-    e.target.classList.add('delete');
+    e.target.classList.add('delete-queue');
     e.target.textContent = 'remove from queue';
     filmsApiServise.fetchFilmsDescription(e.target.id).then(data => {
       const filmsData = getLocalStorageQueue(),
         queue = 'true',
+        watched = 'true',
         inLibrary = 'true',
         genreName = data.inModalGenreName.slice();
-      const oficialFilmsDate = data.release_date,
-        maybeFilmsDate = data.first_air_date;
+      const oficialFilmsDate = data.release_date;
       let cutDate = '';
-      oficialFilmsDate !== undefined
-        ? (cutDate = oficialFilmsDate.slice(0, 4))
-        : (cutDate = maybeFilmsDate.slice(0, 4));
+      if (oficialFilmsDate !== undefined) {
+        cutDate = oficialFilmsDate.slice(0, 4);
+      }
       data.poster_path === 'null' ? data.splice(indexOf(poster_path), 1) : data;
-
       if (genreName.length > 2) {
-        genreName.splice(2, genreName.length, '...other');
+        genreName.splice(2, genreName.length, 'other');
       } else if (genreName.length === 0) {
         genreName.push('Genre not defined');
       }
-      filmsData.push({ ...data, queue, cutDate, inLibrary, genreName });
-      setLocalStorageQueue(filmsData);
-      if (wherIAm()) {
-        renderCardMain(filmsData);
+      getLocalStorageWatched().includes(item => item.id == e.target.id)
+        ? filmsData.push({ ...data, queue, cutDate, inLibrary, genreName, watched })
+        : filmsData.push({ ...data, queue, cutDate, inLibrary, genreName });
+      let newFilmsData = [];
+      filmsData.filter(function (item) {
+        let i = newFilmsData.findIndex(x => x.id == item.id);
+        if (i <= -1) {
+          newFilmsData.push(item);
+        }
+        return null;
+      });
+      setLocalStorageQueue(newFilmsData); 
+// setLocalStorageQueue(filmsData);
+      if (wherIAm() && refs.btnQueueInHeader.classList.contains('activeHeaderBtn')) {
+        clearfilms();
+        renderCardMain(getLocalStorageQueue());
       }
     });
   }
 });
 
 refs.modal.addEventListener('click', e => {
+      
   if (e.target.classList.contains('movie-add-watched')) {
+    
+    if (e.target.classList.contains('delete-watched') || e.target.textContent === 'remove from watched') {
+     
+      deleteFilm(e.target);
+      e.target.classList.remove('delete-watched');
+      e.target.textContent = 'add to watched';
+      if (wherIAm() && refs.btnWatchedInHeader.classList.contains('activeHeaderBtn')) {
+        clearfilms();
+        renderCardMain(getLocalStorageWatched());
+      }
+      return;
+    }
+    e.target.classList.add('delete-watched');
+    e.target.textContent = 'remove from watched';
     filmsApiServise.fetchFilmsDescription(e.target.id).then(data => {
-      let filmData = getLocalStorageWatched();
-
-      let inLibrary = 'true',
-        genreName = data.inModalGenreName.slice();
-      const oficialFilmsDate = data.release_date,
-        maybeFilmsDate = data.first_air_date;
+      let filmsData = getLocalStorageWatched();
+      const watched = 'true';
+      const queue = 'true';
+      const inLibrary = 'true';
+      const genreName = data.inModalGenreName.slice();
+      const oficialFilmsDate = data.release_date;
       let cutDate = '';
-      oficialFilmsDate !== undefined
-        ? (cutDate = oficialFilmsDate.slice(0, 4))
-        : (cutDate = maybeFilmsDate.slice(0, 4));
+      if (oficialFilmsDate !== undefined) {
+        cutDate = oficialFilmsDate.slice(0, 4);
+      }
       data.poster_path === 'null' ? data.splice(indexOf(poster_path), 1) : data;
-
       if (genreName.length > 2) {
-        genreName.splice(2, genreName.length, '...other');
+        genreName.splice(2, genreName.length, 'other');
       } else if (genreName.length === 0) {
         genreName.push('Genre not defined');
       }
-      filmData.push({ ...data, cutDate, inLibrary, genreName });
-      //  filmData.filter((item, index) => {filmData.indexOf(item) === index});
-      setLocalStorageWatched(filmData);
+
+      getLocalStorageQueue().includes(item => item.id == e.target.id)
+        ? filmsData.push({ ...data, queue, cutDate, inLibrary, genreName, watched })
+        : filmsData.push({ ...data, watched, cutDate, inLibrary, genreName });
+      let newFilmsData = [];
+      filmsData.filter(function (item) {
+        let i = newFilmsData.findIndex(x => x.id == item.id);
+        if (i <= -1) {
+          newFilmsData.push(item);
+        }
+        return null;
+      });
+      setLocalStorageWatched(newFilmsData);
+      // setLocalStorageWatched(filmsData);
+      if (wherIAm() && refs.btnWatchedInHeader.classList.contains('activeHeaderBtn')) {
+        clearfilms();
+        renderCardMain(getLocalStorageWatched());
+      }
     });
   }
 });
-
-// START NEW
-//  const currentSection = document.querySelector('.current')
-// console.dir(currentSection);
 
 function wherIAm() {
   const currentSection = document.querySelector('.current');
@@ -149,21 +206,25 @@ function wherIAm() {
   return;
 }
 
-const deleteFilm = id => {
-  const filmsItems = Array.from(getLocalStorageQueue());
-  const arrayUpdateFilms = [];
-  const bufer = {};
-  const newFilmsItems = filmsItems.filter(item => {
-    if (item.id !== Number(id.id)) {
-      arrayUpdateFilms.push(item);
-    }
-  });
-  //   if (e.target.textContent = 'add to queue') {
-  //   arrayUpdateFilms.push(item)
-  // }
-  setLocalStorageQueue(arrayUpdateFilms);
-
-  if (wherIAm()) {
-    renderCardMain(arrayUpdateFilms);
+function deleteFilm(id) {
+  if (id.classList.contains('movie-add-queue')) {
+    const filmsItems = Array.from(getLocalStorageQueue());
+    const arrayUpdateFilms = [];
+    filmsItems.filter(item => {
+      if (item.id !== Number(id.id)) {
+        arrayUpdateFilms.push(item);
+      }
+    });
+    setLocalStorageQueue(arrayUpdateFilms);
+  } else {
+    const filmsItems = Array.from(getLocalStorageWatched());
+    const arrayWatchedFilms = [];
+    filmsItems.filter(item => {
+      if (item.id !== Number(id.id)) {
+        arrayWatchedFilms.push(item);
+      }
+    });
+    setLocalStorageWatched(arrayWatchedFilms);
   }
-};
+}
+export {wherIAm};
