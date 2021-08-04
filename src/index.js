@@ -11,6 +11,35 @@ import { onOpenTeamModal, onCloseTeamModal } from './js/team-modal.js';
 
 var debounce = require('debounce');
 const filmsApiServise = new FilmsApiServise();
+const container = document.getElementById('pagination');
+
+const options = {
+  totalItems: 20,
+  itemsPerPage: 20,
+  visiblePages: 5,
+  page: 1,
+  centerAlign: true,
+  firstItemClassName: 'tui-first-child',
+  lastItemClassName: 'tui-last-child',
+  template: {
+    page: '<a href="#" class="tui-page-btn">{{page}}</a>',
+    currentPage: '<strong class="tui-page-btn tui-is-selected">{{page}}</strong>',
+    moveButton:
+      '<a href="#" class="tui-page-btn tui-{{type}}">' +
+      '<span class="tui-ico-{{type}}">{{type}}</span>' +
+      '</a>',
+    disabledMoveButton:
+      '<span class="tui-page-btn tui-is-disabled tui-{{type}}">' +
+      '<span class="tui-ico-{{type}}">{{type}}</span>' +
+      '</span>',
+    moreButton:
+      '<a href="#" class="tui-page-btn tui-{{type}}-is-ellip">' +
+      '<span class="tui-ico-ellip">...</span>' +
+      '</a>',
+  },
+};
+
+const pagination = new Pagination(container, options);
 
 refs.inputRef.addEventListener('input', debounce(onInputSearch, 500));
 
@@ -48,11 +77,32 @@ refs.logotype.addEventListener('click', event => {
   }
 });
 
+pagination.on('afterMove', event => {
+  const currentPage = event.page;
+  filmsApiServise.fetchFilms(currentPage).then(hits => {
+    renderCardMain(hits.results);
+  });
+});
+
 function renderStartFilms() {
   refs.$loader.classList.add('show');
   refs.$loader.classList.remove('hide');
   filmsApiServise.getFilm().then(hits => {
     renderCardMain(hits.results);
+    pagination.reset(0);
+    refs.$loader.classList.add('hide');
+    refs.$loader.classList.remove('show');
+  });
+}
+renderStartFilms();
+
+function createFilmsList(data) {
+  refs.$loader.classList.add('show');
+  refs.$loader.classList.remove('hide');
+  filmsApiServise.fetchFilms(data).then(hits => {
+    renderCardMain(hits.results);
+    pagination.reset(hits.totalAmount);
+    // pagination.movePageTo(hits.pageNumber);
     refs.$loader.classList.add('hide');
     refs.$loader.classList.remove('show');
   });
@@ -66,7 +116,7 @@ function onInputSearch(e) {
     renderStartFilms();
   } else {
     clearfilms();
-    createFilmsList();
+    createFilmsList();    
   }
 }
 
@@ -77,60 +127,13 @@ function renderCardMain(results) {
 function clearfilms() {
   refs.$render.innerHTML = '';
 }
-renderStartFilms();
+
 
 export { renderCardMain };
 
 // Pagination  start
 
-const container = document.getElementById('pagination');
 
-const options = {
-  totalItems: 20,
-  itemsPerPage: 20,
-  visiblePages: 5,
-  page: 1,
-  centerAlign: true,
-  firstItemClassName: 'tui-first-child',
-  lastItemClassName: 'tui-last-child',
-  template: {
-    page: '<a href="#" class="tui-page-btn">{{page}}</a>',
-    currentPage: '<strong class="tui-page-btn tui-is-selected">{{page}}</strong>',
-    moveButton:
-      '<a href="#" class="tui-page-btn tui-{{type}}">' +
-      '<span class="tui-ico-{{type}}">{{type}}</span>' +
-      '</a>',
-    disabledMoveButton:
-      '<span class="tui-page-btn tui-is-disabled tui-{{type}}">' +
-      '<span class="tui-ico-{{type}}">{{type}}</span>' +
-      '</span>',
-    moreButton:
-      '<a href="#" class="tui-page-btn tui-{{type}}-is-ellip">' +
-      '<span class="tui-ico-ellip">...</span>' +
-      '</a>',
-  },
-};
-
-const pagination = new Pagination('pagination', options);
-
-pagination.on('afterMove', event => {
-  const currentPage = event.page;
-  filmsApiServise.fetchFilms(currentPage).then(hits => {
-    renderCardMain(hits.results);
-  });
-});
-
-function createFilmsList(data) {
-  refs.$loader.classList.add('show');
-  refs.$loader.classList.remove('hide');
-  filmsApiServise.fetchFilms(data).then(hits => {
-    renderCardMain(hits.results);
-    refs.$loader.classList.add('hide');
-    refs.$loader.classList.remove('show');
-    pagination.reset(hits.totalAmount);
-    pagination.movePageTo(hits.pageNumber);
-  });
-}
 
 function renderCardMain(results) {
   refs.$render.innerHTML = cardMain(results);
