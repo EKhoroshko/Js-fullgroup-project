@@ -103,10 +103,11 @@ div.picture {
  .tui-ico-ellipsis, .tui-ico-first, .tui-ico-last, .tui-ico-next, .tui-ico-prev {
      overflow: hidden;
  }
- 
+ .pagination-section{
+    padding-bottom: 20px;
+ }
  .tui-pagination {
-     height:30px;
-     margin-bottom: 20px;
+     height:30px;     
      line-height: normal;
      text-align: center;
      font-size: 0;
@@ -118,7 +119,7 @@ div.picture {
     position: relative;
     padding: 4px 6px;
     margin-left: 0;
-    color: var(--title-color);
+    color: var(--accent-color);
     font-weight: 500;
     font-size: 10px;
     line-height: 1.333;
