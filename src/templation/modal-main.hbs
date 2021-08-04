@@ -48,15 +48,13 @@
     <p class='movie-text'>{{overview}}</p>
     <div class='movie-buttons'>
       {{#if watched}}
-      <button type='button' class='modal-button movie-add-watched' id='{{id}}' {{watched}}>remove from
-        Watched</button>
+      <button type='button' class='modal-button movie-add-watched' id='{{id}}' {{watched}}>remove from Watched</button>
       {{else}}
       <button type='button' class='modal-button movie-add-watched' id='{{id}}'>add to Watched</button>
       {{/if}}
 
       {{#if queue}}
-      <button type='button' class='modal-button movie-add-queue' id='{{id}}' {{queue}}>remove from
-        queue</button>
+      <button type='button' class='modal-button movie-add-queue' id='{{id}}' {{queue}}>remove from queue</button>
       {{else}}
       <button type='button' class='modal-button movie-add-queue' id='{{id}}'>add to queue</button>
       {{/if}}
