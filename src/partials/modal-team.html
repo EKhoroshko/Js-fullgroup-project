@@ -1,5 +1,18 @@
 <div class="team-modal-backdrop is-hidden" id="modal" team-modal>
   <div class="team-modal">
+    <!-- video -->
+    <!-- <div class="fullscreen-bg"> -->
+    <video
+      loop=""
+      muted=""
+      autoplay=""
+      poster="./images/img-modal.jpg"
+      class="fullscreen-bg__video"
+    >
+      <source src="./video/island.mp4" type="video/mp4" />
+      <!-- <source src="video/plane.webm" type="video/webm" /> -->
+    </video>
+    <!-- </div> -->
     <button class="btn-close" type="button" team-modal-close>
       <svg class="close-icon">
         <use href="./images/sprite.svg#icon-modal-close"></use>
@@ -14,7 +27,9 @@
           <!-- сюда рендерится team-modal.hbs -->
         </ul>
         <div class="team-button">
-          <button type="button" class="modal-button team-modal-button" data-id="">LEAVE THE ISLAND</button>
+          <button type="button" class="modal-button team-modal-button" data-id="">
+            LEAVE THE ISLAND
+          </button>
         </div>
       </div>
     </form>
