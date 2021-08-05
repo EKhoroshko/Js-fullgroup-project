@@ -33,7 +33,7 @@ function renderCardModal(result) {
       ...getLocalStorageQueue().find(switchData),
       ...getLocalStorageWatched().find(switchData),
     };
-console.log('allFilms',allFilms);
+// console.log('allFilms',allFilms);
     refs.modalForm.innerHTML = cardModal(allFilms);
     return
   }
@@ -88,7 +88,7 @@ function btnQueueInHeader (e) {
 }
 
 refs.modal.addEventListener('click', e => {
-     
+    //  filmsApiServise.resetPage()
   if (e.target.classList.contains('movie-add-queue')) {
    
     if (e.target.classList.contains('delete-queue') || e.target.textContent === 'remove from queue') {
@@ -143,7 +143,7 @@ refs.modal.addEventListener('click', e => {
 });
 
 refs.modal.addEventListener('click', e => {
-      
+      // filmsApiServise.resetPage()
   if (e.target.classList.contains('movie-add-watched')) {
     
     if (e.target.classList.contains('delete-watched') || e.target.textContent === 'remove from watched') {
