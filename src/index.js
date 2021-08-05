@@ -43,7 +43,7 @@ const options = {
 
 const pagination = new Pagination(container, options);
 
-refs.inputRef.addEventListener('input', debounce(onInputSearch, 500));
+refs.inputRef.addEventListener('input', debounce(onInputSearch, 1000));
 
 refs.navLink[1].addEventListener('click', event => {
   if (event.target.classList.contains('navTitle')) {
@@ -69,7 +69,6 @@ refs.navLink[0].addEventListener('click', event => {
   }
 });
 
-
 refs.logotype.addEventListener('click', event => {
   if (event.target) {
     refs.navLink[0].classList.add('current');
@@ -82,14 +81,13 @@ refs.logotype.addEventListener('click', event => {
 });
 
 pagination.on('afterMove', event => {
-  let currentPage;
-
-   
-
-  if (wherIAm()) {
-    currentPage = false;
+  const currentPage = event.page;
+  if (refs.inputRef.value === '') {
+    filmsApiServise.getFilm(currentPage).then(hits => {
+      hits.page = event.page;
+      renderCardMain(hits.results);
+    });
   } else {
-    currentPage = event.page;
     filmsApiServise.fetchFilms(currentPage).then(hits => {
       renderCardMain(hits.results);
     });
@@ -101,7 +99,7 @@ function renderStartFilms() {
   refs.$loader.classList.remove('hide');
   filmsApiServise.getFilm().then(hits => {
     renderCardMain(hits.results);
-    pagination.reset(0);
+    pagination.reset(hits.totalAmount);
     refs.$loader.classList.add('hide');
     refs.$loader.classList.remove('show');
   });
@@ -130,11 +128,10 @@ function onInputSearch(e) {
       color: '#dc3545 !important',
       autohide: false
       });
-      console.log(Toast);
   } else {
     clearfilms();
     createFilmsList();
-
+    refs.inputRef.value = '';
   }
 }
 
@@ -146,28 +143,4 @@ function clearfilms() {
   refs.$render.innerHTML = '';
 }
 
-
 export { renderCardMain, clearfilms };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

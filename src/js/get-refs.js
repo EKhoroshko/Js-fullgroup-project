@@ -22,7 +22,6 @@ export default function getRefs() {
     $loader: document.querySelector('.loader'),
     leadList: document.querySelector('.lead'),
     membersList: document.querySelector('.team-student-info'),
-    leaveBtn: document.querySelector('.team-modal-button'),
     logotype:document.querySelector('.logotype'),
   };
 }

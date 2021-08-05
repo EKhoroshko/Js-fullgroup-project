@@ -8,21 +8,23 @@ export default class FilmsApiServise {
   constructor() {
     this.searchQuery = '';
     this.filmID = '';
-    this.page = 1;
+    this.page  = 1;
   }
 
   // объекты фильмов из "интересного",  в которые добавлены значения жанров и короткой даты
   getFilm() {
-    const url = `${BASE_URL}/trending/movie/week?api_key=${KEY}`;
+    const url = `${BASE_URL}/trending/movie/week?api_key=${KEY}&page=${this.page}`;
     return fetch(url)
       .then(response => {
         return response.json();
       })
       .then(data => {
         return {
-          results: this.addedNewKeytoArr(data),
-          totalAmount: data.total_result,
+          results: this.addedNewKeytoArr(data), 
+          totalAmount: data.total_results,
+          currentPage: this.addPage(),
         };
+        
       });
   }
 
@@ -40,6 +42,10 @@ export default class FilmsApiServise {
           pageNumber: this.page,
         };
       });
+  }
+
+  addPage() {
+    this.page += 1;
   }
 
 // трансформируем полученный массив обьектов фильмов добавляя новые ключи

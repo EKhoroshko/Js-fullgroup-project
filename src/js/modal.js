@@ -35,7 +35,7 @@ function renderCardModal(result) {
     };
 console.log('allFilms',allFilms);
     refs.modalForm.innerHTML = cardModal(allFilms);
-    return
+    return;
   }
 
   filmsApiServise.fetchFilmsDescription(film).then(data => {
