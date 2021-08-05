@@ -136,7 +136,8 @@ function createFilmsList() {
   filmsApiServise.fetchFilms().then(hits => {
 
     // pagination.reset(hits.totalAmount);
-
+    console.log(hits)
+    
     renderCardMain(hits.results);
 // filmsApiServise.resetPage()
     // filmsApiServise.incrementPage();
@@ -163,7 +164,9 @@ function onInputSearch(e) {
     clearfilms();
     createFilmsList();
     refs.inputRef.value = '';
+
   } else {
+
     clearfilms();
     renderStartFilms();
     

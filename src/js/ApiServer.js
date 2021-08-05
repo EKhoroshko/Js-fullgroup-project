@@ -1,5 +1,7 @@
 //экспорт массива с объектами жанров и их ID
 import genreMovies from './genre';
+import getRefs from './get-refs.js';
+const refs = getRefs();
 
 const KEY = '494b2b5ea2ae23dbb3e89fabdc88e3f6';
 const BASE_URL = 'https://api.themoviedb.org/3/';
@@ -37,11 +39,16 @@ export default class FilmsApiServise {
         return response.json();
       })
       .then(data => {
-        return {
+        if (data.results.length == 0) {
+      console.log('no movie')
+         refs.inputRef.innerHTML = `<label> Фильмы не найдены </label>`;
+          
+    } else
+        {return {
           results: this.addedNewKeytoArr(data),
           // totalAmount: data.total_results,
           // pageNumber: this.page,
-        };
+        };}
       });
   }
 
