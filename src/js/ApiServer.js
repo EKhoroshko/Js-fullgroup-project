@@ -16,13 +16,14 @@ export default class FilmsApiServise {
     const url = `${BASE_URL}/trending/movie/week?api_key=${KEY}&page=${this.page}`;
     return fetch(url)
       .then(response => {
-        this.incrementPage();
+        // this.incrementPage();
         return response.json();
       })
       .then(data => {
         return {
           results: this.addedNewKeytoArr(data),
-          totalAmount: data.total_result,
+          //  totalAmount: data.total_results,
+          // pageNumber: this.page,
         };
       });
   }
@@ -32,22 +33,22 @@ export default class FilmsApiServise {
     const url = `${BASE_URL}search/movie?api_key=${KEY}&language=en-US&page=${this.page}&include_adult=false&query=${this.searchQuery}`;
     return fetch(url)
       .then(response => {
-        this.incrementPage();
+        // this.incrementPage();
         return response.json();
       })
       .then(data => {
         return {
           results: this.addedNewKeytoArr(data),
-          totalAmount: data.total_results,
-          pageNumber: this.page,
-          // this.incrementPage(),
+          // totalAmount: data.total_results,
+          // pageNumber: this.page,
         };
       });
   }
 
   // трансформируем полученный массив обьектов фильмов добавляя новые ключи
   addedNewKeytoArr(data) {
-    return data.results.map(result => {
+    if(data!==NaN)
+    {return data.results.map(result => {
       const genreName = this.giveGenres(result.genre_ids),
         oficialFilmsDate = result.release_date;
       let cutDate = '';
@@ -57,6 +58,8 @@ export default class FilmsApiServise {
       result.poster_path === 'null' ? result.splice(indexOf(poster_path), 1) : result;
       return { ...result, genreName, cutDate };
     });
+    }
+    return
   }
 
   // реализация получения жанров (кто знает как сделать красивее - милости прошу)))))
