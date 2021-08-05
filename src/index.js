@@ -3,13 +3,13 @@ import getRefs from './js/get-refs.js';
 import Pagination from 'tui-pagination';
 const refs = getRefs();
 
-import { onOpenModal, onCloseModal, wherIAm} from './js/modal.js';
+import { onOpenModal, onCloseModal, wherIAm } from './js/modal.js';
 import cardMain from './templation/card.hbs';
 import FilmsApiServise from './js/ApiServer';
 import darkTheme from './js/darkTheme';
 
 import { onOpenTeamModal, onCloseTeamModal } from './js/team-modal.js';
-import {Toast} from './js/toast';
+import { Toast } from './js/toast';
 
 var debounce = require('debounce');
 const filmsApiServise = new FilmsApiServise();
@@ -69,7 +69,6 @@ refs.navLink[0].addEventListener('click', event => {
   }
 });
 
-
 refs.logotype.addEventListener('click', event => {
   if (event.target) {
     refs.navLink[0].classList.add('current');
@@ -83,8 +82,6 @@ refs.logotype.addEventListener('click', event => {
 
 pagination.on('afterMove', event => {
   let currentPage;
-
-   
 
   if (wherIAm()) {
     currentPage = false;
@@ -101,7 +98,8 @@ function renderStartFilms() {
   refs.$loader.classList.remove('hide');
   filmsApiServise.getFilm().then(hits => {
     renderCardMain(hits.results);
-    pagination.reset(0);
+    // filmsApiServise.incrementPage();
+    // pagination.reset(0);
     refs.$loader.classList.add('hide');
     refs.$loader.classList.remove('show');
   });
@@ -113,6 +111,14 @@ function createFilmsList(data) {
   refs.$loader.classList.remove('hide');
   filmsApiServise.fetchFilms(data).then(hits => {
     renderCardMain(hits.results);
+    console.log(hits.results.length === 0);
+    // if (hits.results.length === 0) {
+    //   return Toast.add({
+    //   text: 'Всем привет',
+    //   color: '#dc3545 !important',
+    //   autohide: false
+    //   });
+    //   console.log(Toast);}
     pagination.reset(hits.totalAmount);
     refs.$loader.classList.add('hide');
     refs.$loader.classList.remove('show');
@@ -122,20 +128,15 @@ function createFilmsList(data) {
 function onInputSearch(e) {
   e.preventDefault();
   filmsApiServise.searchQuery = e.target.value;
-  if (filmsApiServise.searchQuery === '') {
-    clearfilms();
-    renderStartFilms();
-    Toast.add({
-      text: 'Всем привет',
-      color: '#dc3545 !important',
-      autohide: false
-      });
-      console.log(Toast);
-  } else {
-    clearfilms();
-    createFilmsList();
+  // if (filmsApiServise.searchQuery === '') {
+  //   clearfilms();
+  //   renderStartFilms();
 
-  }
+  // } else {
+  clearfilms();
+  createFilmsList();
+
+  // }
 }
 
 function renderCardMain(results) {
@@ -146,28 +147,29 @@ function clearfilms() {
   refs.$render.innerHTML = '';
 }
 
+const onEntry = entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      //     filmsApiServise.getFilm()
+      // .then(hits => {
+      renderStartFilms();
+      // filmsApiServise.incrementPage();
+      // });
+    }
+
+    if (entry.isIntersecting && filmsApiServise.query !== '') {
+      //     filmsApiServise.fetchFilms()
+      // .then(hits => {
+      createFilmsList();
+      // filmsApiServise.incrementPage();
+      // });
+    }
+  });
+};
+
+const observer = new IntersectionObserver(onEntry, {
+  rootMargin: '300px',
+});
+observer.observe(refs.scroll);
 
 export { renderCardMain, clearfilms };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
