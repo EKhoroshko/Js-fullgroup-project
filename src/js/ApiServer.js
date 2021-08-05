@@ -1,4 +1,3 @@
-//экспорт массива с объектами жанров и их ID
 import genreMovies from './genre';
 
 const KEY = '494b2b5ea2ae23dbb3e89fabdc88e3f6';
@@ -8,7 +7,7 @@ export default class FilmsApiServise {
   constructor() {
     this.searchQuery = '';
     this.filmID = '';
-    this.page  = 1;
+    this.page = 1;
   }
 
   // объекты фильмов из "интересного",  в которые добавлены значения жанров и короткой даты
@@ -20,11 +19,10 @@ export default class FilmsApiServise {
       })
       .then(data => {
         return {
-          results: this.addedNewKeytoArr(data), 
+          results: this.addedNewKeytoArr(data),
           totalAmount: data.total_results,
           currentPage: this.addPage(),
         };
-        
       });
   }
 
@@ -48,7 +46,7 @@ export default class FilmsApiServise {
     this.page += 1;
   }
 
-// трансформируем полученный массив обьектов фильмов добавляя новые ключи
+  // трансформируем полученный массив обьектов фильмов добавляя новые ключи
   addedNewKeytoArr(data) {
     return data.results.map(result => {
       const genreName = this.giveGenres(result.genre_ids),
@@ -60,7 +58,6 @@ export default class FilmsApiServise {
       result.poster_path === 'null' ? result.splice(indexOf(poster_path), 1) : result;
       return { ...result, genreName, cutDate };
     });
-   
   }
 
   // реализация получения жанров (кто знает как сделать красивее - милости прошу)))))

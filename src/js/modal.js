@@ -5,6 +5,7 @@ import cardModal from '../templation/modal-main.hbs';
 import FilmsApiServise from './ApiServer';
 import { renderCardMain, clearfilms } from '../index';
 const filmsApiServise = new FilmsApiServise();
+
 //==============
 const getLocalStorageQueue = () => JSON?.parse(localStorage.getItem('queue')) || [];
 const setLocalStorageQueue = data => localStorage.setItem('queue', JSON.stringify(data));
@@ -27,21 +28,19 @@ function onOpenModal(result) {
 function renderCardModal(result) {
   const film = result.target.id;
   const switchData = data => data.id === Number(film);
-
   if (getLocalStorageWatched().some(switchData) || getLocalStorageQueue().some(switchData)) {
     let allFilms = {
       ...getLocalStorageQueue().find(switchData),
       ...getLocalStorageWatched().find(switchData),
     };
-console.log('allFilms',allFilms);
     refs.modalForm.innerHTML = cardModal(allFilms);
     return;
   }
-
   filmsApiServise.fetchFilmsDescription(film).then(data => {
     refs.modalForm.innerHTML = cardModal(data);
   });
 }
+
 // CLOSE
 function onCloseModal(e) {
   const target = e.target;
@@ -72,27 +71,25 @@ refs.modal.addEventListener('click', onCloseModal);
 // library
 // Watched
 refs.btnWatchedInHeader.addEventListener('click', btnWatchedInHeader);
+refs.btnQueueInHeader.addEventListener('click', btnQueueInHeader);
 
 function btnWatchedInHeader(e) {
-   refs.btnWatchedInHeader.classList.add('activeHeaderBtn');
+  refs.btnWatchedInHeader.classList.add('activeHeaderBtn');
   refs.btnQueueInHeader.classList.remove('activeHeaderBtn');
   renderCardMain(getLocalStorageWatched());
 }
-// Queue
-refs.btnQueueInHeader.addEventListener('click', btnQueueInHeader);
 
-function btnQueueInHeader (e) {
+// Queue
+
+function btnQueueInHeader(e) {
   refs.btnQueueInHeader.classList.add('activeHeaderBtn');
   refs.btnWatchedInHeader.classList.remove('activeHeaderBtn');
   renderCardMain(getLocalStorageQueue());
 }
 
 refs.modal.addEventListener('click', e => {
-     
   if (e.target.classList.contains('movie-add-queue')) {
-   
     if (e.target.classList.contains('delete-queue') || e.target.textContent === 'remove from queue') {
-      
       deleteFilm(e.target);
       e.target.classList.remove('delete-queue');
       e.target.textContent = 'add to queue';
@@ -132,8 +129,8 @@ refs.modal.addEventListener('click', e => {
         }
         return null;
       });
-      setLocalStorageQueue(newFilmsData); 
-// setLocalStorageQueue(filmsData);
+      setLocalStorageQueue(newFilmsData);
+      // setLocalStorageQueue(filmsData);
       if (wherIAm() && refs.btnQueueInHeader.classList.contains('activeHeaderBtn')) {
         clearfilms();
         renderCardMain(getLocalStorageQueue());
@@ -143,11 +140,8 @@ refs.modal.addEventListener('click', e => {
 });
 
 refs.modal.addEventListener('click', e => {
-      
   if (e.target.classList.contains('movie-add-watched')) {
-    
     if (e.target.classList.contains('delete-watched') || e.target.textContent === 'remove from watched') {
-     
       deleteFilm(e.target);
       e.target.classList.remove('delete-watched');
       e.target.textContent = 'add to watched';
@@ -189,7 +183,6 @@ refs.modal.addEventListener('click', e => {
         return null;
       });
       setLocalStorageWatched(newFilmsData);
-      // setLocalStorageWatched(filmsData);
       if (wherIAm() && refs.btnWatchedInHeader.classList.contains('activeHeaderBtn')) {
         clearfilms();
         renderCardMain(getLocalStorageWatched());
@@ -227,4 +220,5 @@ function deleteFilm(id) {
     setLocalStorageWatched(arrayWatchedFilms);
   }
 }
-export {wherIAm};
+
+export { wherIAm };
