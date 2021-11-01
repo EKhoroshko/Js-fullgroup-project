@@ -79,12 +79,13 @@ export default class FilmsApiServise {
 
   // трансформируем полученный массив обьектов фильмов добавляя новые ключи
   addedNewKeytoArr(data) {
-    return data.results.map(result => {
+    if(data!==NaN)
+    {return data.results.map(result => {
       const genreName = this.giveGenres(result.genre_ids),
         oficialFilmsDate = result.release_date;
       let cutDate = '';
       if (oficialFilmsDate !== undefined) {
-        (cutDate = oficialFilmsDate.slice(0, 4));
+        cutDate = oficialFilmsDate.slice(0, 4);
       }
       result.poster_path === 'null' ? result.splice(indexOf(poster_path), 1) : result;
       return { ...result, genreName, cutDate };
@@ -125,3 +126,4 @@ export default class FilmsApiServise {
       });
   }
 }
+
