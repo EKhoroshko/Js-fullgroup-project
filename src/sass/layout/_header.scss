@@ -22,10 +22,6 @@
   display: flex;
   flex-direction: row;
   justify-content: center;
-  // padding-bottom: 65px;
-  // padding-left: 20px;
-  // padding-right: 20px;
-  // margin-top: 49px;
   margin: auto;
 }
 .headerBtnLeft {
@@ -51,7 +47,9 @@
   background: transparent;
   color: #ffffff;
 }
+
 //============================
+
 .switch_box {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -69,21 +67,20 @@
   -ms-flex: 1;
   flex: 1;
 }
-//   .header .container{
-//       position: relative;
-//   }
+
 .box_3 {
-  // position: absolute;
   top: 0px;
   right: 0px;
   margin-left: auto;
   background: transparent;
   margin-top: 0;
 }
+
 .light-theme {
   background-color: #fff;
   color: #333333;
 }
+
 .dark-theme {
   background-color: #333333;
   color: #fff;
@@ -135,51 +132,6 @@ input[type='checkbox'].switch_3:checked + svg.checkbox .is_unchecked {
   transform: translateX(-200%) rotate(180deg);
 }
 
-.toast {
-  overflow: hidden;
-  font-size: 0.875rem;
-  background-color: rgba(255, 255, 255, 0.5);
-  background-clip: padding-box;
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  border-radius: 0.25rem;
-  box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(10px);
-  display: none;
-  position: relative;
-  padding: 0.75rem 2rem 0.75rem 0.75rem;
-  overflow-wrap: break-word;
-  word-break: break-word;
-  }
-  
-  .toast__close {
-    position: absolute;
-    top: 0;
-    right: 10px;
-    padding: 0;
-    background-color: transparent;
-    border: 0;
-    cursor: pointer;
-    float: right;
-    font-size: 1.5rem;
-    font-weight: 700;
-    line-height: 1;
-    color: #000;
-    text-shadow: 0 1px 0 #fff;
-    opacity: 0.6;
-    appearance: button;
-    margin: 0;
-    font-family: inherit;
-    border-radius: 0;
-    }
-
-  .toast_show {
-    display: block;
-    }  
-
-    .toast:not(:last-child) {
-      margin-bottom: 0.75rem;
-      }
-
 .library {
   width: 100%;
   background-position: center;
@@ -192,14 +144,12 @@ input[type='checkbox'].switch_3:checked + svg.checkbox .is_unchecked {
   display: flex;
   flex-direction: row;
   justify-content: center;
-  // padding-bottom: 65px;
-  // padding-left: 20px;
-  // padding-right: 20px;
-  // margin-top: 49px;
+
   .activeHeaderBtn {
     background-color: var(--accent-color);
   }
 }
+
 .headerBtnLeft {
   font-weight: 500;
   font-size: 12px;
@@ -212,6 +162,7 @@ input[type='checkbox'].switch_3:checked + svg.checkbox .is_unchecked {
   background: transparent;
   color: #ffffff;
 }
+
 .headerBtnRight {
   font-weight: 500;
   font-size: 12px;
@@ -251,11 +202,8 @@ input[type='checkbox'].switch_3:checked + svg.checkbox .is_unchecked {
   -ms-flex: 1;
   flex: 1;
 }
-//   .header .container{
-//       position: relative;
-//   }
+
 .box_3 {
-  // position: absolute;
   top: 0px;
   right: 0px;
   margin-left: auto;

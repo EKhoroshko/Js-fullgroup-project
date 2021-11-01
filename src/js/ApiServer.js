@@ -7,7 +7,6 @@ const BASE_URL = 'https://api.themoviedb.org/3/';
 export default class FilmsApiServise {
   constructor() {
     this.searchQuery = '';
-    this.filmID = '';
   }
 
   // объекты фильмов из "интересного",  в которые добавлены значения жанров и короткой даты
