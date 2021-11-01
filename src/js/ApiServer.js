@@ -109,6 +109,7 @@ export default class FilmsApiServise {
     }
     return findingGenres;
   }
+  }
 
   // получаем информацию о конкретном фильме
   fetchFilmsDescription(id) {
