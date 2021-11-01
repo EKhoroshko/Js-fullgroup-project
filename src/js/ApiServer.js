@@ -92,7 +92,7 @@ export default class FilmsApiServise {
     });
   }
 
-  // реализация получения жанров (кто знает как сделать красивее - милости прошу)))))
+  // реализация получения жанров
   giveGenres(arrayGenre) {
     const findingGenres = [];
     for (let i = 0; i < arrayGenre.length; i++) {
