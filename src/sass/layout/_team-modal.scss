@@ -13,7 +13,6 @@
 }
 
 .icon-github {
-  // content: '';
   height: 24px;
   width: 24px;
   z-index: 999;
@@ -30,15 +29,12 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%) scale(1) rotate(0deg);
-  //width: 100%;
   background-image: url(../images/img-modal.jpg);
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
   opacity: 1;
-  //скролл по х пока оставляю
   overflow-x: auto;
-  // z-index: 100;
   max-height: 100%;
   min-width: 280px;
   padding: 15px;
@@ -202,9 +198,6 @@
     top: 50%;
     left: 50%;
     width: 85%;
-
-    // width: 100%;
-    // height: 150%;
     transform: translate(-50%, -50%) scale(3) rotate(0deg);
     z-index: -150;
   }

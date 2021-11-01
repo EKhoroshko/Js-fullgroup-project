@@ -23,13 +23,10 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%) scale(1) rotate(0deg);
-  //width: 100%;
   background: var(--white-color);
   opacity: 1;
-  //скролл по х пока оставляю
   overflow-x: auto;
   z-index: 100;
-  //height: 92%;
   max-height: 100%;
   min-width: 280px;
   padding: 41px 20px 48px 20px;
@@ -120,7 +117,6 @@ img {
 .info-criteria-item {
   color: var(--modal-color);
   min-width: 110px;
-  //width: 50%;
 
   &:last-child {
     margin-bottom: 0;
@@ -135,9 +131,7 @@ img {
 .info-api-item {
   color: var(--title-color);
   display: flex;
-  //flex-direction: start;
   direction: stylelint-disable-next-line;
-  //margin-left: 30px;
 
   &:last-child {
     margin-bottom: 0;
@@ -171,6 +165,7 @@ img {
     margin-right: 0;
   }
 }
+
 .film-raiting-accent {
   display: flex;
   width: 36px;
@@ -184,12 +179,12 @@ img {
   align-items: center;
   justify-content: center;
 }
-//запятые между жанрами
+
 .try:after {
   content: ', ';
   margin-right: 4px;
 }
-//после последнего убираю
+
 .try:last-child:after {
   content: '';
   margin-right: 0;
@@ -202,9 +197,7 @@ img {
   .modal {
     display: flex;
     min-width: 618px;
-
     padding: 40px 28px 42px 30px;
-    //overflow: hidden;
   }
   .modal-wrapper {
     display: flex;
@@ -212,7 +205,6 @@ img {
   .film-picture {
     width: 264px;
     margin-right: 32px;
-    /*  background-size: cover; */
   }
   .picture {
     min-width: 264px;
@@ -240,18 +232,9 @@ img {
   .picture {
     width: 396px;
     height: 478px;
-    // object-fit: cover;
     object-fit: contain;
   }
   .movie-info-title {
     font-size: 30px;
   }
 }
-
-/* .film-picture {
-    margin-right: 30px;
-  }
-  .picture {
-    max-width: 396px;
-    height: 477.8px;
-  } */
