@@ -1,16 +1,19 @@
 import './sass/main.scss';
+import * as PNotifyMobile from '@pnotify/mobile/dist/PNotifyMobile.js';
+import { defaultModules } from '../node_modules/@pnotify/core/dist/PNotify.js';
+import "@pnotify/confirm/dist/PNotifyConfirm.css";
+import "@pnotify/core/dist/PNotify.css";
+import "@pnotify/core/dist/BrightTheme.css";
 import getRefs from './js/get-refs.js';
-import Pagination from 'tui-pagination';
-const refs = getRefs();
-
-import { onOpenModal, onCloseModal, wherIAm} from './js/modal.js';
+import { onOpenModal, onCloseModal, wherIAm } from './js/modal.js';
 import cardMain from './templation/card.hbs';
 import FilmsApiServise from './js/ApiServer';
 import darkTheme from './js/darkTheme';
-
 import { onOpenTeamModal, onCloseTeamModal } from './js/team-modal.js';
-import {Toast} from './js/toast';
+import Pagination from 'tui-pagination';
 
+const refs = getRefs();
+defaultModules.set(PNotifyMobile, {});
 var debounce = require('debounce');
 const filmsApiServise = new FilmsApiServise();
 const container = document.getElementById('pagination');
@@ -19,7 +22,6 @@ const options = {
   totalItems: 20,
   itemsPerPage: 20,
   visiblePages: 5,
-  page: 1,
   centerAlign: true,
   firstItemClassName: 'tui-first-child',
   lastItemClassName: 'tui-last-child',
@@ -53,8 +55,9 @@ refs.navLink[1].addEventListener('click', event => {
     refs.headerOverlay.classList.add('library');
     refs.btnLibrary.classList.remove('is-hidden', 'js-modal');
     clearfilms();
+    pagination.reset(0)
+    container.classList.add('is-hidden');
     renderCardMain(JSON.parse(localStorage.getItem('queue')));
-    pagination.reset(0);
   }
 });
 
@@ -65,7 +68,9 @@ refs.navLink[0].addEventListener('click', event => {
     refs.inputSearch.classList.remove('is-hidden', 'js-modal');
     refs.headerOverlay.classList.remove('library');
     refs.btnLibrary.classList.add('is-hidden', 'js-modal');
-    renderStartFilms();
+    refs.inputRef.value = ' ';
+    container.classList.remove('is-hidden');
+    onPag()
   }
 });
 
@@ -76,35 +81,41 @@ refs.logotype.addEventListener('click', event => {
     refs.inputSearch.classList.remove('is-hidden', 'js-modal');
     refs.headerOverlay.classList.remove('library');
     refs.btnLibrary.classList.add('is-hidden', 'js-modal');
-    renderStartFilms();
+    refs.inputRef.value = ' ';
+    container.classList.remove('is-hidden');
+    onPag()
   }
 });
 
-pagination.on('afterMove', event => {
-  const currentPage = event.page;
-  if (refs.inputRef.value === '') {
-    filmsApiServise.getFilm(currentPage).then(hits => {
-      hits.page = event.page;
-      renderCardMain(hits.results);
-    });
-  } else {
-    filmsApiServise.fetchFilms(currentPage).then(hits => {
-      renderCardMain(hits.results);
-    });
-  }
-});
+function onPag() {
+  renderStartFilms();
+  pagination.on('afterMove', event => {
+    let page = event.page;
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    if (refs.inputRef.value === ' ') {
+      return filmsApiServise.getFilm(page).then(hits => {
+        renderCardMain(hits.results);
+      })
+    } else {
+      return filmsApiServise.fetchFilms(page).then(hits => {
+        renderCardMain(hits.results);
+      })
+    }
+  })
+}
 
-function renderStartFilms() {
+onPag()
+
+function renderStartFilms(page) {
   refs.$loader.classList.add('show');
   refs.$loader.classList.remove('hide');
-  filmsApiServise.getFilm().then(hits => {
+  filmsApiServise.getFilm(page).then(hits => {
     renderCardMain(hits.results);
     pagination.reset(hits.totalAmount);
     refs.$loader.classList.add('hide');
     refs.$loader.classList.remove('show');
   });
 }
-renderStartFilms();
 
 function createFilmsList(data) {
   refs.$loader.classList.add('show');
@@ -123,11 +134,6 @@ function onInputSearch(e) {
   if (filmsApiServise.searchQuery === '') {
     clearfilms();
     renderStartFilms();
-    Toast.add({
-      text: 'Всем привет',
-      color: '#dc3545 !important',
-      autohide: false
-      });
   } else {
     clearfilms();
     createFilmsList();
