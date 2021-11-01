@@ -91,6 +91,7 @@ export default class FilmsApiServise {
       return { ...result, genreName, cutDate };
     });
   }
+  }
 
   // реализация получения жанров
   giveGenres(arrayGenre) {
