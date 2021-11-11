@@ -41,7 +41,7 @@ export default class FilmsApiServise {
 
   goHome() {
     setTimeout(() => {
-      window.location.pathname = "index.html";
+      window.location.pathname = "Js-fullgroup-project";
     }, 1500)
   }
 
