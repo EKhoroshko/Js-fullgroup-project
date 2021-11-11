@@ -41,8 +41,8 @@ export default class FilmsApiServise {
 
   goHome() {
     setTimeout(() => {
-      window.location.href = "../index.html";
-    }, 1000)
+      window.location.pathname = "index.html";
+    }, 1500)
   }
 
   // получаем по ключевому слову объекты фильмов, в которые добавлены значения жанров и короткой даты
@@ -58,7 +58,7 @@ export default class FilmsApiServise {
         .then(data => {
           if (data.results.length === 0) {
             error({
-              text: 'Something went wrong ...please try again',
+              text: `${this.searchQuery} not found`,
               width: '450px',
               animateSpeed: 'fast',
               delay: 2000,
